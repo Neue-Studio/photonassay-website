@@ -2268,7 +2268,120 @@
       width: 14px; height: 14px; stroke: #fff; stroke-width: 2;
       fill: none; stroke-linecap: round;
     }
-  </style>
+
+    /* ============================================
+       MOBILE HAMBURGER MENU
+       ============================================ */
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1002;
+    }
+    .nav__hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 1px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .nav__hamburger span:nth-child(1) { margin-bottom: 5px; }
+    .nav__hamburger span:nth-child(3) { margin-top: 5px; }
+    .nav__hamburger.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav__hamburger.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav__hamburger.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav__mobile-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 1001;
+      background: rgba(10, 10, 10, 0.97);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(30px);
+      transition: opacity 0.35s ease, visibility 0.35s ease, transform 0.35s ease;
+    }
+    .nav__mobile-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+    }
+    .nav__mobile-link {
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      text-decoration: none;
+      padding: 16px 24px;
+      transition: color 0.2s ease;
+      display: block;
+      text-align: center;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav__mobile-link:hover,
+    .nav__mobile-link:active {
+      color: var(--white);
+    }
+    .nav__mobile-link--active {
+      color: var(--gold);
+    }
+    .nav__mobile-sub {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    .nav__mobile-sub-link {
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      padding: 8px 24px;
+      transition: color 0.2s ease;
+      display: block;
+      text-align: center;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav__mobile-sub-link:hover,
+    .nav__mobile-sub-link:active {
+      color: var(--white);
+    }
+
+    @media (max-width: 768px) {
+      .nav__hamburger { display: flex; }
+    }
+    </style>
 </head>
 <body>
 
@@ -2300,8 +2413,27 @@
         <a href="about.html" class="nav__link">About Us</a>
         <a href="contact.html" class="nav__link">Contact</a>
       </div>
+      <button class="nav__hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="nav__mobile-menu" id="navMobileMenu">
+    <a href="resources.html" class="nav__mobile-link">Resources</a>
+    <div class="nav__mobile-sub">
+      <a href="resource-example.html" class="nav__mobile-sub-link">Technical Note Example</a>
+      <a href="case-study-example.html" class="nav__mobile-sub-link">Case Study Example</a>
+    </div>
+    <a href="latest.html" class="nav__mobile-link">Latest</a>
+    <div class="nav__mobile-sub">
+      <a href="news-example.html" class="nav__mobile-sub-link">News Article Example</a>
+      <a href="event-example.html" class="nav__mobile-sub-link">Event Example</a>
+    </div>
+    <a href="about.html" class="nav__mobile-link">About Us</a>
+    <a href="contact.html" class="nav__mobile-link">Contact</a>
+  </div>
 
   <!-- ============================================
        HERO — Centred Full-Viewport
@@ -3179,6 +3311,50 @@
       startAutoplay();
     })();
 
+  
+
+    // === MOBILE HAMBURGER MENU ===
+    (function() {
+      const hamburger = document.getElementById('navHamburger');
+      const mobileMenu = document.getElementById('navMobileMenu');
+      if (!hamburger || !mobileMenu) return;
+
+      function openMenu() {
+        hamburger.classList.add('is-open');
+        mobileMenu.classList.add('is-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        hamburger.classList.remove('is-open');
+        mobileMenu.classList.remove('is-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open menu');
+        document.body.style.overflow = '';
+      }
+
+      hamburger.addEventListener('click', function() {
+        if (mobileMenu.classList.contains('is-open')) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      });
+
+      // Close on link click
+      mobileMenu.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
+          closeMenu();
+        }
+      });
+    })();
   </script>
 
   <!-- Video Modal -->
