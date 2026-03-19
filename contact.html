@@ -469,17 +469,18 @@
       font-weight: 500;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      background: var(--gold);
-      color: var(--near-black);
-      border: none;
+      background: transparent;
+      color: var(--black);
+      border: 1px solid var(--black);
       border-radius: 0;
       cursor: pointer;
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .form__submit:hover {
-      background: var(--gold-hover);
-      box-shadow: 0 4px 20px rgba(242, 183, 5, 0.3);
+      background: var(--black);
+      color: var(--white);
+      box-shadow: inset 0 -3px 0 0 var(--gold);
     }
 
     .form__submit svg {
@@ -714,7 +715,7 @@
     <div class="container">
       <p class="eyebrow">Contact</p>
       <h1>Get In Touch</h1>
-      <p class="contact-hero__subtitle">Whether you're exploring PhotonAssay™ for your operation, looking to send samples to a commercial lab, or simply have a question — we'd love to hear from you.</p>
+      <p class="contact-hero__subtitle">Whether you're exploring PhotonAssay&#8482; for your operation or looking to send samples to a commercial lab, our team is ready to help.</p>
     </div>
   </section>
 
