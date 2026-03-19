@@ -421,7 +421,6 @@
     }
 
     /* Hero entrance animations */
-    .hero__eyebrow,
     .hero h1,
     .hero__subtitle,
     .hero .btn {
@@ -430,7 +429,6 @@
       animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    .hero__eyebrow { animation-delay: 0.1s; }
     .hero h1 { animation-delay: 0.25s; }
     .hero__subtitle { animation-delay: 0.4s; }
     .hero .btn { animation-delay: 0.55s; }
@@ -1292,23 +1290,9 @@
     /* ============================================
        GOLD CURSOR DOT
        ============================================ */
-    * { cursor: none !important; }
 
-    .cursor-dot {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--near-black);
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 1;
-      transform: translate(-50%, -50%);
-    }
 
-    .cursor-dot--on-dark {
-      background: var(--gold);
-    }
+
 
 
     /* Hero background video */
@@ -1873,7 +1857,7 @@
       }
       .reveal { opacity: 1; transform: none; }
       .reveal-stagger > * { opacity: 1; transform: none; }
-      .hero__eyebrow, .hero h1, .hero__subtitle, .hero .btn, .hero__stats {
+      .hero h1, .hero__subtitle, .hero .btn, .hero__stats {
         opacity: 1;
         transform: none;
         animation: none;
@@ -2042,7 +2026,7 @@
       font-size: 13px;
       font-variant-numeric: tabular-nums;
     }
-    .data-modal, .data-modal * { cursor: auto !important; }
+
     .data-table thead th {
       font-size: 11px;
       font-weight: 600;
@@ -2193,8 +2177,7 @@
 </head>
 <body>
 
-  <!-- Cursor Dot -->
-  <div class="cursor-dot" id="cursorDot"></div>
+
 
   <!-- ============================================
        NAVIGATION
@@ -2218,7 +2201,7 @@
   <section class="hero" id="hero">
     <video class="hero__video-bg" autoplay muted loop playsinline><source src="resources/hero-bg.mp4" type="video/mp4"></video>
     <div class="hero__content">
-      <p class="hero__eyebrow eyebrow">PhotonAssay™ Technology</p>
+
       <h1>Mining can't afford<br><span class="hero__accent">guesswork.</span></h1>
       <p class="hero__subtitle">PhotonAssay™ uses high-energy X-rays to determine gold concentration in minutes — not hours. No chemicals. No fire. No compromise.</p>
       <a href="#technology" class="btn btn--light">Explore the technology</a>
@@ -2598,7 +2581,7 @@
         <svg width="16" height="16" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px;"><circle cx="8" cy="8" r="7" stroke="#0D7377" stroke-width="1" fill="none"/><circle cx="8" cy="8" r="3" fill="#0D7377" opacity="0.3"/></svg>
         Laboratory
         <span style="margin:0 12px;color:var(--grey-200);">|</span>
-        Models 3 &amp; 4: Unit deployed direct to the mine site
+        Models 2–4: Unit deployed direct to the mine site
       </div>
     </div>
   </section>
@@ -2964,25 +2947,7 @@
     const timeline = document.getElementById('processTimeline');
     if (timeline) timelineObserver.observe(timeline);
 
-    // === GOLD CURSOR DOT ===
-    const cursorDot = document.getElementById('cursorDot');
-    let mouseX = 0, mouseY = 0;
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      cursorDot.style.left = mouseX + 'px';
-      cursorDot.style.top = mouseY + 'px';
-
-      // Swap dot colour based on section background
-      const el = document.elementFromPoint(mouseX, mouseY);
-      if (el) {
-        const section = el.closest('.hero, .section-dark, .section-black, .footer, .nav, .newsletter');
-        if (section) {
-          cursorDot.classList.add('cursor-dot--on-dark');
-        } else {
-          cursorDot.classList.remove('cursor-dot--on-dark');
-        }
       }
     });
 
