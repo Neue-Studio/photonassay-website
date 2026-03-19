@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News & Events — PhotonAssay™ by Chrysos Corporation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       DESIGN SYSTEM
+       ============================================ */
+    :root {
+      --black: #000000;
+      --near-black: #0A0A0A;
+      --dark: #111111;
+      --charcoal: #1A1A1A;
+      --grey-900: #222222;
+      --grey-700: #555555;
+      --grey-500: #888888;
+      --grey-300: #BBBBBB;
+      --grey-100: #E8E8E8;
+      --white: #FFFFFF;
+      --offwhite: #FAFAFA;
+      --gold: #F2B705;
+      --gold-hover: #D9A404;
+      --font: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+      --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
+      --space-5: 40px; --space-6: 48px; --space-8: 64px; --space-10: 80px;
+      --space-12: 96px; --space-15: 120px; --space-20: 160px;
+      --max-width: 1320px; --nav-height: 80px; --section-pad: 160px; --container-pad: 48px;
+    }
+
+    /* RESET */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+    body {
+      font-family: var(--font);
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--grey-500);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* TYPOGRAPHY */
+    h1 {
+      font-weight: 300;
+      font-size: 88px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      color: var(--white);
+    }
+    h2 {
+      font-weight: 200;
+      font-size: 56px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--black);
+    }
+    h3 {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      color: var(--black);
+    }
+    h4 {
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+      color: var(--black);
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       BUTTONS
+       ============================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 1px solid var(--black);
+      background: transparent;
+      color: var(--black);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+    }
+    .btn:hover {
+      background: var(--black);
+      color: var(--white);
+      box-shadow: inset 0 -3px 0 var(--gold);
+    }
+    .btn--light {
+      border-color: var(--white);
+      color: var(--white);
+    }
+    .btn--light:hover {
+      background: var(--white);
+      color: var(--black);
+      box-shadow: inset 0 -3px 0 var(--gold);
+    }
+    .btn--gold {
+      border: none;
+      background: var(--gold);
+      color: var(--near-black);
+    }
+    .btn--gold:hover {
+      background: var(--gold-hover);
+      box-shadow: 0 4px 20px rgba(242, 183, 5, 0.3);
+    }
+    .arrow-link {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+    }
+    .arrow-link:hover {
+      color: var(--gold);
+    }
+    .arrow-link svg {
+      transition: transform 0.3s ease;
+    }
+    .arrow-link:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: transparent;
+      transition: background 0.5s ease, backdrop-filter 0.5s ease;
+    }
+    .nav--scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .nav--dark {
+      background: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .nav__inner {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--container-pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav__logo {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .nav__logo-svg {
+      height: 43px;
+      width: auto;
+      color: var(--white);
+      display: block;
+    }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-5);
+    }
+    .nav__link {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.3s ease;
+    }
+    .nav__link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav__link:hover {
+      color: var(--white);
+    }
+    .nav__link:hover::after {
+      transform: scaleX(1);
+    }
+    .nav__link--active {
+      color: var(--white);
+    }
+    .nav__link--active::after {
+      transform: scaleX(1);
+    }
+
+    /* NAV DROPDOWNS */
+    .nav__dropdown {
+      position: relative;
+    }
+    .nav__dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      background: var(--near-black);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 8px 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: all 0.25s ease;
+      z-index: 1000;
+    }
+    .nav__dropdown:hover .nav__dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav__dropdown-menu a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--grey-300);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+      text-transform: none;
+    }
+    .nav__dropdown-menu a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ============================================
+       STICKY CTA TAB
+       ============================================ */
+    .sticky-cta {
+      position: fixed;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 999;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    .sticky-cta__link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 16px 10px;
+      background: var(--gold);
+      color: var(--near-black);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 8px 0 0 8px;
+      transition: padding 0.3s ease, background 0.3s ease;
+    }
+    .sticky-cta__link:hover {
+      padding-right: 16px;
+      background: #f5c842;
+    }
+    .sticky-cta__link svg {
+      width: 14px;
+      height: 14px;
+      transform: rotate(-90deg);
+    }
+
+    /* ============================================
+       PAGE HERO (inner pages — not full viewport)
+       ============================================ */
+    .page-hero {
+      background: var(--near-black);
+      padding: calc(var(--nav-height) + var(--space-15)) 0 var(--space-15);
+    }
+    .page-hero h1 {
+      font-size: 64px;
+      margin-bottom: var(--space-3);
+    }
+    .page-hero__subtitle {
+      font-size: 19px;
+      font-weight: 300;
+      color: var(--grey-300);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       SECTIONS
+       ============================================ */
+    .section-light {
+      background: var(--white);
+      padding: var(--section-pad) 0;
+    }
+    .section-offwhite {
+      background: var(--offwhite);
+      padding: var(--section-pad) 0;
+    }
+    .section-dark {
+      background: var(--near-black);
+      padding: var(--section-pad) 0;
+    }
+    .section-dark h2 { color: var(--white); }
+    .section-dark h3 { color: var(--white); }
+    .section-dark .eyebrow { color: var(--grey-300); }
+    .section-black {
+      background: var(--black);
+      padding: var(--section-pad) 0;
+    }
+    .section-black h2 { color: var(--white); }
+    .section-black h3 { color: var(--white); }
+    .section-black .eyebrow { color: var(--grey-300); }
+
+    /* ============================================
+       CARDS
+       ============================================ */
+    .card {
+      border: 1px solid var(--grey-100);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .card:hover {
+      border-color: var(--grey-300);
+      transform: translateY(-4px);
+    }
+    .card__image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--grey-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--grey-500);
+      letter-spacing: 0.02em;
+    }
+    .card__body {
+      padding: var(--space-4);
+    }
+    .card__type {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: var(--space-1);
+    }
+    .card__title {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+      letter-spacing: -0.015em;
+      line-height: 1.3;
+      margin-bottom: var(--space-2);
+    }
+    .card__excerpt {
+      font-size: 15px;
+      color: var(--grey-500);
+      line-height: 1.65;
+      margin-bottom: var(--space-3);
+    }
+    .card__date {
+      font-size: 13px;
+      color: var(--grey-500);
+    }
+
+    /* Dark card variant */
+    .card--dark {
+      border-color: rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.02);
+    }
+    .card--dark:hover {
+      border-color: rgba(242, 183, 5, 0.2);
+    }
+    .card--dark .card__title { color: var(--white); }
+    .card--dark .card__excerpt { color: var(--grey-300); }
+
+    /* ============================================
+       3-COL GRID
+       ============================================ */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+
+    /* ============================================
+       PLACEHOLDER IMAGE
+       ============================================ */
+    .placeholder-img {
+      background: var(--grey-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--grey-500);
+      letter-spacing: 0.02em;
+      border-radius: 2px;
+    }
+
+    /* ============================================
+       TYPE BADGE
+       ============================================ */
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 2px;
+      background: rgba(242, 183, 5, 0.1);
+      color: var(--gold);
+    }
+    .badge--outline {
+      background: transparent;
+      border: 1px solid var(--grey-100);
+      color: var(--grey-500);
+    }
+
+    /* ============================================
+       STAT BLOCK
+       ============================================ */
+    .stat {
+      text-align: center;
+    }
+    .stat__number {
+      font-size: 72px;
+      font-weight: 200;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--gold);
+      margin-bottom: var(--space-1);
+    }
+    .stat__label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+
+    /* ============================================
+       QUOTE BLOCK
+       ============================================ */
+    .quote-block {
+      border-left: 3px solid var(--gold);
+      padding-left: var(--space-4);
+    }
+    .quote-block__text {
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: var(--space-3);
+    }
+    .quote-block__author {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--grey-300);
+    }
+    .quote-block__role {
+      font-size: 13px;
+      color: var(--grey-500);
+    }
+
+    /* ============================================
+       BREADCRUMB
+       ============================================ */
+    .breadcrumb {
+      padding: calc(var(--nav-height) + var(--space-4)) 0 var(--space-2);
+      background: var(--offwhite);
+    }
+    .breadcrumb__list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--grey-500);
+      list-style: none;
+    }
+    .breadcrumb__list a {
+      color: var(--grey-500);
+      transition: color 0.3s;
+    }
+    .breadcrumb__list a:hover {
+      color: var(--gold);
+    }
+    .breadcrumb__sep {
+      color: var(--grey-300);
+    }
+
+    /* ============================================
+       FORM STYLES (shared)
+       ============================================ */
+    .form__group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: var(--space-3);
+    }
+    .form__label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-1);
+    }
+    .form__label .required {
+      color: var(--gold);
+      margin-left: 2px;
+    }
+    .form__input,
+    .form__select,
+    .form__textarea {
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--white);
+      border: 1px solid var(--grey-100);
+      padding: 14px 16px;
+      border-radius: 2px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form__input:focus,
+    .form__select:focus,
+    .form__textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(242, 183, 5, 0.08);
+    }
+    .form__input::placeholder,
+    .form__textarea::placeholder {
+      color: var(--grey-300);
+      font-weight: 300;
+    }
+    .form__textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+    .form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3);
+      margin-bottom: var(--space-3);
+    }
+    .form__row .form__group {
+      margin-bottom: 0;
+    }
+
+    /* ============================================
+       RESOURCE TABLE
+       ============================================ */
+    .resource-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .resource-table__row {
+      display: grid;
+      grid-template-columns: 1fr 140px 2fr 60px;
+      gap: var(--space-3);
+      align-items: center;
+      padding: var(--space-3) 0;
+      border-bottom: 1px solid var(--grey-100);
+      transition: background 0.2s;
+    }
+    .resource-table__row:hover {
+      background: var(--offwhite);
+    }
+    .resource-table__title {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+    }
+    .resource-table__desc {
+      font-size: 14px;
+      color: var(--grey-500);
+    }
+    .resource-table__arrow {
+      color: var(--grey-300);
+      transition: color 0.3s, transform 0.3s;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .resource-table__row:hover .resource-table__arrow {
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+
+    /* TABS */
+    .tabs {
+      display: flex;
+      gap: var(--space-1);
+      margin-bottom: var(--space-6);
+      border-bottom: 1px solid var(--grey-100);
+    }
+    .tab {
+      padding: var(--space-2) var(--space-3);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .tab:hover { color: var(--black); }
+    .tab--active {
+      color: var(--black);
+      border-bottom-color: var(--gold);
+    }
+
+    /* SEARCH */
+    .search-bar {
+      position: relative;
+      margin-bottom: var(--space-5);
+    }
+    .search-bar__input {
+      width: 100%;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      padding: 16px 20px 16px 48px;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .search-bar__input:focus {
+      border-color: var(--gold);
+    }
+    .search-bar__icon {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--grey-300);
+    }
+
+    /* ============================================
+       ARTICLE
+       ============================================ */
+    .article {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .article__meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .article__date {
+      font-size: 14px;
+      color: var(--grey-500);
+    }
+    .article h1 {
+      color: var(--black);
+      font-size: 48px;
+      font-weight: 200;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+    }
+    .article__author {
+      font-size: 14px;
+      color: var(--grey-500);
+      margin-bottom: var(--space-8);
+    }
+    .article__body p {
+      margin-bottom: var(--space-4);
+    }
+    .article__body h2 {
+      font-size: 32px;
+      margin-top: var(--space-8);
+      margin-bottom: var(--space-3);
+    }
+    .article__pullquote {
+      border-left: 3px solid var(--gold);
+      padding-left: var(--space-4);
+      margin: var(--space-6) 0;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--black);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    }
+
+    /* SHARE LINKS */
+    .share {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-8);
+      padding-top: var(--space-4);
+      border-top: 1px solid var(--grey-100);
+    }
+    .share__label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+    }
+    .share__icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--grey-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--grey-500);
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .share__icon:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* ============================================
+       TIMELINE
+       ============================================ */
+    .timeline {
+      position: relative;
+      padding-left: var(--space-6);
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--grey-100);
+    }
+    .timeline__item {
+      position: relative;
+      padding-bottom: var(--space-8);
+    }
+    .timeline__item:last-child {
+      padding-bottom: 0;
+    }
+    .timeline__dot {
+      position: absolute;
+      left: calc(-1 * var(--space-6) - 5px);
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+    .timeline__year {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+    .timeline__title {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+      margin-bottom: var(--space-1);
+    }
+    .timeline__desc {
+      font-size: 15px;
+      color: var(--grey-500);
+      line-height: 1.65;
+    }
+
+    /* ============================================
+       CTA BAND
+       ============================================ */
+    .cta-band {
+      text-align: center;
+      padding: var(--space-12) 0;
+    }
+    .cta-band h2 {
+      max-width: 640px;
+      margin: 0 auto var(--space-5);
+    }
+
+    /* ============================================
+       NEWSLETTER
+       ============================================ */
+    .newsletter {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .newsletter__form {
+      display: flex;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+    }
+    .newsletter__form input {
+      flex: 1;
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 300;
+      padding: 14px 20px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .newsletter__form input:focus {
+      border-color: var(--gold);
+    }
+    .newsletter__form input::placeholder {
+      color: var(--grey-500);
+    }
+
+    /* EVENT FORM */
+    .event-form {
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      border-radius: 2px;
+      padding: var(--space-6);
+      max-width: 560px;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+    .footer {
+      background: var(--black);
+      padding: var(--space-10) 0;
+    }
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      padding-bottom: var(--space-8);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: var(--space-5);
+    }
+    .footer__brand {
+      max-width: 360px;
+    }
+    .footer__logo {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: var(--space-2);
+    }
+    .footer__tagline {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--grey-500);
+      line-height: 1.6;
+    }
+    .footer__links {
+      display: flex;
+      gap: var(--space-8);
+    }
+    .footer__col-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: var(--space-3);
+    }
+    .footer__col a {
+      display: block;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--grey-300);
+      margin-bottom: var(--space-2);
+      transition: color 0.3s ease;
+    }
+    .footer__col a:hover {
+      color: var(--gold);
+    }
+    .footer__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer__copyright {
+      font-size: 13px;
+      color: var(--grey-500);
+    }
+    .footer__legal {
+      display: flex;
+      gap: var(--space-4);
+    }
+    .footer__legal a {
+      font-size: 13px;
+      color: var(--grey-500);
+      transition: color 0.3s ease;
+    }
+    .footer__legal a:hover {
+      color: var(--grey-300);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+    @media (max-width: 768px) {
+      :root {
+        --section-pad: 80px;
+        --container-pad: 24px;
+      }
+      h1 { font-size: 40px; }
+      h2 { font-size: 32px; }
+      .nav__links { display: none; }
+      .page-hero h1 { font-size: 36px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .resource-table__row {
+        grid-template-columns: 1fr;
+        gap: var(--space-1);
+      }
+      .resource-table__desc { display: none; }
+      .stat__number { font-size: 48px; }
+      .article h1 { font-size: 32px; }
+      .newsletter__form { flex-direction: column; }
+      .form__row { grid-template-columns: 1fr; }
+      .footer__inner {
+        flex-direction: column;
+        gap: var(--space-6);
+      }
+      .footer__bottom {
+        flex-direction: column;
+        gap: var(--space-3);
+        text-align: center;
+      }
+      .footer__legal {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .sticky-cta { display: none; }
+    }
+
+    /* PAGE-SPECIFIC OVERRIDES ARE INJECTED BELOW */
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav nav--dark" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <svg class="nav__logo-svg" id="Layer_2" style="height:43px;width:auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230.88 419.1"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#ffca3b;}</style></defs><g id="Layer_1-2"><g><g><path class="cls-1" d="M553.19,284.96c0,7.11-2.26,12.44-6.78,16-4.51,3.56-10.43,5.33-17.75,5.33h-22.4l-1.07,1.07v29.87l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h33.07c7.75,0,13.77,1.74,18.08,5.22,4.3,3.49,6.45,8.85,6.45,16.11Zm-13.97,9.01c2.2-1.81,3.3-4.82,3.3-9.01s-1.1-7.2-3.3-9.01c-2.21-1.81-5.72-2.72-10.56-2.72h-22.4l-1.07,1.07v21.33l1.07,1.07h22.4c4.84,0,8.35-.9,10.56-2.72Z"/><path class="cls-1" d="M611.75,337.23l-1.07,1.07h-8.53l-1.07-1.07v-30.93c0-8.53-3.55-12.8-10.67-12.8-4.55,0-8,1.32-10.35,3.95-2.34,2.63-3.52,7-3.52,13.12v26.67l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h8.53l1.07,1.07v25.6h1.06c.14-.14,.32-.37,.53-.69,.21-.32,.75-.84,1.6-1.55,.85-.71,1.76-1.35,2.72-1.92,.96-.57,2.26-1.08,3.89-1.55s3.34-.7,5.12-.7c13.51,0,20.27,7.47,20.27,22.4v30.93Z"/><path class="cls-1" d="M632.33,331.89c-4.55-4.98-6.82-11.73-6.82-20.26s2.27-15.29,6.82-20.27c4.55-4.97,10.81-7.47,18.77-7.47s14.22,2.49,18.77,7.47c4.55,4.98,6.82,11.73,6.82,20.27s-2.28,15.29-6.82,20.26c-4.55,4.98-10.81,7.47-18.77,7.47s-14.22-2.49-18.77-7.47Zm7.68-33.7c-2.56,3.13-3.84,7.61-3.84,13.44s1.28,10.31,3.84,13.44c2.56,3.13,6.26,4.69,11.09,4.69s8.53-1.56,11.09-4.69c2.56-3.13,3.84-7.61,3.84-13.44s-1.28-10.31-3.84-13.44c-2.56-3.13-6.26-4.69-11.09-4.69s-8.53,1.56-11.09,4.69Z"/><path class="cls-1" d="M719.26,337.23l-1.07,1.07h-8.53c-4.13,0-7.65-1.19-10.56-3.57-2.92-2.38-4.38-5.81-4.38-10.29v-28.8l-1.06-1.07h-7.47l-1.07-1.07v-7.47l1.07-1.07h7.47l1.06-1.07v-9.6l1.07-1.07h8.53l1.07,1.07v9.6l1.07,1.07h11.73l1.07,1.07v7.47l-1.07,1.07h-11.73l-1.07,1.07v28.8c0,2.84,1.42,4.27,4.27,4.27h8.53l1.07,1.07v7.47Z"/><path class="cls-1" d="M735.58,331.89c-4.55-4.98-6.82-11.73-6.82-20.26s2.27-15.29,6.82-20.27c4.55-4.97,10.81-7.47,18.77-7.47s14.22,2.49,18.77,7.47c4.55,4.98,6.82,11.73,6.82,20.27s-2.28,15.29-6.82,20.26c-4.55,4.98-10.81,7.47-18.77,7.47s-14.22-2.49-18.77-7.47Zm7.68-33.7c-2.56,3.13-3.84,7.61-3.84,13.44s1.28,10.31,3.84,13.44,6.26,4.69,11.09,4.69,8.53-1.56,11.09-4.69c2.56-3.13,3.84-7.61,3.84-13.44s-1.28-10.31-3.84-13.44c-2.56-3.13-6.26-4.69-11.09-4.69s-8.53,1.56-11.09,4.69Z"/><path class="cls-1" d="M839.57,337.23l-1.07,1.07h-8.53l-1.07-1.07v-30.93c0-8.53-3.55-12.8-10.67-12.8-4.84,0-8.36,1.42-10.56,4.27-2.2,2.85-3.3,7.47-3.3,13.87v25.6l-1.07,1.07h-8.53l-1.07-1.07v-51.2l1.07-1.07h7.46l1.07,1.07,1.07,4.27h1.06c.14-.14,.32-.37,.53-.69,.21-.32,.75-.84,1.6-1.55,.85-.71,1.76-1.35,2.72-1.92,.96-.57,2.26-1.08,3.89-1.55s3.34-.7,5.12-.7c7.11,0,12.27,2.01,15.46,6.03,3.2,4.02,4.8,9.48,4.8,16.37v30.93Z"/><path class="cls-1" d="M914.13,337.23l-1.07,1.07h-6.4l-1.07-1.07-6.4-16-2.13-1.07h-28.8l-2.13,1.07-6.4,16-1.07,1.07h-6.4l-1.07-1.07v-7.47l25.6-65.06,1.07-1.07h9.6l1.07,1.07,25.6,65.06v7.47Zm-19.2-27.73l-11.74-29.86h-1.06l-11.74,29.86,1.07,1.07h22.4l1.07-1.07Z"/><path class="cls-1" d="M966.28,323.36c0,4.63-1.8,8.45-5.39,11.47-3.59,3.02-8.9,4.53-15.94,4.53s-12.18-1.55-15.84-4.64c-3.66-3.09-5.49-7.59-5.49-13.49l1.07-1.07h8.53l1.07,1.07c0,5.69,3.55,8.53,10.66,8.53s10.67-2.13,10.67-6.4c0-2.56-.89-4.34-2.67-5.33-1.78-.99-5.51-2.06-11.2-3.2-5.61-1.14-9.87-2.93-12.74-5.39-2.88-2.46-4.32-5.99-4.32-10.61,0-4.19,1.64-7.73,4.91-10.61,3.27-2.88,8.39-4.32,15.36-4.32,6.12,0,11.02,1.37,14.72,4.11,3.7,2.74,5.55,6.7,5.55,11.89l-1.07,1.07h-8.53l-1.07-1.07c0-4.27-3.2-6.4-9.6-6.4s-9.6,1.78-9.6,5.33c0,2.49,1.01,4.23,3.04,5.22,2.03,1,5.99,2.1,11.89,3.31,5.54,1.14,9.6,2.92,12.16,5.33,2.56,2.42,3.84,5.97,3.84,10.67Z"/><path class="cls-1" d="M1019.51,323.36c0,4.63-1.8,8.45-5.39,11.47-3.59,3.02-8.9,4.53-15.94,4.53s-12.18-1.55-15.84-4.64c-3.66-3.09-5.49-7.59-5.49-13.49l1.07-1.07h8.53l1.07,1.07c0,5.69,3.55,8.53,10.66,8.53s10.67-2.13,10.67-6.4c0-2.56-.89-4.34-2.67-5.33s-5.51-2.06-11.2-3.2c-5.61-1.14-9.87-2.93-12.74-5.39-2.88-2.46-4.32-5.99-4.32-10.61,0-4.19,1.64-7.73,4.91-10.61s8.39-4.32,15.36-4.32c6.12,0,11.02,1.37,14.72,4.11,3.7,2.74,5.55,6.7,5.55,11.89l-1.07,1.07h-8.53l-1.07-1.07c0-4.27-3.2-6.4-9.6-6.4s-9.6,1.78-9.6,5.33c0,2.49,1.01,4.23,3.04,5.22,2.03,1,5.99,2.1,11.89,3.31,5.54,1.14,9.6,2.92,12.16,5.33,2.56,2.42,3.84,5.97,3.84,10.67Z"/><path class="cls-1" d="M1074.86,337.23l-1.07,1.07h-7.46l-1.07-1.07-1.07-4.27h-1.06c-.15,.14-.32,.37-.53,.7-.21,.32-.77,.84-1.66,1.55-.89,.71-1.85,1.35-2.88,1.92s-2.44,1.08-4.21,1.55-3.66,.69-5.65,.69c-5.83,0-10.31-1.49-13.44-4.48-3.13-2.99-4.69-7.18-4.69-12.59,0-5.69,2.1-9.95,6.29-12.8,4.2-2.84,9.92-4.27,17.18-4.27,1.56,0,3.15,.09,4.74,.27,1.6,.18,2.79,.37,3.58,.59l1.28,.21,1.06-1.07v-2.13c0-3.62-.82-6.13-2.45-7.52-1.64-1.38-4.37-2.08-8.21-2.08-7.11,0-10.67,2.13-10.67,6.4l-1.07,1.07h-8.53l-1.07-1.07c0-4.34,1.72-8.09,5.17-11.25s8.84-4.75,16.16-4.75c7.82,0,13.33,1.85,16.53,5.55,3.2,3.7,4.8,9.67,4.8,17.92v29.87Zm-10.67-18.13v-3.2l-1.06-1.07c-2.14-.71-4.98-1.07-8.54-1.07-9.25,0-13.86,2.85-13.86,8.53,0,4.98,3.2,7.47,9.6,7.47,4.26,0,7.64-.98,10.13-2.93,2.49-1.95,3.73-4.53,3.73-7.73Z"/><path class="cls-1" d="M1133.42,293.5l-17.07,42.66c-3.2,7.96-6.29,13.16-9.28,15.57-2.99,2.41-7.72,3.62-14.18,3.62h-2.14l-1.06-1.07v-7.47l1.06-1.07h2.14c2.84,0,5.08-.43,6.72-1.28s2.95-2.56,3.95-5.12v-1.07l-18.13-44.8v-7.47l1.07-1.07h6.4l1.06,1.07,14.94,39.46h1.06l14.94-39.46,1.06-1.07h6.4l1.07,1.07v7.47Z"/><path class="cls-1" d="M1176.84,264.22l-.62,.62h-13.06l-.62,.62v36.69l-.63,.62h-4.97l-.62-.62v-36.69l-.62-.62h-13.06l-.62-.62v-4.35l.62-.62h33.58l.62,.62v4.35Z"/><path class="cls-1" d="M1230.88,302.15l-.62,.62h-4.98l-.62-.62v-29.85h-.62l-12.43,29.85-.62,.62h-5.6l-.62-.62-12.44-29.85h-.62v29.85l-.62,.62h-4.97l-.62-.62v-42.28l.62-.62h6.84l.63,.62,14.3,34.82h.62l14.3-34.82,.62-.62h6.84l.62,.62v42.28Z"/></g><path class="cls-1" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path class="cls-1" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/><circle class="cls-2" cx="209.39" cy="209.33" r="26.95"/><rect class="cls-2" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/><path class="cls-1" d="M490.63,189.39c0-22.36,12.77-38.33,35.13-38.33,17.03,0,27.68,9.58,29.81,22.36l-1.07,1.06h-8.52l-1.07-1.06c-2.13-7.45-8.52-12.78-19.16-12.78-15.97,0-24.49,11.71-24.49,28.75s8.52,28.75,24.49,28.75c11.71,0,17.03-6.39,19.16-13.84l1.07-1.07h8.52l1.07,1.07c-2.13,12.77-11.71,23.42-29.81,23.42-22.36,0-35.13-15.97-35.13-38.33Z"/><path class="cls-1" d="M625.83,226.65h-8.52l-1.07-1.07v-30.87l-1.06-1.06h-35.14l-1.07,1.06v30.87l-1.06,1.07h-8.52l-1.07-1.07v-72.39l1.07-1.07h8.52l1.06,1.07v29.81l1.07,1.07h35.14l1.06-1.07v-29.81l1.07-1.07h8.52l1.06,1.07v72.39l-1.06,1.07Z"/><path class="cls-1" d="M686.51,193.65v1.06l14.91,23.42v7.45l-1.06,1.07h-4.26l-2.13-1.07-19.17-29.81-2.13-1.07h-17.03l-1.07,1.07v29.81l-1.06,1.07h-8.52l-1.07-1.07v-72.39l1.07-1.07h33c14.91,0,24.49,6.39,24.49,21.29,0,11.71-6.38,18.1-15.97,20.23Zm-8.52-31.94h-22.36l-1.07,1.07v21.29l1.07,1.07h22.36c9.58,0,13.84-3.19,13.84-11.71s-4.26-11.71-13.84-11.71Z"/><path class="cls-1" d="M742.93,196.84v28.74l-1.06,1.07h-8.52l-1.06-1.07v-28.74l-22.36-36.2v-7.45l1.06-1.07h4.26l2.13,1.07,19.17,31.94h2.13l19.16-31.94,2.13-1.07h4.26l1.06,1.07v7.45l-22.36,36.2Z"/><path class="cls-1" d="M801.48,227.72c-18.1,0-29.81-8.51-29.81-24.49l1.06-1.06h8.52l1.06,1.06c0,10.65,7.45,14.91,20.23,14.91,9.58,0,17.03-3.19,17.03-11.71,0-9.58-6.39-11.71-21.29-13.84-14.91-2.13-24.49-8.52-24.49-21.29,0-9.58,7.45-20.23,26.61-20.23,15.97,0,27.69,6.39,27.69,22.36l-1.07,1.06h-8.51l-1.07-1.06c0-8.52-4.26-12.78-18.1-12.78-9.58,0-14.9,4.26-14.9,10.65,0,8.52,5.32,10.65,20.23,12.78,14.9,2.13,25.55,7.45,25.55,22.36,0,11.71-8.51,21.29-28.74,21.29Z"/><path class="cls-1" d="M873.86,151.06c22.36,0,35.14,15.97,35.14,38.33s-12.78,38.33-35.14,38.33-35.13-15.97-35.13-38.33,12.78-38.33,35.13-38.33Zm0,67.07c15.97,0,24.49-11.71,24.49-28.75s-8.51-28.75-24.49-28.75-24.49,11.71-24.49,28.75,8.52,28.75,24.49,28.75Z"/><path class="cls-1" d="M947.32,227.72c-18.1,0-29.81-8.51-29.81-24.49l1.07-1.06h8.51l1.07,1.06c0,10.65,7.45,14.91,20.23,14.91,9.58,0,17.03-3.19,17.03-11.71,0-9.58-6.39-11.71-21.3-13.84-14.9-2.13-24.49-8.52-24.49-21.29,0-9.58,7.45-20.23,26.62-20.23,15.97,0,27.68,6.39,27.68,22.36l-1.06,1.06h-8.52l-1.06-1.06c0-8.52-4.26-12.78-18.1-12.78-9.58,0-14.91,4.26-14.91,10.65,0,8.52,5.33,10.65,20.23,12.78,14.91,2.13,25.55,7.45,25.55,22.36,0,11.71-8.52,21.29-28.75,21.29Z"/></g></g></svg>
+      </a>
+      <div class="nav__links">
+        <div class="nav__dropdown">
+          <a href="resources.html" class="nav__link">Resources</a>
+          <div class="nav__dropdown-menu">
+            <a href="resource-example.html">Technical Note Example</a>
+            <a href="case-study-example.html">Case Study Example</a>
+          </div>
+        </div>
+        <div class="nav__dropdown">
+          <a href="latest.html" class="nav__link nav__link--active">Latest</a>
+          <div class="nav__dropdown-menu">
+            <a href="news-example.html">News Article Example</a>
+            <a href="event-example.html">Event Example</a>
+          </div>
+        </div>
+        <a href="about.html" class="nav__link">About Us</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Latest</p>
+      <h1>News &amp; Events</h1>
+      <p class="page-hero__subtitle">Deployment updates, company news, and upcoming events from Chrysos Corporation and the PhotonAssay&#8482; ecosystem.</p>
+    </div>
+  </section>
+
+  <!-- FEATURED ARTICLES -->
+  <section class="section-light">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Featured</p>
+        <h2 style="margin-bottom: var(--space-8);">Latest stories</h2>
+      </div>
+      <div class="grid-3 reveal">
+        <div class="card">
+          <div class="card__image">News Image &mdash; 16:9</div>
+          <div class="card__body">
+            <div class="card__type">Deployment</div>
+            <div class="card__title">PhotonAssay&#8482; unit begins operations at Ravenswood Gold Mine</div>
+            <p class="card__excerpt">A new on-site deployment in Queensland is delivering 2-minute gold analysis and transforming grade control workflows.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="card__date">12 March 2026</span>
+              <a href="news-example.html" class="arrow-link">Read more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__image">News Image &mdash; 16:9</div>
+          <div class="card__body">
+            <div class="card__type">Product</div>
+            <div class="card__title">PhotonAssay&#8482; XN expansion model announced</div>
+            <p class="card__excerpt">The next generation of PhotonAssay hardware delivers higher throughput and expanded multi-element capabilities.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="card__date">4 March 2026</span>
+              <a href="#" class="arrow-link">Read more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__image">News Image &mdash; 16:9</div>
+          <div class="card__body">
+            <div class="card__type">Corporate</div>
+            <div class="card__title">Chrysos reports record half-year results</div>
+            <p class="card__excerpt">Strong revenue growth driven by new deployments and increasing sample throughput across existing sites.</p>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span class="card__date">24 February 2026</span>
+              <a href="#" class="arrow-link">Read more <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHIVE -->
+  <section class="section-offwhite">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Archive</p>
+        <h2 style="margin-bottom: var(--space-6); font-size: 40px;">Older stories</h2>
+      </div>
+      <div class="reveal">
+        <div class="resource-table__row">
+          <div class="resource-table__title">New deployment at Tropicana Gold Mine begins operations</div>
+          <div><span class="badge badge--outline">Deployment</span></div>
+          <div class="resource-table__desc">PhotonAssay goes live at one of Western Australia's largest gold operations.</div>
+          <div class="resource-table__arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="resource-table__row">
+          <div class="resource-table__title">Chrysos signs multi-unit agreement with major lab network</div>
+          <div><span class="badge badge--outline">Corporate</span></div>
+          <div class="resource-table__desc">A new commercial partnership will see PhotonAssay deployed across five laboratory locations.</div>
+          <div class="resource-table__arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="resource-table__row">
+          <div class="resource-table__title">PhotonAssay featured at IMARC 2025</div>
+          <div><span class="badge badge--outline">Event</span></div>
+          <div class="resource-table__desc">Chrysos presented the latest performance data and deployment case studies at Australia's premier mining conference.</div>
+          <div class="resource-table__arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="resource-table__row">
+          <div class="resource-table__title">Silver analysis capability validated in independent study</div>
+          <div><span class="badge badge--outline">Product</span></div>
+          <div class="resource-table__desc">Third-party testing confirms PhotonAssay silver measurement performance meets commercial laboratory standards.</div>
+          <div class="resource-table__arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+        <div class="resource-table__row">
+          <div class="resource-table__title">Chrysos appoints new Chief Technology Officer</div>
+          <div><span class="badge badge--outline">Corporate</span></div>
+          <div class="resource-table__desc">Dr. Sarah Mitchell joins from CSIRO to lead the next phase of PhotonAssay product development.</div>
+          <div class="resource-table__arrow"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="section-light">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow">Events</p>
+        <h2 style="margin-bottom: var(--space-6); font-size: 40px;">Upcoming events</h2>
+      </div>
+      <div class="grid-2 reveal">
+        <div class="card">
+          <div class="card__body">
+            <div class="card__type">Webinar</div>
+            <div class="card__title">JORC/NI 43-101 Compliance Webinar</div>
+            <p class="card__excerpt">Understanding how PhotonAssay data integrates with international reporting standards for mineral resources.</p>
+            <p class="card__date" style="margin-bottom: var(--space-3);">15 April 2026 &middot; 2:00 PM AEST &middot; Online</p>
+            <a href="event-example.html" class="arrow-link">Register now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body" style="display: flex; align-items: center; justify-content: center; min-height: 200px;">
+            <p style="color: var(--grey-500); font-size: 15px;">More events coming soon. <a href="contact.html" style="color: var(--gold);">Get in touch</a> to be notified.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="section-dark">
+    <div class="container reveal">
+      <div class="newsletter">
+        <p class="eyebrow" style="justify-content: center; color: var(--grey-300);">Stay Informed</p>
+        <h2 style="color: var(--white); font-size: 36px;">Don't miss an update</h2>
+        <p style="color: var(--grey-300); margin-top: var(--space-2);">Subscribe to receive deployment news, technical updates, and event invitations.</p>
+        <div class="newsletter__form">
+          <input type="email" placeholder="Your email address">
+          <a href="#" class="btn btn--gold">Subscribe</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <div class="footer__logo">Chrysos Corporation</div>
+          <p class="footer__tagline">Chrysos Corporation Ltd is the company behind PhotonAssay&#8482;, a breakthrough technology for rapid, non-destructive elemental analysis of geological samples.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <div class="footer__col-title">Company</div>
+            <a href="about.html">About Us</a>
+            <a href="https://chrysoscorp.com/careers" target="_blank">Careers</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="footer__col">
+            <div class="footer__col-title">Resources</div>
+            <a href="resources.html">Case Studies</a>
+            <a href="resources.html">Technical Papers</a>
+            <a href="latest.html">News</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div class="footer__copyright">&copy; 2026 Chrysos Corporation Ltd. All rights reserved.</div>
+        <div class="footer__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY CTA -->
+  <div class="sticky-cta">
+    <a href="contact.html" class="sticky-cta__link">
+      Get In Touch
+      <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- SCROLL REVEAL JS -->
+  <script>
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.classList.add('nav--scrolled');
+      } else {
+        nav.classList.remove('nav--scrolled');
+      }
+    }, { passive: true });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
