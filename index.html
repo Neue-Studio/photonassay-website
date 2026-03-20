@@ -884,6 +884,33 @@
     .cases__carousel-dot--active {
       background: var(--gold);
     }
+    .cases__carousel-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin-top: var(--space-3);
+    }
+    .cases__carousel-arrow {
+      background: none;
+      border: 1px solid var(--grey-300);
+      color: var(--grey-500);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.3s ease, color 0.3s ease;
+    }
+    .cases__carousel-arrow:hover {
+      border-color: var(--black);
+      color: var(--black);
+    }
+    .cases__carousel-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
     .cases__news-header {
       display: flex;
       align-items: baseline;
@@ -2695,7 +2722,7 @@
               <a href="ravenswood.html" class="arrow-link">Read the full story</a>
             </div>
             <div class="cases__featured-image">
-              <div style="width:100%;height:100%;background:var(--grey-900);display:flex;align-items:center;justify-content:center;color:var(--grey-500);font-size:13px;letter-spacing:0.05em;">Ravenswood — Image TBC</div>
+              <div style="width:100%;height:100%;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:var(--grey-300);font-size:13px;letter-spacing:0.05em;">Ravenswood — Image TBC</div>
             </div>
           </div>
           <!-- Slide 2: Data Quality Interview -->
@@ -2707,7 +2734,7 @@
               <a href="#" class="arrow-link">Read the full story</a>
             </div>
             <div class="cases__featured-image">
-              <div style="width:100%;height:100%;background:var(--grey-900);display:flex;align-items:center;justify-content:center;color:var(--grey-500);font-size:13px;letter-spacing:0.05em;">Dr. Simon Dominy — Image TBC</div>
+              <div style="width:100%;height:100%;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:var(--grey-300);font-size:13px;letter-spacing:0.05em;">Dr. Simon Dominy — Image TBC</div>
             </div>
           </div>
           <!-- Slide 3: Code Compliance Webinar -->
@@ -2719,7 +2746,7 @@
               <a href="#" class="arrow-link">Read the full story</a>
             </div>
             <div class="cases__featured-image">
-              <div style="width:100%;height:100%;background:var(--grey-900);display:flex;align-items:center;justify-content:center;color:var(--grey-500);font-size:13px;letter-spacing:0.05em;">Compliance Webinar — Image TBC</div>
+              <div style="width:100%;height:100%;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:var(--grey-300);font-size:13px;letter-spacing:0.05em;">Compliance Webinar — Image TBC</div>
             </div>
           </div>
           <!-- Slide 4: DQO Paper -->
@@ -2731,7 +2758,7 @@
               <a href="#" class="arrow-link">Read the full story</a>
             </div>
             <div class="cases__featured-image">
-              <div style="width:100%;height:100%;background:var(--grey-900);display:flex;align-items:center;justify-content:center;color:var(--grey-500);font-size:13px;letter-spacing:0.05em;">DQO Paper — Image TBC</div>
+              <div style="width:100%;height:100%;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:var(--grey-300);font-size:13px;letter-spacing:0.05em;">DQO Paper — Image TBC</div>
             </div>
           </div>
           <!-- Slide 5: Spanish Webinar -->
@@ -2743,16 +2770,24 @@
               <a href="#" class="arrow-link">Read the full story</a>
             </div>
             <div class="cases__featured-image">
-              <div style="width:100%;height:100%;background:var(--grey-900);display:flex;align-items:center;justify-content:center;color:var(--grey-500);font-size:13px;letter-spacing:0.05em;">Spanish Webinar — Image TBC</div>
+              <div style="width:100%;height:100%;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:var(--grey-300);font-size:13px;letter-spacing:0.05em;">Spanish Webinar — Image TBC</div>
             </div>
           </div>
         </div>
-        <div class="cases__carousel-dots">
-          <button class="cases__carousel-dot cases__carousel-dot--active" data-slide="0"></button>
-          <button class="cases__carousel-dot" data-slide="1"></button>
-          <button class="cases__carousel-dot" data-slide="2"></button>
-          <button class="cases__carousel-dot" data-slide="3"></button>
-          <button class="cases__carousel-dot" data-slide="4"></button>
+        <div class="cases__carousel-nav">
+          <button class="cases__carousel-arrow" id="carouselPrev" aria-label="Previous slide">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 2 4 8 10 14"/></svg>
+          </button>
+          <div class="cases__carousel-dots">
+            <button class="cases__carousel-dot cases__carousel-dot--active" data-slide="0"></button>
+            <button class="cases__carousel-dot" data-slide="1"></button>
+            <button class="cases__carousel-dot" data-slide="2"></button>
+            <button class="cases__carousel-dot" data-slide="3"></button>
+            <button class="cases__carousel-dot" data-slide="4"></button>
+          </div>
+          <button class="cases__carousel-arrow" id="carouselNext" aria-label="Next slide">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 2 12 8 6 14"/></svg>
+          </button>
         </div>
       </div>
 
@@ -3366,6 +3401,12 @@
           startAutoplay();
         });
       });
+
+      // Arrow buttons
+      const prevBtn = document.getElementById('carouselPrev');
+      const nextBtn = document.getElementById('carouselNext');
+      if (prevBtn) prevBtn.addEventListener('click', () => { stopAutoplay(); goTo((current - 1 + total) % total); startAutoplay(); });
+      if (nextBtn) nextBtn.addEventListener('click', () => { stopAutoplay(); next(); startAutoplay(); });
 
       // Swipe support
       let startX = 0;
