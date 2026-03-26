@@ -998,23 +998,78 @@
         --container-pad: 24px;
       }
       h1 { font-size: 40px; }
-      h2 { font-size: 32px; }
+      h2 { font-size: 34px; }
+      h3 { font-size: 21px; }
       .nav__links { display: none; }
+
+      /* Page hero */
+      .page-hero {
+        padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-8);
+      }
       .page-hero h1 { font-size: 36px; }
+      .page-hero__subtitle { font-size: 17px; }
+
+      /* Grids stack */
       .grid-3 { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
+
+      /* Archive table */
       .resource-table__row {
         grid-template-columns: 1fr;
         gap: var(--space-1);
+        padding: var(--space-3) 0;
       }
       .resource-table__desc { display: none; }
+      .resource-table__arrow { justify-content: flex-start; }
+
+      /* Stats */
       .stat__number { font-size: 48px; }
+
+      /* Article */
       .article h1 { font-size: 32px; }
+      .article__pullquote { font-size: 19px; }
+      .article__body h2 { font-size: 26px; }
+
+      /* Newsletter */
       .newsletter__form { flex-direction: column; }
+      .newsletter__form input {
+        font-size: 16px;
+        min-height: 48px;
+      }
+      .newsletter__form .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Forms */
       .form__row { grid-template-columns: 1fr; }
+      .form__input,
+      .form__select,
+      .form__textarea {
+        font-size: 16px;
+        min-height: 48px;
+      }
+
+      /* Buttons */
+      .btn { width: 100%; justify-content: center; min-height: 48px; }
+
+      /* Event page: 2-col detail layout stacks */
+      .event-detail-grid { grid-template-columns: 1fr !important; gap: var(--space-8) !important; }
+      .event-hero__title { font-size: 32px !important; }
+      .event-form { max-width: 100%; }
+
+      /* Share links */
+      .share { flex-wrap: wrap; }
+
+      /* Footer */
       .footer__inner {
         flex-direction: column;
         gap: var(--space-6);
+      }
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-5);
       }
       .footer__bottom {
         flex-direction: column;
@@ -1245,7 +1300,7 @@
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow" style="color: var(--grey-300);">Event</p>
-      <h1 style="font-size: 48px; max-width: 720px;">JORC/NI 43-101 Compliance Webinar</h1>
+      <h1 class="event-hero__title" style="font-size: 48px; max-width: 720px;">JORC/NI 43-101 Compliance Webinar</h1>
       <div style="display: flex; flex-wrap: wrap; gap: var(--space-5); margin-top: var(--space-5);">
         <div>
           <div style="font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 4px;">Date</div>
@@ -1266,7 +1321,7 @@
   <!-- EVENT DETAILS -->
   <section class="section-light">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-15); align-items: start;">
+      <div class="event-detail-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-15); align-items: start;">
         <div class="reveal">
           <h2 style="font-size: 36px; margin-bottom: var(--space-4);">Understanding Assay Data Quality</h2>
           <p style="margin-bottom: var(--space-4);">As PhotonAssay&#8482; adoption grows, the question of how its data integrates with international mineral resource reporting standards becomes increasingly important. This webinar addresses that directly.</p>
