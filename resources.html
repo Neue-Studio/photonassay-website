@@ -997,24 +997,102 @@
         --section-pad: 80px;
         --container-pad: 24px;
       }
-      h1 { font-size: 40px; }
-      h2 { font-size: 32px; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 34px; }
+      h3 { font-size: 21px; }
       .nav__links { display: none; }
+
+      /* Page hero */
+      .page-hero {
+        padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-10);
+      }
       .page-hero h1 { font-size: 36px; }
+      .page-hero__subtitle { font-size: 16px; }
+
+      /* Grids */
       .grid-3 { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
+
+      /* CTA band */
+      .cta-band { padding: var(--space-10) 0; }
+      .cta-band h2 { font-size: 28px !important; }
+      .cta-band .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Resource table */
       .resource-table__row {
         grid-template-columns: 1fr;
         gap: var(--space-1);
+        padding: var(--space-3) var(--space-2);
       }
       .resource-table__desc { display: none; }
+      .resource-table__title { font-size: 15px; }
+      .resource-table__arrow { justify-content: flex-start; }
+
+      /* Tabs — horizontal scroll */
+      .tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        gap: 0;
+        scrollbar-width: none;
+      }
+      .tabs::-webkit-scrollbar { display: none; }
+      .tab {
+        white-space: nowrap;
+        flex-shrink: 0;
+        padding: var(--space-2) var(--space-2);
+        font-size: 12px;
+      }
+
+      /* Search bar — prevent iOS zoom */
+      .search-bar__input {
+        font-size: 16px;
+        min-height: 48px;
+      }
+
+      /* Stats */
       .stat__number { font-size: 48px; }
       .article h1 { font-size: 32px; }
+
+      /* Newsletter */
       .newsletter__form { flex-direction: column; }
+      .newsletter__form input {
+        font-size: 16px;
+        min-height: 48px;
+        width: 100%;
+      }
+      .newsletter__form .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Buttons — global full-width + touch target */
+      .btn {
+        min-height: 48px;
+      }
+
+      /* Forms */
       .form__row { grid-template-columns: 1fr; }
+      .form__input,
+      .form__select,
+      .form__textarea {
+        font-size: 16px;
+        min-height: 48px;
+      }
+
+      /* Footer */
       .footer__inner {
         flex-direction: column;
         gap: var(--space-6);
+      }
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-5);
       }
       .footer__bottom {
         flex-direction: column;

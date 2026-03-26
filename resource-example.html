@@ -997,24 +997,81 @@
         --section-pad: 80px;
         --container-pad: 24px;
       }
-      h1 { font-size: 40px; }
-      h2 { font-size: 32px; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 34px; }
+      h3 { font-size: 21px; }
       .nav__links { display: none; }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        padding: calc(var(--nav-height) + var(--space-3)) 0 var(--space-2);
+      }
+      .breadcrumb__list {
+        flex-wrap: wrap;
+        font-size: 12px;
+      }
+
+      /* Page hero */
       .page-hero h1 { font-size: 36px; }
+      .page-hero__subtitle { font-size: 16px; }
+
+      /* Article header */
+      .article h1 { font-size: 30px; }
+
+      /* Download button — full-width + touch target */
+      .btn {
+        min-height: 48px;
+      }
+      .article .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Grids */
       .grid-3 { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
+
+      /* Resource table (shared styles) */
       .resource-table__row {
         grid-template-columns: 1fr;
         gap: var(--space-1);
       }
       .resource-table__desc { display: none; }
+
+      /* Stats */
       .stat__number { font-size: 48px; }
-      .article h1 { font-size: 32px; }
+
+      /* Newsletter */
       .newsletter__form { flex-direction: column; }
+      .newsletter__form input {
+        font-size: 16px;
+        min-height: 48px;
+        width: 100%;
+      }
+      .newsletter__form .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Forms */
       .form__row { grid-template-columns: 1fr; }
+      .form__input,
+      .form__select,
+      .form__textarea {
+        font-size: 16px;
+        min-height: 48px;
+      }
+
+      /* Footer */
       .footer__inner {
         flex-direction: column;
         gap: var(--space-6);
+      }
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-5);
       }
       .footer__bottom {
         flex-direction: column;
