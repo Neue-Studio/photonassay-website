@@ -684,28 +684,82 @@
         --container-pad: 24px;
       }
 
+      /* Typography scale */
       h2 { font-size: 32px; }
+      h3 { font-size: 20px; }
 
       .nav__links { display: none; }
 
+      /* Hero — reduce padding, scale type */
+      .contact-hero {
+        padding: calc(var(--nav-height) + var(--space-8)) 0 var(--space-8);
+      }
       .contact-hero h1 { font-size: 36px; }
+      .contact-hero__subtitle {
+        font-size: 17px;
+        max-width: 100%;
+      }
 
+      /* Contact grid — stack to single column */
       .contact__grid {
         grid-template-columns: 1fr;
         gap: var(--space-8);
       }
 
+      /* Left column heading */
+      .contact__info h2 {
+        font-size: 32px;
+      }
+
+      /* Form container — reduce padding */
+      .contact__form {
+        padding: var(--space-3);
+      }
+
+      /* Form rows — single column */
       .form__row {
         grid-template-columns: 1fr;
+      }
+
+      /* Form inputs — full-width, min tap target */
+      .form__input,
+      .form__select,
+      .form__textarea {
+        width: 100%;
+        min-height: 48px;
+        font-size: 16px; /* prevent iOS zoom */
+      }
+
+      /* Submit button — full-width, min tap target */
+      .form__submit {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+        padding: 14px 24px;
+      }
+
+      /* Offices — use section-pad, stack cards */
+      .offices {
+        padding: var(--section-pad) 0;
       }
 
       .offices__grid {
         grid-template-columns: 1fr;
       }
 
+      .office-card {
+        padding: var(--space-3);
+      }
+
+      /* Footer */
       .footer__inner {
         flex-direction: column;
         gap: var(--space-6);
+      }
+
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-5);
       }
 
       .footer__bottom {
