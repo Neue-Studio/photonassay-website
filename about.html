@@ -1026,6 +1026,44 @@
         justify-content: center;
       }
       .sticky-cta { display: none; }
+      h3 { font-size: 20px; }
+
+      /* About page: stack 50/50 grids */
+      .about-split {
+        grid-template-columns: 1fr !important;
+        gap: var(--space-5) !important;
+      }
+      .about-split .placeholder-img {
+        height: 280px !important;
+      }
+
+      /* Timeline: tighten left padding for narrow screens */
+      .timeline {
+        padding-left: var(--space-4);
+      }
+      .timeline::before {
+        left: 0;
+      }
+      .timeline__dot {
+        left: calc(-1 * var(--space-4) - 5px);
+      }
+      .timeline__title {
+        font-size: 18px;
+      }
+
+      /* Careers CTA: full-width button */
+      .section-dark .btn,
+      .section-dark .btn--light {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Footer links: stack columns */
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-4);
+      }
     }
 
     /* PAGE-SPECIFIC OVERRIDES ARE INJECTED BELOW */
@@ -1253,7 +1291,7 @@
   <!-- ABOUT PHOTONASSAY -->
   <section class="section-light">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-15); align-items: center;" class="reveal">
+      <div class="about-split reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-15); align-items: center;">
         <div>
           <p class="eyebrow">The Technology</p>
           <h2 style="font-size: 40px; margin-bottom: var(--space-4);">What is PhotonAssay&#8482;?</h2>
@@ -1348,7 +1386,7 @@
   <!-- CHRYSOS CORPORATION -->
   <section class="section-light">
     <div class="container">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-15); align-items: center;" class="reveal">
+      <div class="about-split reveal" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-15); align-items: center;">
         <div class="placeholder-img" style="width: 100%; height: 360px;">Chrysos Team / Office Image &mdash; 3:2</div>
         <div>
           <p class="eyebrow">Parent Company</p>
