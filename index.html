@@ -487,6 +487,12 @@
         transform: translateX(-50%) translateY(0);
       }
     }
+    @keyframes heroStatsFadeInMobile {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
     /* Hero stats strip pinned to bottom */
     .hero__stats {
@@ -1850,26 +1856,72 @@
     }
 
     @media (max-width: 768px) {
+
+      /* ── Global tokens ── */
       :root {
-        --section-pad: 80px;
-        --container-pad: 24px;
+        --section-pad: 72px;
+        --container-pad: 20px;
       }
 
-      h1 { font-size: 42px; }
-      h2 { font-size: 32px; }
+      /* ── Typography ── */
+      h1 { font-size: 38px; line-height: 1.1; }
+      h2 { font-size: 32px; line-height: 1.15; }
+      h3 { font-size: 20px; }
 
+      /* ── Buttons — larger tap targets ── */
+      .btn {
+        padding: 14px 28px;
+        font-size: 12px;
+        min-height: 48px;
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* ── Sticky CTA — hide on mobile (overlaps content) ── */
+      .sticky-cta {
+        display: none;
+      }
+
+      /* ── Navigation ── */
+      .nav__links {
+        display: none;
+      }
+
+      .nav__inner {
+        padding: 0 var(--container-pad);
+      }
+
+      /* ── Hero ── */
       .hero {
         min-height: auto;
-        padding-top: calc(var(--nav-height) + var(--space-10));
+        padding-top: calc(var(--nav-height) + var(--space-8));
         padding-bottom: 0;
+        padding-left: var(--container-pad);
+        padding-right: var(--container-pad);
       }
 
-      .hero h1 { font-size: 42px; }
+      .hero h1 {
+        font-size: 36px;
+        line-height: 1.12;
+      }
+
+      .hero__subtitle {
+        font-size: 15px;
+      }
 
       .hero__stats {
         position: relative;
+        left: auto;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
         grid-template-columns: 1fr;
         margin-top: var(--space-8);
+        bottom: auto;
+      }
+
+      .hero__stats {
+        animation: heroStatsFadeInMobile 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards !important;
       }
 
       .hero__stat {
@@ -1882,8 +1934,27 @@
         border-bottom: none;
       }
 
-      .nav__links {
-        display: none;
+      /* ── Trusted by (logo strip) ── */
+      .trusted__track {
+        gap: var(--space-6);
+      }
+
+      .trusted__logo img,
+      .trusted__logo svg {
+        height: 24px;
+      }
+
+      /* ── Technology section ── */
+      .tech__intro {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+        margin-bottom: var(--space-8);
+      }
+
+      .tech__header {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        margin-bottom: var(--space-8);
       }
 
       .tech__stats {
@@ -1901,6 +1972,39 @@
         border-bottom: none;
       }
 
+      .tech__stat-value {
+        font-size: 32px;
+      }
+
+      /* ── How It Works (process timeline) ── */
+      .process__timeline {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+      }
+
+      /* Hide the connecting line on mobile — doesn't work vertically */
+      .process__timeline::before {
+        display: none;
+      }
+
+      .process__step p {
+        max-width: 100%;
+      }
+
+      .process__cta {
+        margin-top: var(--space-8);
+      }
+
+      /* ── Comparison section ── */
+      .compare {
+        padding-top: var(--section-pad);
+      }
+
+      /* ── Case Studies ── */
+      .cases__header {
+        margin-bottom: var(--space-6);
+      }
+
       .cases__featured {
         grid-template-columns: 1fr;
         padding: 0;
@@ -1911,19 +2015,94 @@
       }
 
       .cases__featured-image {
-        height: 240px;
+        height: 200px;
       }
 
       .cases__featured-content h3 {
-        font-size: 24px;
+        font-size: 22px;
       }
-
 
       .cases__carousel-slide {
         grid-template-columns: 1fr;
+        height: auto;
+        min-height: 0;
       }
-      .cases__featured-image {
-        height: 240px;
+
+      .cases__carousel-slide .cases__featured-content {
+        padding: var(--space-5) var(--space-4);
+        order: 2;
+      }
+
+      .cases__carousel-slide .cases__featured-image {
+        height: 200px;
+        order: 1;
+      }
+
+      /* ── Case Studies — news grid ── */
+      .cases__news-header {
+        flex-direction: column;
+        gap: var(--space-3);
+        margin-bottom: var(--space-6);
+      }
+
+      .cases__grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-5);
+      }
+
+      .cases__item-title {
+        font-size: 17px;
+      }
+
+      /* ── Adopting PhotonAssay — operating models ── */
+      .adopt__grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+      }
+
+      .adopt__card {
+        padding: var(--space-4) var(--space-3);
+      }
+
+      .adopt__icon {
+        height: 80px;
+        margin-bottom: var(--space-3);
+      }
+
+      .adopt__icon svg {
+        width: 100px;
+        height: auto;
+      }
+
+      .adopt__card h3 {
+        font-size: 14px;
+      }
+
+      .adopt__card p {
+        font-size: 12px;
+      }
+
+      .adopt__footnote {
+        font-size: 11px;
+        margin-top: var(--space-5);
+      }
+
+      /* ── Global Presence ── */
+      .global__header {
+        margin-bottom: var(--space-6);
+      }
+
+      .global__hero-stat {
+        font-size: 48px;
+      }
+
+      .global__hero-stat-label {
+        font-size: 16px;
+        margin-bottom: var(--space-6);
+      }
+
+      .global__map {
+        aspect-ratio: 1.4 / 1;
       }
 
       .global__details {
@@ -1931,6 +2110,40 @@
         gap: var(--space-2);
       }
 
+      /* ── Environmental Impact ── */
+      .env__row {
+        grid-template-columns: 1fr;
+        gap: var(--space-4);
+        padding: var(--space-6) 0;
+      }
+
+      .env__stat-value {
+        font-size: 36px;
+      }
+
+      .env__source-row {
+        flex-direction: column !important;
+        gap: var(--space-4) !important;
+        text-align: center;
+        align-items: center !important;
+      }
+
+      .env__source-row .btn {
+        width: 100%;
+        flex-shrink: 1 !important;
+      }
+
+      /* ── FAQs ── */
+      .faq__question {
+        font-size: 15px;
+        padding: var(--space-4) 0;
+      }
+
+      .faq__list {
+        margin-top: var(--space-6);
+      }
+
+      /* ── Newsletter ── */
       .newsletter__form {
         flex-direction: column;
         gap: var(--space-3);
@@ -1940,9 +2153,19 @@
         width: 100%;
       }
 
+      .newsletter__input {
+        text-align: center;
+      }
+
+      /* ── Footer ── */
       .footer__inner {
         flex-direction: column;
         gap: var(--space-6);
+      }
+
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-5);
       }
 
       .footer__bottom {
@@ -1951,21 +2174,9 @@
         text-align: center;
       }
 
-      .trusted__track {
-        gap: var(--space-6);
-      }
-
       .footer__legal {
         flex-wrap: wrap;
         justify-content: center;
-      }
-
-      .env__stat-value {
-        font-size: 36px;
-      }
-
-      .global__hero-stat {
-        font-size: 56px;
       }
     }
 
@@ -3143,7 +3354,7 @@
           </div>
         </div>
       </div>
-      <div class="reveal" style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--grey-100);">
+      <div class="env__source-row reveal" style="display:flex;align-items:center;justify-content:space-between;margin-top:var(--space-6);padding-top:var(--space-4);border-top:1px solid var(--grey-100);">
         <span style="font-size:13px;color:var(--grey-300);">Based on the 2025 GHD independent lifecycle assessment conducted at SGS Kalgoorlie.</span>
         <a href="#" class="btn btn--gold" style="flex-shrink:0;">View sustainability report</a>
       </div>
