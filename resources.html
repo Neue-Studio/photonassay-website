@@ -265,6 +265,8 @@
 
     /* NAV DROPDOWNS */
     .nav__dropdown {
+      display: flex;
+      align-items: center;
       position: relative;
     }
     .nav__dropdown-menu {
@@ -690,10 +692,24 @@
       cursor: pointer;
       transition: color 0.3s, border-color 0.3s;
     }
-    .tab:hover { color: var(--black); }
+    .tab:hover { color: var(--gold); }
     .tab--active {
-      color: var(--black);
+      color: var(--gold);
       border-bottom-color: var(--gold);
+    }
+    .resource-table__row {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .resource-table__row.is-hidden {
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      position: absolute;
+      visibility: hidden;
+    }
+    .resource-table__row.is-showing {
+      opacity: 0;
+      transform: translateY(8px);
     }
 
     /* SEARCH */
@@ -986,6 +1002,38 @@
       transition: color 0.3s ease;
     }
     .footer__legal a:hover {
+      color: var(--grey-300);
+    }
+    .footer__social {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+    .footer__social a {
+      color: var(--grey-500);
+      transition: color 0.3s ease;
+    }
+    .footer__social a:hover {
+      color: var(--white);
+    }
+    .footer__social svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    .footer__credit {
+      font-size: 12px;
+      color: var(--grey-600);
+      margin-top: var(--space-2);
+      text-align: center;
+      padding-top: var(--space-3);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__credit a {
+      color: var(--grey-500);
+      transition: color 0.3s ease;
+    }
+    .footer__credit a:hover {
       color: var(--grey-300);
     }
 
@@ -1392,70 +1440,70 @@
 
       <div class="reveal">
         <div class="tabs">
-          <div class="tab tab--active">All</div>
-          <div class="tab">Technical Notes</div>
-          <div class="tab">Presentations</div>
-          <div class="tab">Webinars</div>
-          <div class="tab">Case Studies</div>
+          <div class="tab tab--active" data-filter="all">All</div>
+          <div class="tab" data-filter="technical-note">Technical Notes</div>
+          <div class="tab" data-filter="presentation">Presentations</div>
+          <div class="tab" data-filter="webinar">Webinars</div>
+          <div class="tab" data-filter="case-study">Case Studies</div>
         </div>
       </div>
 
       <div class="reveal">
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="technical-note">
           <div class="resource-table__title">TN-101: Measurement Performance for Gold Ore Samples</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Gold assay accuracy, precision, and repeatability benchmarks across diverse ore types.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="technical-note">
           <div class="resource-table__title">TN-102: Sample Preparation Guidelines</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Best practices for sample preparation to maximise PhotonAssay&#8482; measurement quality.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="technical-note">
           <div class="resource-table__title">TN-103: Multi-Element Analysis Capabilities</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Overview of additional elements measurable by PhotonAssay, including silver and copper.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="presentation">
           <div class="resource-table__title">Fire Assay Comparison &mdash; Gold in Oxide Ores</div>
           <div><span class="badge badge--outline">Presentation</span></div>
           <div class="resource-table__desc">Head-to-head comparison of PhotonAssay and fire assay on oxide ore samples from Western Australia.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="presentation">
           <div class="resource-table__title">Repeatability &amp; Reproducibility Study</div>
           <div><span class="badge badge--outline">Presentation</span></div>
           <div class="resource-table__desc">Statistical analysis of measurement consistency across multiple PhotonAssay units.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="webinar">
           <div class="resource-table__title">Webinar: Gold Measurement Performance Deep Dive</div>
           <div><span class="badge">Webinar</span></div>
           <div class="resource-table__desc">45-minute technical walkthrough covering accuracy, precision, and real-world lab performance data.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="webinar">
           <div class="resource-table__title">Webinar: Operating Models for PhotonAssay Deployment</div>
           <div><span class="badge">Webinar</span></div>
           <div class="resource-table__desc">Understanding the three deployment models — commercial lab, mine-site lease, and direct purchase.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="case-study">
           <div class="resource-table__title">Case Study: Ravenswood Gold Mine</div>
           <div><span class="badge">Case Study</span></div>
           <div class="resource-table__desc">On-site deployment delivering 2-minute turnaround and improved grade control at a Queensland gold mine.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="case-study">
           <div class="resource-table__title">Case Study: SGS Minerals &mdash; Commercial Lab Adoption</div>
           <div><span class="badge">Case Study</span></div>
           <div class="resource-table__desc">How a major global laboratory integrated PhotonAssay into its commercial workflow.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row">
+        <div class="resource-table__row" data-category="technical-note">
           <div class="resource-table__title">TN-104: Environmental &amp; Safety Benefits</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Eliminating lead, eliminating scope 1 emissions, and improving laboratory safety outcomes.</div>
@@ -1488,6 +1536,10 @@
         <div class="footer__brand">
           <div class="footer__logo">Chrysos Corporation</div>
           <p class="footer__tagline">Chrysos Corporation Ltd is the company behind PhotonAssay&#8482;, a breakthrough technology for rapid, non-destructive elemental analysis of geological samples.</p>
+          <div class="footer__social">
+            <a href="https://www.linkedin.com/company/chrysos-corporation-limited" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.youtube.com/@chrysoscorporation" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
         </div>
         <div class="footer__links">
           <div class="footer__col">
@@ -1511,6 +1563,7 @@
           <a href="#">Terms of Use</a>
         </div>
       </div>
+      <div class="footer__credit">Site by <a href="https://neuestudio.com.au" target="_blank" rel="noopener">NeueStudio</a> and <a href="https://colliercreative.com.au" target="_blank" rel="noopener">Collier Creative</a></div>
     </div>
   </footer>
 
@@ -1594,6 +1647,41 @@
         if (e.key === 'Escape' && mobileMenu.classList.contains('is-open')) {
           closeMenu();
         }
+      });
+    })();
+
+    // === RESOURCE FILTER TABS ===
+    (function() {
+      const tabs = document.querySelectorAll('.tab[data-filter]');
+      const rows = document.querySelectorAll('.resource-table__row[data-category]');
+      if (!tabs.length || !rows.length) return;
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          const filter = this.dataset.filter;
+
+          // Update active tab
+          tabs.forEach(function(t) { t.classList.remove('tab--active'); });
+          this.classList.add('tab--active');
+
+          // Filter rows
+          rows.forEach(function(row) {
+            const match = filter === 'all' || row.dataset.category === filter;
+
+            if (match) {
+              row.classList.remove('is-hidden');
+              row.classList.add('is-showing');
+              requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                  row.classList.remove('is-showing');
+                });
+              });
+            } else {
+              row.classList.add('is-hidden');
+              row.classList.remove('is-showing');
+            }
+          });
+        });
       });
     })();
   </script>

@@ -265,6 +265,8 @@
 
     /* NAV DROPDOWNS */
     .nav__dropdown {
+      display: flex;
+      align-items: center;
       position: relative;
     }
     .nav__dropdown-menu {
@@ -988,6 +990,38 @@
     .footer__legal a:hover {
       color: var(--grey-300);
     }
+    .footer__social {
+      display: flex;
+      gap: var(--space-3);
+      margin-top: var(--space-3);
+    }
+    .footer__social a {
+      color: var(--grey-500);
+      transition: color 0.3s ease;
+    }
+    .footer__social a:hover {
+      color: var(--white);
+    }
+    .footer__social svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    .footer__credit {
+      font-size: 12px;
+      color: var(--grey-600);
+      margin-top: var(--space-2);
+      text-align: center;
+      padding-top: var(--space-3);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer__credit a {
+      color: var(--grey-500);
+      transition: color 0.3s ease;
+    }
+    .footer__credit a:hover {
+      color: var(--grey-300);
+    }
 
     /* ============================================
        RESPONSIVE
@@ -1315,57 +1349,9 @@
       <div class="timeline reveal">
         <div class="timeline__item">
           <div class="timeline__dot"></div>
-          <div class="timeline__year">2001</div>
-          <div class="timeline__title">PhotonAssay™ development begins</div>
-          <div class="timeline__desc">CSIRO begins development of PhotonAssay™ technology.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2012</div>
-          <div class="timeline__title">Prototyping commences</div>
-          <div class="timeline__desc">CSIRO builds PhotonAssay™ prototype in Canada.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2017</div>
-          <div class="timeline__title">Chrysos Corporation formed</div>
-          <div class="timeline__desc">Chrysos Corporation established to commercialise PhotonAssay™.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2018</div>
-          <div class="timeline__title">Prototype complete &amp; first unit commercialised</div>
-          <div class="timeline__desc">1st PhotonAssay™ Max unit completed. First commercial deployment at MinAnalytical laboratory in Perth.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2019</div>
-          <div class="timeline__title">JORC and NI43-101 recognition</div>
-          <div class="timeline__desc">Companies begin citing PhotonAssay™ data in market announcements. 2nd unit commissioned for MinAnalytical.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2020</div>
-          <div class="timeline__title">Industry uptake accelerates</div>
-          <div class="timeline__desc">Barrick Bulyanhulu in Tanzania contracts MSALABS and PhotonAssay™. 3rd and 4th units deployed. Chrysos reaches 500,000 commercial assays. SA Premier's Award for Energy &amp; Mining and KCA Award for Best Research Commercialisation.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2021</div>
-          <div class="timeline__title">New unit deployments</div>
-          <div class="timeline__desc">Further units deployed across Australia and North America.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2022</div>
-          <div class="timeline__title">International expansion &amp; Prime Minister's Award</div>
-          <div class="timeline__desc">Canadian and African hubs established. PhotonAssay™ now used by 3 of the top 4 global laboratory services providers (ALS, Intertek and SGS). Chrysos increases manufacturing capacity. PhotonAssay™ team wins Prime Minister's Award for Innovation.</div>
-        </div>
-        <div class="timeline__item">
-          <div class="timeline__dot"></div>
-          <div class="timeline__year">2023</div>
-          <div class="timeline__title">Global partnership with Barrick Gold</div>
-          <div class="timeline__desc">Up to 13 units to be deployed for Barrick Gold and MSALABS.</div>
+          <div class="timeline__year">2025</div>
+          <div class="timeline__title">Newmont MSA &amp; Bureau Veritas partnership</div>
+          <div class="timeline__desc">Newmont to use PhotonAssay™ across its operations. Foundational partnership with Bureau Veritas for deployment into South America.</div>
         </div>
         <div class="timeline__item">
           <div class="timeline__dot"></div>
@@ -1375,9 +1361,57 @@
         </div>
         <div class="timeline__item">
           <div class="timeline__dot"></div>
-          <div class="timeline__year">2025</div>
-          <div class="timeline__title">Newmont MSA &amp; Bureau Veritas partnership</div>
-          <div class="timeline__desc">Newmont to use PhotonAssay™ across its operations. Foundational partnership with Bureau Veritas for deployment into South America.</div>
+          <div class="timeline__year">2023</div>
+          <div class="timeline__title">Global partnership with Barrick Gold</div>
+          <div class="timeline__desc">Up to 13 units to be deployed for Barrick Gold and MSALABS.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2022</div>
+          <div class="timeline__title">International expansion &amp; Prime Minister's Award</div>
+          <div class="timeline__desc">Canadian and African hubs established. PhotonAssay™ now used by 3 of the top 4 global laboratory services providers (ALS, Intertek and SGS). Chrysos increases manufacturing capacity. PhotonAssay™ team wins Prime Minister's Award for Innovation.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2021</div>
+          <div class="timeline__title">New unit deployments</div>
+          <div class="timeline__desc">Further units deployed across Australia and North America.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2020</div>
+          <div class="timeline__title">Industry uptake accelerates</div>
+          <div class="timeline__desc">Barrick Bulyanhulu in Tanzania contracts MSALABS and PhotonAssay™. 3rd and 4th units deployed. Chrysos reaches 500,000 commercial assays. SA Premier's Award for Energy &amp; Mining and KCA Award for Best Research Commercialisation.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2019</div>
+          <div class="timeline__title">JORC and NI43-101 recognition</div>
+          <div class="timeline__desc">Companies begin citing PhotonAssay™ data in market announcements. 2nd unit commissioned for MinAnalytical.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2018</div>
+          <div class="timeline__title">Prototype complete &amp; first unit commercialised</div>
+          <div class="timeline__desc">1st PhotonAssay™ Max unit completed. First commercial deployment at MinAnalytical laboratory in Perth.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2017</div>
+          <div class="timeline__title">Chrysos Corporation formed</div>
+          <div class="timeline__desc">Chrysos Corporation established to commercialise PhotonAssay™.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2012</div>
+          <div class="timeline__title">Prototyping commences</div>
+          <div class="timeline__desc">CSIRO builds PhotonAssay™ prototype in Canada.</div>
+        </div>
+        <div class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__year">2001</div>
+          <div class="timeline__title">PhotonAssay™ development begins</div>
+          <div class="timeline__desc">CSIRO begins development of PhotonAssay™ technology.</div>
         </div>
       </div>
     </div>
@@ -1416,6 +1450,10 @@
         <div class="footer__brand">
           <div class="footer__logo">Chrysos Corporation</div>
           <p class="footer__tagline">Chrysos Corporation Ltd is the company behind PhotonAssay&#8482;, a breakthrough technology for rapid, non-destructive elemental analysis of geological samples.</p>
+          <div class="footer__social">
+            <a href="https://www.linkedin.com/company/chrysos-corporation-limited" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            <a href="https://www.youtube.com/@chrysoscorporation" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+          </div>
         </div>
         <div class="footer__links">
           <div class="footer__col">
@@ -1439,6 +1477,7 @@
           <a href="#">Terms of Use</a>
         </div>
       </div>
+      <div class="footer__credit">Site by <a href="https://neuestudio.com.au" target="_blank" rel="noopener">NeueStudio</a> and <a href="https://colliercreative.com.au" target="_blank" rel="noopener">Collier Creative</a></div>
     </div>
   </footer>
 
