@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System — PhotonAssay™</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       V2 DESIGN SYSTEM — Black & White Editorial
+       ============================================ */
+    :root {
+      --black: #000000;
+      --near-black: #0A0A0A;
+      --dark: #111111;
+      --charcoal: #1A1A1A;
+      --grey-900: #222222;
+      --grey-700: #555555;
+      --grey-500: #888888;
+      --grey-300: #BBBBBB;
+      --grey-100: #E8E8E8;
+      --white: #FFFFFF;
+      --offwhite: #FAFAFA;
+      --gold: #F2B705;
+      --gold-hover: #D9A404;
+
+      --font: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --space-1: 8px;
+      --space-2: 16px;
+      --space-3: 24px;
+      --space-4: 32px;
+      --space-5: 40px;
+      --space-6: 48px;
+      --space-8: 64px;
+      --space-10: 80px;
+      --space-12: 96px;
+      --space-15: 120px;
+      --space-20: 160px;
+
+      --max-width: 1320px;
+      --nav-height: 80px;
+      --section-pad: 160px;
+      --container-pad: 48px;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font); font-weight: 300; font-size: 17px; line-height: 1.75; color: var(--grey-500); background: var(--white); overflow-x: hidden; }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+    /* Typography */
+    h1 { font-weight: 300; font-size: 88px; line-height: 1.04; letter-spacing: -0.04em; color: var(--white); }
+    h2 { font-weight: 200; font-size: 56px; line-height: 1.1; letter-spacing: -0.03em; color: var(--black); }
+    h3 { font-weight: 400; font-size: 24px; line-height: 1.3; letter-spacing: -0.015em; color: var(--black); }
+    h4 { font-weight: 500; font-size: 18px; line-height: 1.4; letter-spacing: -0.01em; color: var(--black); }
+
+    .eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--grey-500); margin-bottom: var(--space-4);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .eyebrow::before { content: ''; display: block; width: 60px; height: 2px; background: var(--gold); }
+    .text-secondary { color: var(--grey-300); font-size: 15px; }
+
+    /* Layout */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--container-pad); }
+    .section-light { background: var(--white); padding: var(--section-pad) 0; }
+    .section-offwhite { background: var(--offwhite); padding: var(--section-pad) 0; }
+    .section-dark { background: var(--near-black); padding: var(--section-pad) 0; }
+    .section-black { background: var(--black); padding: var(--section-pad) 0; }
+    .section-dark h2, .section-dark h3, .section-dark h4,
+    .section-black h2, .section-black h3, .section-black h4 { color: var(--white); }
+    .section-dark .eyebrow, .section-black .eyebrow { color: var(--grey-500); }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 16px 40px; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      border: 1px solid var(--black); color: var(--black);
+      background: transparent; border-radius: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .btn:hover { background: var(--black); color: var(--white); box-shadow: inset 0 -3px 0 var(--gold); }
+    .btn--light { border-color: var(--white); color: var(--white); }
+    .btn--light:hover { background: var(--white); color: var(--black); box-shadow: inset 0 -3px 0 var(--gold); }
+
+    .arrow-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--grey-500); transition: color 0.3s ease;
+    }
+    .arrow-link::after { content: '→'; transition: transform 0.3s ease; }
+    .arrow-link:hover { color: var(--gold); }
+    .arrow-link:hover::after { transform: translateX(4px); }
+
+    /* Badges */
+    .badge {
+      display: inline-block; font-size: 10px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 2px;
+      background: rgba(242, 183, 5, 0.1); color: var(--gold);
+    }
+    .badge--outline { background: transparent; border: 1px solid var(--grey-100); color: var(--grey-500); }
+
+    /* Stats */
+    .stat { text-align: center; }
+    .stat__number { font-size: 72px; font-weight: 200; letter-spacing: -0.03em; line-height: 1; color: var(--gold); margin-bottom: var(--space-1); }
+    .stat__label { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-500); }
+
+    /* Quote block */
+    .quote-block { border-left: 3px solid var(--gold); padding-left: var(--space-4); }
+    .quote-block__text { font-size: 24px; font-weight: 300; line-height: 1.5; letter-spacing: -0.01em; color: var(--white); margin-bottom: var(--space-3); }
+    .quote-block__author { font-size: 14px; font-weight: 500; color: var(--grey-300); }
+    .quote-block__role { font-size: 13px; color: var(--grey-500); }
+
+    /* Forms */
+    .form__group { display: flex; flex-direction: column; margin-bottom: var(--space-3); }
+    .form__label { font-size: 13px; font-weight: 500; color: var(--black); letter-spacing: 0.02em; margin-bottom: var(--space-1); }
+    .form__label .required { color: var(--gold); margin-left: 2px; }
+    .form__input, .form__select, .form__textarea {
+      font-family: var(--font); font-size: 15px; font-weight: 300;
+      color: var(--black); background: var(--white);
+      border: 1px solid var(--grey-100); padding: 14px 16px; border-radius: 2px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      outline: none; -webkit-appearance: none; appearance: none;
+    }
+    .form__input:focus, .form__select:focus, .form__textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(242, 183, 5, 0.08); }
+    .form__input::placeholder, .form__textarea::placeholder { color: var(--grey-300); font-weight: 300; }
+    .form__textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
+    .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-3); }
+
+    /* Breadcrumb */
+    .breadcrumb { padding: var(--space-4) 0; }
+    .breadcrumb__list { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--grey-500); list-style: none; }
+    .breadcrumb__list a { color: var(--grey-500); transition: color 0.3s; }
+    .breadcrumb__list a:hover { color: var(--gold); }
+    .breadcrumb__sep { color: var(--grey-300); }
+
+    /* Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--nav-height); display: flex; align-items: center;
+      background: rgba(0,0,0,0.95); backdrop-filter: blur(20px);
+    }
+    .nav__inner { max-width: var(--max-width); width: 100%; margin: 0 auto; padding: 0 var(--container-pad); display: flex; align-items: center; justify-content: space-between; }
+    .nav__logo { display: flex; align-items: baseline; gap: 8px; }
+    .nav__logo-svg { height: 43px; width: auto; color: var(--white); display: block; }
+    .nav__links { display: flex; align-items: center; gap: var(--space-5); }
+    .nav__link { font-size: 12px; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey-300); position: relative; padding-bottom: 2px; transition: color 0.3s ease; }
+    .nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .nav__link:hover { color: var(--white); }
+    .nav__link:hover::after { transform: scaleX(1); }
+    .nav__dropdown { position: relative; display: flex; align-items: center; }
+    .nav__dropdown-menu { position: absolute; top: 100%; left: 0; min-width: 220px; background: var(--near-black); border: 1px solid rgba(255,255,255,0.08); padding: 8px 0; opacity: 0; visibility: hidden; transform: translateY(8px); transition: all 0.25s ease; z-index: 1000; }
+    .nav__dropdown:hover .nav__dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav__dropdown-menu a { display: block; padding: 10px 20px; color: var(--grey-300); font-size: 13px; font-weight: 400; letter-spacing: 0.02em; transition: color 0.2s, background 0.2s; }
+    .nav__dropdown-menu a:hover { color: var(--white); background: rgba(255,255,255,0.04); }
+    .nav__hamburger { display: none; }
+
+    /* ============================================
+       STYLE GUIDE SPECIFIC
+       ============================================ */
+    .sg-page { padding-top: calc(var(--nav-height) + 64px); }
+
+    .sg-header {
+      background: var(--near-black);
+      padding: 80px 0 64px;
+      margin-bottom: 0;
+    }
+    .sg-header__eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+    }
+    .sg-header__eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+    .sg-header h1 { font-size: 48px; color: var(--white); margin-bottom: 16px; }
+    .sg-header p { color: var(--grey-500); font-size: 16px; max-width: 560px; line-height: 1.7; }
+
+    .sg-nav {
+      background: var(--offwhite);
+      border-bottom: 1px solid var(--grey-100);
+      padding: 0;
+      position: sticky;
+      top: var(--nav-height);
+      z-index: 100;
+    }
+    .sg-nav__list {
+      display: flex;
+      list-style: none;
+      overflow-x: auto;
+      padding: 0 var(--container-pad);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .sg-nav__list a {
+      display: block;
+      padding: 16px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sg-nav__list a:hover { color: var(--black); border-bottom-color: var(--gold); }
+
+    .sg-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--grey-100);
+    }
+    .sg-section:last-child { border-bottom: none; }
+
+    .sg-section-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--grey-100);
+    }
+
+    .sg-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .sg-row--3 { grid-template-columns: 1fr 1fr 1fr; }
+    .sg-row--4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+
+    .sg-item { }
+    .sg-item__label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      margin-bottom: 12px;
+    }
+    .sg-item__spec {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--grey-500);
+      margin-top: 12px;
+      font-family: 'Courier New', monospace;
+      line-height: 1.8;
+    }
+    .sg-item__spec span {
+      display: block;
+    }
+    .sg-item__preview {
+      padding: 24px;
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+    }
+    .sg-item__preview--dark {
+      background: var(--near-black);
+      border-color: transparent;
+    }
+
+    /* Colour swatches */
+    .sg-swatch {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .sg-swatch__colour {
+      width: 48px;
+      height: 48px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .sg-swatch__info { }
+    .sg-swatch__name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--black);
+      display: block;
+    }
+    .sg-swatch__hex {
+      font-size: 12px;
+      color: var(--grey-500);
+      font-family: 'Courier New', monospace;
+    }
+    .sg-swatch__var {
+      font-size: 11px;
+      color: var(--grey-300);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Spacing scale */
+    .sg-space-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .sg-space-bar {
+      height: 24px;
+      background: var(--gold);
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+    .sg-space-info {
+      font-size: 12px;
+      color: var(--grey-500);
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Type specimens */
+    .sg-type-specimen {
+      padding: 32px;
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+    .sg-type-specimen--dark {
+      background: var(--near-black);
+      border-color: transparent;
+    }
+    .sg-type-meta {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      margin-bottom: 16px;
+      font-family: 'Courier New', monospace;
+    }
+    .sg-type-specimen--dark .sg-type-meta { color: var(--grey-700); }
+
+    /* Component blocks */
+    .sg-component {
+      margin-bottom: 48px;
+    }
+    .sg-component__title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      margin-bottom: 16px;
+    }
+    .sg-component__preview {
+      padding: 40px;
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      margin-bottom: 12px;
+    }
+    .sg-component__preview--dark {
+      background: var(--near-black);
+      border-color: transparent;
+    }
+    .sg-component__code {
+      font-size: 12px;
+      font-family: 'Courier New', monospace;
+      color: var(--grey-500);
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      padding: 16px 20px;
+      line-height: 1.6;
+    }
+
+    /* Section bg demos */
+    .sg-section-demo {
+      padding: 48px;
+      margin-bottom: 16px;
+    }
+    .sg-section-demo__label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      margin-bottom: 8px;
+    }
+
+    /* Breakpoint table */
+    .sg-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .sg-table th, .sg-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--grey-100);
+      font-size: 14px;
+    }
+    .sg-table th {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+    }
+    .sg-table td { color: var(--grey-500); }
+    .sg-table td code {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      background: var(--offwhite);
+      padding: 2px 6px;
+      border-radius: 2px;
+      color: var(--black);
+    }
+    .sg-table td strong { color: var(--black); font-weight: 500; }
+
+    /* Asset grid */
+    .sg-asset-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .sg-asset {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid var(--grey-100);
+    }
+    .sg-asset--dark { background: var(--near-black); border-color: transparent; }
+    .sg-asset__label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+    }
+
+    /* Sticky CTA demo */
+    .sg-sticky-demo {
+      display: inline-flex;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+    }
+    .sg-sticky-demo__link {
+      display: flex; align-items: center; gap: 8px;
+      padding: 16px 10px;
+      background: var(--gold); color: var(--near-black);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      border-radius: 8px 0 0 8px;
+    }
+
+    @media (max-width: 900px) {
+      .sg-row { grid-template-columns: 1fr; }
+      .sg-row--3 { grid-template-columns: 1fr 1fr; }
+      .sg-row--4 { grid-template-columns: 1fr 1fr; }
+      .nav__links { display: none; }
+      .sg-asset-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <svg class="nav__logo-svg" id="Layer_2" style="height:43px;width:auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230.88 419.1"><defs><style>.cls-1{fill:#fff;}.cls-2{fill:#ffca3b;}</style></defs><g id="Layer_1-2"><g><g><path class="cls-1" d="M553.19,284.96c0,7.11-2.26,12.44-6.78,16-4.51,3.56-10.43,5.33-17.75,5.33h-22.4l-1.07,1.07v29.87l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h33.07c7.75,0,13.77,1.74,18.08,5.22,4.3,3.49,6.45,8.85,6.45,16.11Zm-13.97,9.01c2.2-1.81,3.3-4.82,3.3-9.01s-1.1-7.2-3.3-9.01c-2.21-1.81-5.72-2.72-10.56-2.72h-22.4l-1.07,1.07v21.33l1.07,1.07h22.4c4.84,0,8.35-.9,10.56-2.72Z"/><path class="cls-1" d="M611.75,337.23l-1.07,1.07h-8.53l-1.07-1.07v-30.93c0-8.53-3.55-12.8-10.67-12.8-4.55,0-8,1.32-10.35,3.95-2.34,2.63-3.52,7-3.52,13.12v26.67l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h8.53l1.07,1.07v25.6h1.06c.14-.14,.32-.37,.53-.69,.21-.32,.75-.84,1.6-1.55,.85-.71,1.76-1.35,2.72-1.92,.96-.57,2.26-1.08,3.89-1.55s3.34-.7,5.12-.7c13.51,0,20.27,7.47,20.27,22.4v30.93Z"/><path class="cls-1" d="M632.33,331.89c-4.55-4.98-6.82-11.73-6.82-20.26s2.27-15.29,6.82-20.27c4.55-4.97,10.81-7.47,18.77-7.47s14.22,2.49,18.77,7.47c4.55,4.98,6.82,11.73,6.82,20.27s-2.28,15.29-6.82,20.26c-4.55,4.98-10.81,7.47-18.77,7.47s-14.22-2.49-18.77-7.47Zm7.68-33.7c-2.56,3.13-3.84,7.61-3.84,13.44s1.28,10.31,3.84,13.44c2.56,3.13,6.26,4.69,11.09,4.69s8.53-1.56,11.09-4.69c2.56-3.13,3.84-7.61,3.84-13.44s-1.28-10.31-3.84-13.44c-2.56-3.13-6.26-4.69-11.09-4.69s-8.53,1.56-11.09,4.69Z"/><path class="cls-1" d="M719.26,337.23l-1.07,1.07h-8.53c-4.13,0-7.65-1.19-10.56-3.57-2.92-2.38-4.38-5.81-4.38-10.29v-28.8l-1.06-1.07h-7.47l-1.07-1.07v-7.47l1.07-1.07h7.47l1.06-1.07v-9.6l1.07-1.07h8.53l1.07,1.07v9.6l1.07,1.07h11.73l1.07,1.07v7.47l-1.07,1.07h-11.73l-1.07,1.07v28.8c0,2.84,1.42,4.27,4.27,4.27h8.53l1.07,1.07v7.47Z"/><path class="cls-1" d="M735.58,331.89c-4.55-4.98-6.82-11.73-6.82-20.26s2.27-15.29,6.82-20.27c4.55-4.97,10.81-7.47,18.77-7.47s14.22,2.49,18.77,7.47c4.55,4.98,6.82,11.73,6.82,20.27s-2.28,15.29-6.82,20.26c-4.55,4.98-10.81,7.47-18.77,7.47s-14.22-2.49-18.77-7.47Zm7.68-33.7c-2.56,3.13-3.84,7.61-3.84,13.44s1.28,10.31,3.84,13.44,6.26,4.69,11.09,4.69,8.53-1.56,11.09-4.69c2.56-3.13,3.84-7.61,3.84-13.44s-1.28-10.31-3.84-13.44c-2.56-3.13-6.26-4.69-11.09-4.69s-8.53,1.56-11.09,4.69Z"/><path class="cls-1" d="M839.57,337.23l-1.07,1.07h-8.53l-1.07-1.07v-30.93c0-8.53-3.55-12.8-10.67-12.8-4.84,0-8.36,1.42-10.56,4.27-2.2,2.85-3.3,7.47-3.3,13.87v25.6l-1.07,1.07h-8.53l-1.07-1.07v-51.2l1.07-1.07h7.46l1.07,1.07,1.07,4.27h1.06c.14-.14,.32-.37,.53-.69,.21-.32,.75-.84,1.6-1.55,.85-.71,1.76-1.35,2.72-1.92,.96-.57,2.26-1.08,3.89-1.55s3.34-.7,5.12-.7c7.11,0,12.27,2.01,15.46,6.03,3.2,4.02,4.8,9.48,4.8,16.37v30.93Z"/><path class="cls-1" d="M914.13,337.23l-1.07,1.07h-6.4l-1.07-1.07-6.4-16-2.13-1.07h-28.8l-2.13,1.07-6.4,16-1.07,1.07h-6.4l-1.07-1.07v-7.47l25.6-65.06,1.07-1.07h9.6l1.07,1.07,25.6,65.06v7.47Zm-19.2-27.73l-11.74-29.86h-1.06l-11.74,29.86,1.07,1.07h22.4l1.07-1.07Z"/><path class="cls-1" d="M966.28,323.36c0,4.63-1.8,8.45-5.39,11.47-3.59,3.02-8.9,4.53-15.94,4.53s-12.18-1.55-15.84-4.64c-3.66-3.09-5.49-7.59-5.49-13.49l1.07-1.07h8.53l1.07,1.07c0,5.69,3.55,8.53,10.66,8.53s10.67-2.13,10.67-6.4c0-2.56-.89-4.34-2.67-5.33-1.78-.99-5.51-2.06-11.2-3.2-5.61-1.14-9.87-2.93-12.74-5.39-2.88-2.46-4.32-5.99-4.32-10.61,0-4.19,1.64-7.73,4.91-10.61,3.27-2.88,8.39-4.32,15.36-4.32,6.12,0,11.02,1.37,14.72,4.11,3.7,2.74,5.55,6.7,5.55,11.89l-1.07,1.07h-8.53l-1.07-1.07c0-4.27-3.2-6.4-9.6-6.4s-9.6,1.78-9.6,5.33c0,2.49,1.01,4.23,3.04,5.22,2.03,1,5.99,2.1,11.89,3.31,5.54,1.14,9.6,2.92,12.16,5.33,2.56,2.42,3.84,5.97,3.84,10.67Z"/><path class="cls-1" d="M1019.51,323.36c0,4.63-1.8,8.45-5.39,11.47-3.59,3.02-8.9,4.53-15.94,4.53s-12.18-1.55-15.84-4.64c-3.66-3.09-5.49-7.59-5.49-13.49l1.07-1.07h8.53l1.07,1.07c0,5.69,3.55,8.53,10.66,8.53s10.67-2.13,10.67-6.4c0-2.56-.89-4.34-2.67-5.33s-5.51-2.06-11.2-3.2c-5.61-1.14-9.87-2.93-12.74-5.39-2.88-2.46-4.32-5.99-4.32-10.61,0-4.19,1.64-7.73,4.91-10.61s8.39-4.32,15.36-4.32c6.12,0,11.02,1.37,14.72,4.11,3.7,2.74,5.55,6.7,5.55,11.89l-1.07,1.07h-8.53l-1.07-1.07c0-4.27-3.2-6.4-9.6-6.4s-9.6,1.78-9.6,5.33c0,2.49,1.01,4.23,3.04,5.22,2.03,1,5.99,2.1,11.89,3.31,5.54,1.14,9.6,2.92,12.16,5.33,2.56,2.42,3.84,5.97,3.84,10.67Z"/><path class="cls-1" d="M1074.86,337.23l-1.07,1.07h-7.46l-1.07-1.07-1.07-4.27h-1.06c-.15,.14-.32,.37-.53,.7-.21,.32-.77,.84-1.66,1.55-.89,.71-1.85,1.35-2.88,1.92s-2.44,1.08-4.21,1.55-3.66,.69-5.65,.69c-5.83,0-10.31-1.49-13.44-4.48-3.13-2.99-4.69-7.18-4.69-12.59,0-5.69,2.1-9.95,6.29-12.8,4.2-2.84,9.92-4.27,17.18-4.27,1.56,0,3.15,.09,4.74,.27,1.6,.18,2.79,.37,3.58,.59l1.28,.21,1.06-1.07v-2.13c0-3.62-.82-6.13-2.45-7.52-1.64-1.38-4.37-2.08-8.21-2.08-7.11,0-10.67,2.13-10.67,6.4l-1.07,1.07h-8.53l-1.07-1.07c0-4.34,1.72-8.09,5.17-11.25s8.84-4.75,16.16-4.75c7.82,0,13.33,1.85,16.53,5.55,3.2,3.7,4.8,9.67,4.8,17.92v29.87Zm-10.67-18.13v-3.2l-1.06-1.07c-2.14-.71-4.98-1.07-8.54-1.07-9.25,0-13.86,2.85-13.86,8.53,0,4.98,3.2,7.47,9.6,7.47,4.26,0,7.64-.98,10.13-2.93,2.49-1.95,3.73-4.53,3.73-7.73Z"/><path class="cls-1" d="M1133.42,293.5l-17.07,42.66c-3.2,7.96-6.29,13.16-9.28,15.57-2.99,2.41-7.72,3.62-14.18,3.62h-2.14l-1.06-1.07v-7.47l1.06-1.07h2.14c2.84,0,5.08-.43,6.72-1.28s2.95-2.56,3.95-5.12v-1.07l-18.13-44.8v-7.47l1.07-1.07h6.4l1.06,1.07,14.94,39.46h1.06l14.94-39.46,1.06-1.07h6.4l1.07,1.07v7.47Z"/><path class="cls-1" d="M1176.84,264.22l-.62,.62h-13.06l-.62,.62v36.69l-.63,.62h-4.97l-.62-.62v-36.69l-.62-.62h-13.06l-.62-.62v-4.35l.62-.62h33.58l.62,.62v4.35Z"/><path class="cls-1" d="M1230.88,302.15l-.62,.62h-4.98l-.62-.62v-29.85h-.62l-12.43,29.85-.62,.62h-5.6l-.62-.62-12.44-29.85h-.62v29.85l-.62,.62h-4.97l-.62-.62v-42.28l.62-.62h6.84l.63,.62,14.3,34.82h.62l14.3-34.82,.62-.62h6.84l.62,.62v42.28Z"/></g><path class="cls-1" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path class="cls-1" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/><circle class="cls-2" cx="209.39" cy="209.33" r="26.95"/><rect class="cls-2" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/><path class="cls-1" d="M490.63,189.39c0-22.36,12.77-38.33,35.13-38.33,17.03,0,27.68,9.58,29.81,22.36l-1.07,1.06h-8.52l-1.07-1.06c-2.13-7.45-8.52-12.78-19.16-12.78-15.97,0-24.49,11.71-24.49,28.75s8.52,28.75,24.49,28.75c11.71,0,17.03-6.39,19.16-13.84l1.07-1.07h8.52l1.07,1.07c-2.13,12.77-11.71,23.42-29.81,23.42-22.36,0-35.13-15.97-35.13-38.33Z"/><path class="cls-1" d="M625.83,226.65h-8.52l-1.07-1.07v-30.87l-1.06-1.06h-35.14l-1.07,1.06v30.87l-1.06,1.07h-8.52l-1.07-1.07v-72.39l1.07-1.07h8.52l1.06,1.07v29.81l1.07,1.07h35.14l1.06-1.07v-29.81l1.07-1.07h8.52l1.06,1.07v72.39l-1.06,1.07Z"/><path class="cls-1" d="M686.51,193.65v1.06l14.91,23.42v7.45l-1.06,1.07h-4.26l-2.13-1.07-19.17-29.81-2.13-1.07h-17.03l-1.07,1.07v29.81l-1.06,1.07h-8.52l-1.07-1.07v-72.39l1.07-1.07h33c14.91,0,24.49,6.39,24.49,21.29,0,11.71-6.38,18.1-15.97,20.23Zm-8.52-31.94h-22.36l-1.07,1.07v21.29l1.07,1.07h22.36c9.58,0,13.84-3.19,13.84-11.71s-4.26-11.71-13.84-11.71Z"/><path class="cls-1" d="M742.93,196.84v28.74l-1.06,1.07h-8.52l-1.06-1.07v-28.74l-22.36-36.2v-7.45l1.06-1.07h4.26l2.13,1.07,19.17,31.94h2.13l19.16-31.94,2.13-1.07h4.26l1.06,1.07v7.45l-22.36,36.2Z"/><path class="cls-1" d="M801.48,227.72c-18.1,0-29.81-8.51-29.81-24.49l1.06-1.06h8.52l1.06,1.06c0,10.65,7.45,14.91,20.23,14.91,9.58,0,17.03-3.19,17.03-11.71,0-9.58-6.39-11.71-21.29-13.84-14.91-2.13-24.49-8.52-24.49-21.29,0-9.58,7.45-20.23,26.61-20.23,15.97,0,27.69,6.39,27.69,22.36l-1.07,1.06h-8.51l-1.07-1.06c0-8.52-4.26-12.78-18.1-12.78-9.58,0-14.9,4.26-14.9,10.65,0,8.52,5.32,10.65,20.23,12.78,14.9,2.13,25.55,7.45,25.55,22.36,0,11.71-8.51,21.29-28.74,21.29Z"/><path class="cls-1" d="M873.86,151.06c22.36,0,35.14,15.97,35.14,38.33s-12.78,38.33-35.14,38.33-35.13-15.97-35.13-38.33,12.78-38.33,35.13-38.33Zm0,67.07c15.97,0,24.49-11.71,24.49-28.75s-8.51-28.75-24.49-28.75-24.49,11.71-24.49,28.75,8.52,28.75,24.49,28.75Z"/><path class="cls-1" d="M947.32,227.72c-18.1,0-29.81-8.51-29.81-24.49l1.07-1.06h8.51l1.07,1.06c0,10.65,7.45,14.91,20.23,14.91,9.58,0,17.03-3.19,17.03-11.71,0-9.58-6.39-11.71-21.3-13.84-14.9-2.13-24.49-8.52-24.49-21.29,0-9.58,7.45-20.23,26.62-20.23,15.97,0,27.68,6.39,27.68,22.36l-1.06,1.06h-8.52l-1.06-1.06c0-8.52-4.26-12.78-18.1-12.78-9.58,0-14.91,4.26-14.91,10.65,0,8.52,5.33,10.65,20.23,12.78,14.91,2.13,25.55,7.45,25.55,22.36,0,11.71-8.52,21.29-28.75,21.29Z"/></g></g></svg>
+      </a>
+      <div class="nav__links">
+        <div class="nav__dropdown">
+          <a href="resources.html" class="nav__link">Resources</a>
+        </div>
+        <div class="nav__dropdown">
+          <a href="latest.html" class="nav__link">Latest</a>
+        </div>
+        <a href="about.html" class="nav__link">About Us</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Style Guide Header -->
+  <div class="sg-header">
+    <div class="container">
+      <div class="sg-header__eyebrow">Design System</div>
+      <h1>PhotonAssay™ Style Guide</h1>
+      <p>This page documents the complete visual design system for photonassay.com — colours, typography, spacing, components, and patterns. Intended as a reference for development.</p>
+    </div>
+  </div>
+
+  <!-- Quick nav -->
+  <nav class="sg-nav">
+    <ul class="sg-nav__list">
+      <li><a href="#colours">Colours</a></li>
+      <li><a href="#typography">Typography</a></li>
+      <li><a href="#spacing">Spacing</a></li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#badges">Badges &amp; Labels</a></li>
+      <li><a href="#forms">Forms</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="#sections">Section Backgrounds</a></li>
+      <li><a href="#breakpoints">Breakpoints &amp; Layout</a></li>
+      <li><a href="#logos">Logos</a></li>
+    </ul>
+  </nav>
+
+  <div class="sg-page">
+
+    <!-- ================================================
+         COLOURS
+         ================================================ -->
+    <section id="colours" class="sg-section">
+      <div class="container">
+        <div class="sg-section-title">01 — Colours</div>
+
+        <div class="sg-row--3">
+          <div>
+            <div class="sg-item__label">Primary</div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#000000;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Black</span>
+                <span class="sg-swatch__hex">#000000</span>
+                <span class="sg-swatch__var">--black</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#0A0A0A;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Near Black</span>
+                <span class="sg-swatch__hex">#0A0A0A</span>
+                <span class="sg-swatch__var">--near-black — hero &amp; dark sections</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#111111;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Dark</span>
+                <span class="sg-swatch__hex">#111111</span>
+                <span class="sg-swatch__var">--dark</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#F2B705;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Gold</span>
+                <span class="sg-swatch__hex">#F2B705</span>
+                <span class="sg-swatch__var">--gold — accent, CTAs, highlights</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#D9A404;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Gold Hover</span>
+                <span class="sg-swatch__hex">#D9A404</span>
+                <span class="sg-swatch__var">--gold-hover</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="sg-item__label">Greys</div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#222222;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Grey 900</span>
+                <span class="sg-swatch__hex">#222222</span>
+                <span class="sg-swatch__var">--grey-900</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#555555;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Grey 700</span>
+                <span class="sg-swatch__hex">#555555</span>
+                <span class="sg-swatch__var">--grey-700</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#888888;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Grey 500</span>
+                <span class="sg-swatch__hex">#888888</span>
+                <span class="sg-swatch__var">--grey-500 — body text default</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#BBBBBB;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Grey 300</span>
+                <span class="sg-swatch__hex">#BBBBBB</span>
+                <span class="sg-swatch__var">--grey-300 — secondary text</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#E8E8E8;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Grey 100</span>
+                <span class="sg-swatch__hex">#E8E8E8</span>
+                <span class="sg-swatch__var">--grey-100 — borders, dividers</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="sg-item__label">Backgrounds</div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#FFFFFF;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">White</span>
+                <span class="sg-swatch__hex">#FFFFFF</span>
+                <span class="sg-swatch__var">--white — primary bg</span>
+              </div>
+            </div>
+            <div class="sg-swatch">
+              <div class="sg-swatch__colour" style="background:#FAFAFA;"></div>
+              <div class="sg-swatch__info">
+                <span class="sg-swatch__name">Off White</span>
+                <span class="sg-swatch__hex">#FAFAFA</span>
+                <span class="sg-swatch__var">--offwhite — alternate section bg</span>
+              </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+              <div class="sg-item__label">Gold usage rules</div>
+              <p style="font-size:13px; color:var(--grey-500); line-height:1.7;">
+                Gold is used sparingly as an accent — never as a large fill colour. Use it for:<br>
+                · Eyebrow underlines (60px bar)<br>
+                · Button bottom border on hover (3px inset)<br>
+                · Stat numbers<br>
+                · Quote block left border (3px)<br>
+                · Badge background (10% opacity)<br>
+                · Form focus ring (8% opacity)<br>
+                · Nav underline on hover (2px)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         TYPOGRAPHY
+         ================================================ -->
+    <section id="typography" class="sg-section" style="background:var(--offwhite);">
+      <div class="container">
+        <div class="sg-section-title">02 — Typography</div>
+
+        <div style="margin-bottom: 24px;">
+          <div class="sg-item__label">Font Family</div>
+          <div class="sg-item__preview" style="background:white; padding:24px;">
+            <div style="font-size:32px; font-weight:200; color:var(--black); letter-spacing:-0.02em; margin-bottom:8px;">Roboto — 200, 300, 400, 500</div>
+            <div style="font-size:14px; color:var(--grey-500); font-family:'Courier New',monospace;">font-family: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif<br>Google Fonts: weights 200, 300, 400, 500 only</div>
+          </div>
+        </div>
+
+        <div class="sg-type-specimen sg-type-specimen--dark">
+          <div class="sg-type-meta">h1 — Hero heading (dark sections only)</div>
+          <h1 style="font-size:88px;">Mining can't afford guesswork.</h1>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-700); font-family:'Courier New',monospace;">88px · weight 300 · line-height 1.04 · tracking -0.04em · color #FFFFFF</div>
+        </div>
+
+        <div class="sg-type-specimen">
+          <div class="sg-type-meta">h2 — Section heading (light sections)</div>
+          <h2>The technology behind the result.</h2>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">56px · weight 200 · line-height 1.1 · tracking -0.03em · color #000000</div>
+        </div>
+
+        <div class="sg-type-specimen sg-type-specimen--dark">
+          <div class="sg-type-meta">h2 — Section heading (dark sections)</div>
+          <h2 style="color:var(--white);">The technology behind the result.</h2>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-700); font-family:'Courier New',monospace;">56px · weight 200 · line-height 1.1 · tracking -0.03em · color #FFFFFF (in dark sections)</div>
+        </div>
+
+        <div class="sg-type-specimen">
+          <div class="sg-type-meta">h3 — Card heading / subheading</div>
+          <h3>Ravenswood Gold Mine — Case Study</h3>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">24px · weight 400 · line-height 1.3 · tracking -0.015em · color #000000</div>
+        </div>
+
+        <div class="sg-type-specimen">
+          <div class="sg-type-meta">h4 — Small label / card meta</div>
+          <h4>Brett Fletcher — General Manager, Ravenswood Gold Mine</h4>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">18px · weight 500 · line-height 1.4 · tracking -0.01em · color #000000</div>
+        </div>
+
+        <div class="sg-type-specimen">
+          <div class="sg-type-meta">Body — Default paragraph text</div>
+          <p>PhotonAssay™ delivers gold results in as little as two minutes, with no chemicals and no sample destruction. For mine sites and commercial labs, that means faster decisions, lower costs, and a measurable improvement in safety and sustainability.</p>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">17px · weight 300 · line-height 1.75 · color #888888 (--grey-500)</div>
+        </div>
+
+        <div class="sg-type-specimen">
+          <div class="sg-type-meta">Eyebrow — Section label</div>
+          <div class="eyebrow">PhotonAssay™ Technology</div>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">11px · weight 500 · tracking 0.18em · uppercase · color #888888<br>Has a 60px × 2px gold bar before it (CSS ::before pseudo-element)</div>
+        </div>
+
+        <div class="sg-type-specimen">
+          <div class="sg-type-meta">Caption / secondary text</div>
+          <p class="text-secondary">Published March 2025 · 4 min read</p>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">15px · weight 300 · color #BBBBBB (--grey-300) · class: .text-secondary</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         SPACING
+         ================================================ -->
+    <section id="spacing" class="sg-section">
+      <div class="container">
+        <div class="sg-section-title">03 — Spacing Scale</div>
+        <p style="margin-bottom:40px; max-width:600px;">All spacing is based on an 8px unit. CSS custom properties are used throughout — use the variable names, not hardcoded pixel values.</p>
+
+        <div class="sg-row">
+          <div>
+            <div class="sg-item__label">Space tokens</div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:8px;"></div><div class="sg-space-info">--space-1 = 8px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:16px;"></div><div class="sg-space-info">--space-2 = 16px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:24px;"></div><div class="sg-space-info">--space-3 = 24px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:32px;"></div><div class="sg-space-info">--space-4 = 32px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:40px;"></div><div class="sg-space-info">--space-5 = 40px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:48px;"></div><div class="sg-space-info">--space-6 = 48px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:64px;"></div><div class="sg-space-info">--space-8 = 64px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:80px;"></div><div class="sg-space-info">--space-10 = 80px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:96px;"></div><div class="sg-space-info">--space-12 = 96px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:120px;"></div><div class="sg-space-info">--space-15 = 120px</div></div>
+            <div class="sg-space-row"><div class="sg-space-bar" style="width:160px;"></div><div class="sg-space-info">--space-20 = 160px</div></div>
+          </div>
+          <div>
+            <div class="sg-item__label">Layout constants</div>
+            <table class="sg-table">
+              <tr><th>Variable</th><th>Value</th><th>Usage</th></tr>
+              <tr><td><code>--max-width</code></td><td><strong>1320px</strong></td><td>Max content width</td></tr>
+              <tr><td><code>--nav-height</code></td><td><strong>80px</strong></td><td>Fixed nav bar height</td></tr>
+              <tr><td><code>--section-pad</code></td><td><strong>160px</strong></td><td>Top/bottom padding on full sections</td></tr>
+              <tr><td><code>--container-pad</code></td><td><strong>48px</strong></td><td>Left/right container padding</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         BUTTONS
+         ================================================ -->
+    <section id="buttons" class="sg-section" style="background:var(--offwhite);">
+      <div class="container">
+        <div class="sg-section-title">04 — Buttons &amp; Links</div>
+
+        <div class="sg-component">
+          <div class="sg-component__title">Primary Button — .btn</div>
+          <div class="sg-component__preview">
+            <a class="btn" href="#">Explore the Technology</a>
+          </div>
+          <div class="sg-component__code">padding: 16px 40px · font-size: 12px · weight 500 · tracking 0.16em · uppercase<br>border: 1px solid #000 · bg: transparent · radius: 0<br>hover: bg #000, color #FFF, box-shadow inset 0 -3px 0 #F2B705</div>
+        </div>
+
+        <div class="sg-component">
+          <div class="sg-component__title">Light Button — .btn.btn--light (used on dark sections)</div>
+          <div class="sg-component__preview sg-component__preview--dark">
+            <a class="btn btn--light" href="#">Request a Demo</a>
+          </div>
+          <div class="sg-component__code">Same as .btn but border-color: #FFF, color: #FFF<br>hover: bg #FFF, color #000, box-shadow inset 0 -3px 0 #F2B705</div>
+        </div>
+
+        <div class="sg-component">
+          <div class="sg-component__title">Arrow Link — .arrow-link</div>
+          <div class="sg-component__preview">
+            <a class="arrow-link" href="#">Read the case study</a>
+          </div>
+          <div class="sg-component__code">font-size: 13px · weight 500 · tracking 0.08em · uppercase · color #888888<br>::after content: '→' · hover: color #F2B705, arrow translateX(4px)</div>
+        </div>
+
+        <div class="sg-component">
+          <div class="sg-component__title">Sticky CTA Tab (fixed right edge)</div>
+          <div class="sg-component__preview">
+            <div class="sg-sticky-demo">
+              <div class="sg-sticky-demo__link">Get in Touch</div>
+            </div>
+          </div>
+          <div class="sg-component__code">position: fixed · right: 0 · top: 50% · writing-mode: vertical-rl<br>bg: #F2B705 · color: #0A0A0A · font-size: 12px · weight 600 · tracking 0.1em<br>border-radius: 8px 0 0 8px · hover: padding-right 16px</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         BADGES & LABELS
+         ================================================ -->
+    <section id="badges" class="sg-section">
+      <div class="container">
+        <div class="sg-section-title">05 — Badges &amp; Labels</div>
+        <div class="sg-row--3">
+
+          <div class="sg-component">
+            <div class="sg-component__title">Gold Badge — .badge</div>
+            <div class="sg-component__preview">
+              <span class="badge">Technical Note</span>&nbsp;
+              <span class="badge">Case Study</span>&nbsp;
+              <span class="badge">Webinar</span>
+            </div>
+            <div class="sg-component__code">bg: rgba(242,183,5,0.1) · color: #F2B705<br>10px · weight 500 · tracking 0.12em · uppercase · radius 2px · padding 4px 12px</div>
+          </div>
+
+          <div class="sg-component">
+            <div class="sg-component__title">Outline Badge — .badge.badge--outline</div>
+            <div class="sg-component__preview">
+              <span class="badge badge--outline">Presentation</span>&nbsp;
+              <span class="badge badge--outline">Archived</span>
+            </div>
+            <div class="sg-component__code">bg: transparent · border: 1px solid #E8E8E8 · color: #888888</div>
+          </div>
+
+          <div class="sg-component">
+            <div class="sg-component__title">Eyebrow Label — .eyebrow</div>
+            <div class="sg-component__preview">
+              <div class="eyebrow">Our Technology</div>
+            </div>
+            <div class="sg-component__code">11px · weight 500 · tracking 0.18em · uppercase · color #888888<br>::before — 60px × 2px gold bar, gap 16px</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================
+         FORMS
+         ================================================ -->
+    <section id="forms" class="sg-section" style="background:var(--offwhite);">
+      <div class="container">
+        <div class="sg-section-title">06 — Form Elements</div>
+
+        <div class="sg-row">
+          <div>
+            <div class="sg-component">
+              <div class="sg-component__title">Text Input — .form__input</div>
+              <div class="sg-component__preview" style="background:white;">
+                <div class="form__group">
+                  <label class="form__label">First name <span class="required">*</span></label>
+                  <input class="form__input" type="text" placeholder="e.g. Sarah">
+                </div>
+              </div>
+              <div class="sg-component__code">border: 1px solid #E8E8E8 · radius 2px · padding 14px 16px<br>font-size 15px · weight 300 · focus: border #F2B705 + gold glow</div>
+            </div>
+
+            <div class="sg-component">
+              <div class="sg-component__title">Textarea — .form__textarea</div>
+              <div class="sg-component__preview" style="background:white;">
+                <div class="form__group">
+                  <label class="form__label">Message</label>
+                  <textarea class="form__textarea" placeholder="Tell us about your operation..."></textarea>
+                </div>
+              </div>
+              <div class="sg-component__code">Same as input · min-height: 120px · resize: vertical</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="sg-component">
+              <div class="sg-component__title">Select — .form__select</div>
+              <div class="sg-component__preview" style="background:white;">
+                <div class="form__group">
+                  <label class="form__label">Organisation type</label>
+                  <select class="form__select">
+                    <option value="">Select an option</option>
+                    <option>Commercial Laboratory</option>
+                    <option>Mine Site</option>
+                    <option>Government / Regulatory</option>
+                  </select>
+                </div>
+              </div>
+              <div class="sg-component__code">Same styling as input · -webkit-appearance: none (custom styling)</div>
+            </div>
+
+            <div class="sg-component">
+              <div class="sg-component__title">Two-column form row — .form__row</div>
+              <div class="sg-component__preview" style="background:white;">
+                <div class="form__row">
+                  <div class="form__group">
+                    <label class="form__label">First name</label>
+                    <input class="form__input" type="text" placeholder="First">
+                  </div>
+                  <div class="form__group">
+                    <label class="form__label">Last name</label>
+                    <input class="form__input" type="text" placeholder="Last">
+                  </div>
+                </div>
+              </div>
+              <div class="sg-component__code">display: grid · grid-template-columns: 1fr 1fr · gap: 24px</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         COMPONENTS
+         ================================================ -->
+    <section id="components" class="sg-section">
+      <div class="container">
+        <div class="sg-section-title">07 — UI Components</div>
+
+        <div class="sg-row">
+          <div>
+            <div class="sg-component">
+              <div class="sg-component__title">Stat Block — .stat</div>
+              <div class="sg-component__preview" style="display:flex; gap:64px; align-items:center; justify-content:center;">
+                <div class="stat">
+                  <div class="stat__number">2 min</div>
+                  <div class="stat__label">Analysis time</div>
+                </div>
+                <div class="stat">
+                  <div class="stat__number">200+</div>
+                  <div class="stat__label">Units deployed</div>
+                </div>
+                <div class="stat">
+                  <div class="stat__number">Zero</div>
+                  <div class="stat__label">Scope 1 emissions</div>
+                </div>
+              </div>
+              <div class="sg-component__code">.stat__number — 72px · weight 200 · tracking -0.03em · color #F2B705<br>.stat__label — 13px · weight 500 · tracking 0.08em · uppercase · color #888888</div>
+            </div>
+
+            <div class="sg-component">
+              <div class="sg-component__title">Breadcrumb — .breadcrumb</div>
+              <div class="sg-component__preview">
+                <div class="breadcrumb">
+                  <ul class="breadcrumb__list">
+                    <li><a href="#">Home</a></li>
+                    <li class="breadcrumb__sep">/</li>
+                    <li><a href="#">Resources</a></li>
+                    <li class="breadcrumb__sep">/</li>
+                    <li>TN-101: Gold Analysis Fundamentals</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="sg-component__code">13px · color #888888 · separator: / in #BBBBBB · hover: gold</div>
+            </div>
+          </div>
+
+          <div>
+            <div class="sg-component">
+              <div class="sg-component__title">Quote Block — .quote-block (used in dark sections)</div>
+              <div class="sg-component__preview sg-component__preview--dark">
+                <div class="quote-block">
+                  <p class="quote-block__text">"PhotonAssay has transformed how we manage grade control at Ravenswood. The speed and accuracy have genuinely changed our operating model."</p>
+                  <div class="quote-block__author">Brett Fletcher</div>
+                  <div class="quote-block__role">General Manager, Ravenswood Gold Mine</div>
+                </div>
+              </div>
+              <div class="sg-component__code">border-left: 3px solid #F2B705 · padding-left: 32px<br>.quote-block__text — 24px · weight 300 · line-height 1.5 · color #FFF<br>.quote-block__author — 14px · weight 500 · color #BBBBBB<br>.quote-block__role — 13px · color #888888</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         SECTION BACKGROUNDS
+         ================================================ -->
+    <section id="sections" class="sg-section" style="background:var(--offwhite);">
+      <div class="container">
+        <div class="sg-section-title">08 — Section Backgrounds</div>
+        <p style="margin-bottom:40px; max-width:600px; font-size:14px;">Four section backgrounds are used throughout the site. They alternate to create visual rhythm. Use the class names below — padding is handled automatically.</p>
+
+        <div class="sg-section-demo" style="background:var(--white); border:1px solid var(--grey-100);">
+          <div class="sg-section-demo__label" style="color:var(--grey-300);">.section-light</div>
+          <div class="eyebrow">Section label</div>
+          <h2 style="font-size:36px;">Light section heading</h2>
+          <p>Body text at default colour. bg: #FFFFFF · padding: 160px 0</p>
+        </div>
+
+        <div class="sg-section-demo" style="background:var(--offwhite); border:1px solid var(--grey-100);">
+          <div class="sg-section-demo__label" style="color:var(--grey-300);">.section-offwhite</div>
+          <div class="eyebrow">Section label</div>
+          <h2 style="font-size:36px;">Off-white section heading</h2>
+          <p>Body text at default colour. bg: #FAFAFA · padding: 160px 0</p>
+        </div>
+
+        <div class="sg-section-demo" style="background:var(--near-black);">
+          <div class="sg-section-demo__label" style="color:var(--grey-700);">.section-dark</div>
+          <div class="eyebrow" style="color:var(--grey-500);">Section label</div>
+          <h2 style="font-size:36px; color:var(--white);">Dark section heading</h2>
+          <p>Body text at grey-500. bg: #0A0A0A · padding: 160px 0 · headings override to white</p>
+        </div>
+
+        <div class="sg-section-demo" style="background:var(--black);">
+          <div class="sg-section-demo__label" style="color:var(--grey-700);">.section-black</div>
+          <div class="eyebrow" style="color:var(--grey-500);">Section label</div>
+          <h2 style="font-size:36px; color:var(--white);">Black section heading</h2>
+          <p>Body text at grey-500. bg: #000000 · padding: 160px 0 · headings override to white</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         BREAKPOINTS & LAYOUT
+         ================================================ -->
+    <section id="breakpoints" class="sg-section">
+      <div class="container">
+        <div class="sg-section-title">09 — Breakpoints &amp; Layout</div>
+
+        <div class="sg-row">
+          <div>
+            <div class="sg-item__label">Breakpoints</div>
+            <table class="sg-table" style="margin-bottom:40px;">
+              <tr><th>Name</th><th>Width</th><th>Notes</th></tr>
+              <tr><td><strong>Desktop</strong></td><td><code>&gt; 900px</code></td><td>Full layout — all columns, side-by-side grids</td></tr>
+              <tr><td><strong>Mobile</strong></td><td><code>≤ 900px</code></td><td>Single column, stacked sections, hamburger nav</td></tr>
+            </table>
+            <p style="font-size:13px; color:var(--grey-500); line-height:1.7;">One main breakpoint at 900px. No tablet-specific layouts — content flows from desktop to stacked single-column at 900px. Hamburger menu appears at 900px and below.</p>
+          </div>
+          <div>
+            <div class="sg-item__label">Navigation</div>
+            <table class="sg-table">
+              <tr><th>Property</th><th>Value</th></tr>
+              <tr><td><strong>Height</strong></td><td><code>80px</code></td></tr>
+              <tr><td><strong>Position</strong></td><td><code>fixed</code> — always visible</td></tr>
+              <tr><td><strong>Default bg</strong></td><td>Transparent (over hero)</td></tr>
+              <tr><td><strong>Scrolled bg</strong></td><td><code>rgba(0,0,0,0.95)</code> + <code>backdrop-filter: blur(20px)</code></td></tr>
+              <tr><td><strong>Class when scrolled</strong></td><td><code>.nav--scrolled</code> (added via JS)</td></tr>
+              <tr><td><strong>Logo height</strong></td><td><code>43px</code></td></tr>
+              <tr><td><strong>Link size</strong></td><td><code>12px · weight 400 · tracking 0.16em · uppercase</code></td></tr>
+              <tr><td><strong>Link hover</strong></td><td>Color #FFF + gold underline scales in (scaleX 0→1)</td></tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================
+         LOGOS
+         ================================================ -->
+    <section id="logos" class="sg-section" style="background:var(--offwhite);">
+      <div class="container">
+        <div class="sg-section-title">10 — Logos &amp; Brand Assets</div>
+        <p style="margin-bottom:40px; max-width:600px; font-size:14px;">Logo files are provided as SVGs. Use SVG format wherever possible for sharpness at all screen densities. The Chrysos Corporation logo should appear alongside the PhotonAssay logo or independently depending on context.</p>
+
+        <div class="sg-asset-grid">
+
+          <div class="sg-asset">
+            <svg style="height:48px;width:auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230.88 419.1"><defs><style>.a1{fill:#000;}.a2{fill:#ffca3b;}</style></defs><g><g><g><path class="a1" d="M553.19,284.96c0,7.11-2.26,12.44-6.78,16-4.51,3.56-10.43,5.33-17.75,5.33h-22.4l-1.07,1.07v29.87l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h33.07c7.75,0,13.77,1.74,18.08,5.22,4.3,3.49,6.45,8.85,6.45,16.11Zm-13.97,9.01c2.2-1.81,3.3-4.82,3.3-9.01s-1.1-7.2-3.3-9.01c-2.21-1.81-5.72-2.72-10.56-2.72h-22.4l-1.07,1.07v21.33l1.07,1.07h22.4c4.84,0,8.35-.9,10.56-2.72Z"/><path class="a1" d="M611.75,337.23l-1.07,1.07h-8.53l-1.07-1.07v-30.93c0-8.53-3.55-12.8-10.67-12.8-4.55,0-8,1.32-10.35,3.95-2.34,2.63-3.52,7-3.52,13.12v26.67l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h8.53l1.07,1.07v25.6h1.06c.14-.14,.32-.37,.53-.69,.21-.32,.75-.84,1.6-1.55,.85-.71,1.76-1.35,2.72-1.92,.96-.57,2.26-1.08,3.89-1.55s3.34-.7,5.12-.7c13.51,0,20.27,7.47,20.27,22.4v30.93Z"/><path class="a1" d="M632.33,331.89c-4.55-4.98-6.82-11.73-6.82-20.26s2.27-15.29,6.82-20.27c4.55-4.97,10.81-7.47,18.77-7.47s14.22,2.49,18.77,7.47c4.55,4.98,6.82,11.73,6.82,20.27s-2.28,15.29-6.82,20.26c-4.55,4.98-10.81,7.47-18.77,7.47s-14.22-2.49-18.77-7.47Z"/><path class="a1" d="M839.57,337.23l-1.07,1.07h-8.53l-1.07-1.07v-30.93c0-8.53-3.55-12.8-10.67-12.8-4.84,0-8.36,1.42-10.56,4.27-2.2,2.85-3.3,7.47-3.3,13.87v25.6l-1.07,1.07h-8.53l-1.07-1.07v-51.2l1.07-1.07h7.46l1.07,1.07,1.07,4.27h1.06c7.11-4.98,14.58-5.12,19.01-4.32,4.43,.81,9.02,2.01,12.21,6.03,3.2,4.02,4.8,9.48,4.8,16.37v30.93Z"/></g><path class="a1" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path class="a1" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/><circle class="a2" cx="209.39" cy="209.33" r="26.95"/><rect class="a2" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/></g></g></svg>
+            <div class="sg-asset__label">Logo — Standard (dark)</div>
+            <div style="font-size:11px;color:var(--grey-300);font-family:'Courier New',monospace;text-align:center;">Chrysos_Corporation_RGB_Standard.svg</div>
+          </div>
+
+          <div class="sg-asset sg-asset--dark">
+            <svg style="height:48px;width:auto;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230.88 419.1"><defs><style>.b1{fill:#fff;}.b2{fill:#ffca3b;}</style></defs><g><g><g><path class="b1" d="M553.19,284.96c0,7.11-2.26,12.44-6.78,16-4.51,3.56-10.43,5.33-17.75,5.33h-22.4l-1.07,1.07v29.87l-1.07,1.07h-8.53l-1.07-1.07v-72.53l1.07-1.07h33.07c7.75,0,13.77,1.74,18.08,5.22,4.3,3.49,6.45,8.85,6.45,16.11Zm-13.97,9.01c2.2-1.81,3.3-4.82,3.3-9.01s-1.1-7.2-3.3-9.01c-2.21-1.81-5.72-2.72-10.56-2.72h-22.4l-1.07,1.07v21.33l1.07,1.07h22.4c4.84,0,8.35-.9,10.56-2.72Z"/><path class="b1" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path class="b1" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/><circle class="b2" cx="209.39" cy="209.33" r="26.95"/><rect class="b2" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/></g></g></svg>
+            <div class="sg-asset__label" style="color:var(--grey-500);">Logo — Reversed (white)</div>
+            <div style="font-size:11px;color:var(--grey-700);font-family:'Courier New',monospace;text-align:center;">Chrysos_Corporation_RGB_Reversed.svg</div>
+          </div>
+
+          <div class="sg-asset" style="padding:32px;">
+            <svg style="height:64px;width:64px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419.1 419.1"><circle fill="#F2B705" cx="209.39" cy="209.33" r="26.95"/><rect fill="#F2B705" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/><path fill="#000" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path fill="#000" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/></svg>
+            <div class="sg-asset__label">Symbol only — Standard</div>
+            <div style="font-size:11px;color:var(--grey-300);font-family:'Courier New',monospace;text-align:center;">Chrysos_Corporation_Symbol.svg</div>
+          </div>
+
+        </div>
+
+        <div style="margin-top: 40px; padding: 24px; background:var(--white); border:1px solid var(--grey-100);">
+          <div class="sg-item__label" style="margin-bottom:16px;">Logo files — location</div>
+          <table class="sg-table">
+            <tr><th>File</th><th>Usage</th></tr>
+            <tr><td><code>inputs/Logos/Chrysos_Corporation_RGB_Standard.svg</code></td><td>Dark text on light background</td></tr>
+            <tr><td><code>inputs/Logos/Chrysos_Corporation_RGB_Reversed.svg</code></td><td>White logo on dark background (nav)</td></tr>
+            <tr><td><code>inputs/Logos/Chrysos_Corporation_Symbol.svg</code></td><td>Icon-only use</td></tr>
+            <tr><td><code>inputs/Logos/PhotonAssay_Logo_RGB_Standard.svg</code></td><td>PhotonAssay product mark — light bg</td></tr>
+            <tr><td><code>inputs/Logos/PhotonAssay_Logo_RGB_Reversed.svg</code></td><td>PhotonAssay product mark — dark bg</td></tr>
+            <tr><td><code>inputs/Logos/PhotonAssay_Symbol.svg</code></td><td>PhotonAssay icon only</td></tr>
+          </table>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer note -->
+    <div style="background:var(--near-black); padding:48px 0; text-align:center;">
+      <div class="container">
+        <p style="font-size:13px; color:var(--grey-700);">PhotonAssay™ Design System · Chrysos Corporation · Built by NeueStudio &amp; Collier Creative</p>
+        <p style="font-size:12px; color:var(--grey-900); margin-top:8px;">This style guide is a living document — it reflects the current design state of the prototype.</p>
+      </div>
+    </div>
+
+  </div><!-- /sg-page -->
+
+  <script>
+    // Nav scroll behaviour (matches site behaviour)
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 20);
+    });
+  </script>
+
+</body>
+</html>
