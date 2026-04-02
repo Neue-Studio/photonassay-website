@@ -192,9 +192,10 @@
     // ─── INIT ───
     async function init() {
       try {
+        const cb = '?t=' + Date.now();
         const [configRes, statusRes] = await Promise.all([
-          fetch(RAW_BASE + '/copy-config.json').then(r => r.json()),
-          fetch(RAW_BASE + '/copy-status.json').then(r => r.json())
+          fetch(RAW_BASE + '/copy-config.json' + cb).then(r => r.json()),
+          fetch(RAW_BASE + '/copy-status.json' + cb).then(r => r.json())
         ]);
         config = configRes;
         status = statusRes;
@@ -263,7 +264,7 @@
       editorFields.innerHTML = '<div class="loading"><div class="spinner"></div>Loading copy from live site...</div>';
 
       try {
-        const html = await fetch(RAW_BASE + '/site/' + file).then(r => r.text());
+        const html = await fetch(RAW_BASE + '/' + file + '?t=' + Date.now()).then(r => r.text());
         const doc = new DOMParser().parseFromString(html, 'text/html');
         renderFields(pageConf.sections, doc);
       } catch (err) {
@@ -343,7 +344,7 @@
       saveMsg.className = 'save-bar__msg';
 
       try {
-        const html = await fetch(RAW_BASE + '/site/' + file).then(r => r.text());
+        const html = await fetch(RAW_BASE + '/' + file + '?t=' + Date.now()).then(r => r.text());
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
         document.querySelectorAll('.field__input[data-id]').forEach(textarea => {
