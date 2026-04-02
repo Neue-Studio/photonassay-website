@@ -275,6 +275,105 @@
       padding-right: 16px;
       background: #f5c842;
     }
+    /* ============================================
+       COOKIE BANNER
+       ============================================ */
+    .cookie-banner {
+      position: fixed;
+      bottom: 32px;
+      left: 32px;
+      z-index: 9000;
+      max-width: 420px;
+      background: var(--charcoal);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px 28px 24px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    }
+    .cookie-banner.is-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+    .cookie-banner__icon {
+      font-size: 20px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .cookie-banner__title {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .cookie-banner__body {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--grey-500);
+      margin-bottom: 20px;
+    }
+    .cookie-banner__body a {
+      color: var(--grey-300);
+      text-decoration: underline;
+      text-decoration-color: rgba(255,255,255,0.2);
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+    .cookie-banner__body a:hover {
+      color: var(--white);
+      text-decoration-color: rgba(255,255,255,0.5);
+    }
+    .cookie-banner__actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .cookie-banner__accept {
+      flex: 1;
+      background: var(--gold);
+      color: var(--black);
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 11px 20px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cookie-banner__accept:hover {
+      background: var(--gold-hover);
+    }
+    .cookie-banner__decline {
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--grey-500);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 11px 16px;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .cookie-banner__decline:hover {
+      color: var(--grey-300);
+      border-color: rgba(255,255,255,0.25);
+    }
+    @media (max-width: 768px) {
+      .cookie-banner {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        max-width: none;
+      }
+    }
+
     .sticky-cta__link svg {
       width: 14px;
       height: 14px;
@@ -3914,6 +4013,30 @@
     }
   </script>
 
+
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <span class="cookie-banner__icon">🍪</span>
+    <div class="cookie-banner__title">This site uses cookies</div>
+    <p class="cookie-banner__body">We use cookies to remember your resource download preferences and to understand how visitors use our site. See our <a href="privacy-policy.html">Privacy Policy</a> for details.</p>
+    <div class="cookie-banner__actions">
+      <button class="cookie-banner__accept" id="cookieAccept">Accept all</button>
+      <button class="cookie-banner__decline" id="cookieDecline">Decline</button>
+    </div>
+  </div>
+
+  <script>
+    // Cookie banner — aesthetic only, appears 2s after load
+    setTimeout(function() {
+      document.getElementById('cookieBanner').classList.add('is-visible');
+    }, 2000);
+    document.getElementById('cookieAccept').addEventListener('click', function() {
+      document.getElementById('cookieBanner').classList.remove('is-visible');
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function() {
+      document.getElementById('cookieBanner').classList.remove('is-visible');
+    });
+  </script>
 
   <!-- Sticky CTA Tab -->
   <div class="sticky-cta">
