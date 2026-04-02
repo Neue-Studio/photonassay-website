@@ -712,6 +712,67 @@
       transform: translateY(8px);
     }
 
+    /* TAG FILTER */
+    .tag-filter {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--space-5);
+    }
+    .tag-filter__label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--grey-300);
+      margin-right: 4px;
+      white-space: nowrap;
+    }
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--grey-500);
+      background: transparent;
+      border: 1px solid var(--grey-100);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      user-select: none;
+      white-space: nowrap;
+    }
+    .tag-pill:hover {
+      color: var(--black);
+      border-color: var(--grey-300);
+    }
+    .tag-pill--active {
+      color: var(--black);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .tag-pill--active:hover {
+      background: var(--gold-hover);
+      border-color: var(--gold-hover);
+    }
+    .tag-pill__x {
+      font-size: 14px;
+      line-height: 1;
+      margin-left: 2px;
+      opacity: 0.6;
+    }
+    .tag-filter__empty {
+      font-size: 14px;
+      color: var(--grey-300);
+      padding: var(--space-8) 0;
+      text-align: center;
+      display: none;
+    }
+    .tag-filter__empty.is-visible { display: block; }
+
     /* SEARCH */
     .search-bar {
       position: relative;
@@ -1448,66 +1509,82 @@
       </div>
 
       <div class="reveal">
-        <div class="resource-table__row" data-category="technical-note">
+        <div class="tag-filter" id="tagFilter">
+          <span class="tag-filter__label">Filter by topic</span>
+          <div class="tag-pill" data-tag="gold">Gold</div>
+          <div class="tag-pill" data-tag="copper">Copper</div>
+          <div class="tag-pill" data-tag="silver">Silver</div>
+          <div class="tag-pill" data-tag="sample-prep">Sample Prep</div>
+          <div class="tag-pill" data-tag="grade-control">Grade Control</div>
+          <div class="tag-pill" data-tag="qa-qc">QA/QC</div>
+          <div class="tag-pill" data-tag="fire-assay">Fire Assay</div>
+          <div class="tag-pill" data-tag="exploration">Exploration</div>
+          <div class="tag-pill" data-tag="safety">Safety</div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="resource-table__row" data-category="technical-note" data-tags="gold grade-control qa-qc">
           <div class="resource-table__title">TN-101: Measurement Performance for Gold Ore Samples</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Gold assay accuracy, precision, and repeatability benchmarks across diverse ore types.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="technical-note">
+        <div class="resource-table__row" data-category="technical-note" data-tags="sample-prep qa-qc">
           <div class="resource-table__title">TN-102: Sample Preparation Guidelines</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Best practices for sample preparation to maximise PhotonAssay&#8482; measurement quality.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="technical-note">
+        <div class="resource-table__row" data-category="technical-note" data-tags="copper silver">
           <div class="resource-table__title">TN-103: Multi-Element Analysis Capabilities</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Overview of additional elements measurable by PhotonAssay, including silver and copper.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="presentation">
+        <div class="resource-table__row" data-category="presentation" data-tags="gold fire-assay">
           <div class="resource-table__title">Fire Assay Comparison &mdash; Gold in Oxide Ores</div>
           <div><span class="badge badge--outline">Presentation</span></div>
           <div class="resource-table__desc">Head-to-head comparison of PhotonAssay and fire assay on oxide ore samples from Western Australia.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="presentation">
+        <div class="resource-table__row" data-category="presentation" data-tags="qa-qc grade-control">
           <div class="resource-table__title">Repeatability &amp; Reproducibility Study</div>
           <div><span class="badge badge--outline">Presentation</span></div>
           <div class="resource-table__desc">Statistical analysis of measurement consistency across multiple PhotonAssay units.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="webinar">
+        <div class="resource-table__row" data-category="webinar" data-tags="gold grade-control qa-qc">
           <div class="resource-table__title">Webinar: Gold Measurement Performance Deep Dive</div>
           <div><span class="badge">Webinar</span></div>
           <div class="resource-table__desc">45-minute technical walkthrough covering accuracy, precision, and real-world lab performance data.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="webinar">
+        <div class="resource-table__row" data-category="webinar" data-tags="exploration">
           <div class="resource-table__title">Webinar: Operating Models for PhotonAssay Deployment</div>
           <div><span class="badge">Webinar</span></div>
           <div class="resource-table__desc">Understanding the three deployment models — commercial lab, mine-site lease, and direct purchase.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="case-study">
+        <div class="resource-table__row" data-category="case-study" data-tags="gold grade-control">
           <div class="resource-table__title">Case Study: Ravenswood Gold Mine</div>
           <div><span class="badge">Case Study</span></div>
           <div class="resource-table__desc">On-site deployment delivering 2-minute turnaround and improved grade control at a Queensland gold mine.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="case-study">
+        <div class="resource-table__row" data-category="case-study" data-tags="gold sample-prep">
           <div class="resource-table__title">Case Study: SGS Minerals &mdash; Commercial Lab Adoption</div>
           <div><span class="badge">Case Study</span></div>
           <div class="resource-table__desc">How a major global laboratory integrated PhotonAssay into its commercial workflow.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
-        <div class="resource-table__row" data-category="technical-note">
+        <div class="resource-table__row" data-category="technical-note" data-tags="safety">
           <div class="resource-table__title">TN-104: Environmental &amp; Safety Benefits</div>
           <div><span class="badge">Technical Note</span></div>
           <div class="resource-table__desc">Eliminating lead, eliminating scope 1 emissions, and improving laboratory safety outcomes.</div>
           <div class="resource-table__arrow"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         </div>
+        <div class="tag-filter__empty" id="noResults">No resources match the current filters.</div>
       </div>
     </div>
   </section>
@@ -1649,37 +1726,62 @@
       });
     })();
 
-    // === RESOURCE FILTER TABS ===
+    // === RESOURCE FILTER — TABS + TAGS ===
     (function() {
       const tabs = document.querySelectorAll('.tab[data-filter]');
+      const pills = document.querySelectorAll('.tag-pill[data-tag]');
       const rows = document.querySelectorAll('.resource-table__row[data-category]');
+      const noResults = document.getElementById('noResults');
       if (!tabs.length || !rows.length) return;
+
+      let activeCategory = 'all';
+      let activeTag = null;
+
+      function applyFilters() {
+        let visibleCount = 0;
+        rows.forEach(function(row) {
+          const catMatch = activeCategory === 'all' || row.dataset.category === activeCategory;
+          const rowTags = (row.dataset.tags || '').split(' ');
+          const tagMatch = !activeTag || rowTags.includes(activeTag);
+          const match = catMatch && tagMatch;
+
+          if (match) {
+            row.classList.remove('is-hidden');
+            row.classList.add('is-showing');
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() { row.classList.remove('is-showing'); });
+            });
+            visibleCount++;
+          } else {
+            row.classList.add('is-hidden');
+            row.classList.remove('is-showing');
+          }
+        });
+        if (noResults) noResults.classList.toggle('is-visible', visibleCount === 0);
+      }
 
       tabs.forEach(function(tab) {
         tab.addEventListener('click', function() {
-          const filter = this.dataset.filter;
-
-          // Update active tab
+          activeCategory = this.dataset.filter;
           tabs.forEach(function(t) { t.classList.remove('tab--active'); });
           this.classList.add('tab--active');
+          applyFilters();
+        });
+      });
 
-          // Filter rows
-          rows.forEach(function(row) {
-            const match = filter === 'all' || row.dataset.category === filter;
-
-            if (match) {
-              row.classList.remove('is-hidden');
-              row.classList.add('is-showing');
-              requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                  row.classList.remove('is-showing');
-                });
-              });
-            } else {
-              row.classList.add('is-hidden');
-              row.classList.remove('is-showing');
-            }
-          });
+      pills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          const tag = this.dataset.tag;
+          if (activeTag === tag) {
+            // Deselect
+            activeTag = null;
+            pills.forEach(function(p) { p.classList.remove('tag-pill--active'); });
+          } else {
+            activeTag = tag;
+            pills.forEach(function(p) { p.classList.remove('tag-pill--active'); });
+            this.classList.add('tag-pill--active');
+          }
+          applyFilters();
         });
       });
     })();
