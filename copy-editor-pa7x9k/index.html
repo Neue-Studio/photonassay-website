@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copy Editor — PhotonAssay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0A0A0A;
+      --charcoal: #1A1A1A;
+      --grey-900: #222;
+      --grey-700: #555;
+      --grey-500: #888;
+      --grey-300: #BBB;
+      --grey-100: #E8E8E8;
+      --offwhite: #F5F5F5;
+      --white: #FFF;
+      --gold: #F2B705;
+      --gold-hover: #D9A404;
+      --green: #34C759;
+      --blue: #5B9BD5;
+      --font: 'Roboto', sans-serif;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--font); font-size: 14px; background: var(--offwhite); color: var(--grey-700); min-height: 100vh; }
+
+    /* HEADER */
+    .header { background: var(--black); padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+    .header__title { color: var(--white); font-size: 14px; font-weight: 500; letter-spacing: 0.08em; }
+    .header__title span { color: var(--gold); }
+    .header__back { color: var(--grey-500); font-size: 12px; cursor: pointer; background: none; border: none; font-family: var(--font); letter-spacing: 0.06em; transition: color 0.2s; display: none; }
+    .header__back:hover { color: var(--white); }
+    .header__progress { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--grey-500); }
+    .header__progress-bar { width: 120px; height: 4px; background: var(--grey-900); border-radius: 2px; overflow: hidden; }
+    .header__progress-fill { height: 100%; background: var(--gold); border-radius: 2px; transition: width 0.4s ease; }
+
+    /* DASHBOARD VIEW */
+    .dashboard { max-width: 960px; margin: 0 auto; padding: 48px 24px; }
+    .dashboard__intro { margin-bottom: 40px; }
+    .dashboard__intro h1 { font-size: 28px; font-weight: 300; color: var(--black); letter-spacing: -0.02em; margin-bottom: 8px; }
+    .dashboard__intro p { font-size: 15px; color: var(--grey-500); line-height: 1.6; }
+    .page-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .page-card { background: var(--white); border: 1px solid var(--grey-100); padding: 24px; cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; }
+    .page-card:hover { border-color: var(--gold); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .page-card__name { font-size: 16px; font-weight: 500; color: var(--black); margin-bottom: 6px; }
+    .page-card__count { font-size: 12px; color: var(--grey-500); margin-bottom: 12px; }
+    .page-card__status { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 2px; }
+    .page-card__status--not-started { background: var(--grey-100); color: var(--grey-500); }
+    .page-card__status--in-progress { background: #FFF3CD; color: #856404; }
+    .page-card__status--done { background: #D4EDDA; color: #155724; }
+
+    /* EDITOR VIEW */
+    .editor { max-width: 760px; margin: 0 auto; padding: 32px 24px 80px; display: none; }
+    .editor__header { margin-bottom: 32px; display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+    .editor__page-title { font-size: 24px; font-weight: 300; color: var(--black); letter-spacing: -0.02em; }
+    .editor__preview { font-size: 12px; color: var(--grey-500); text-decoration: none; border: 1px solid var(--grey-100); padding: 6px 12px; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+    .editor__preview:hover { color: var(--gold); border-color: var(--gold); }
+    .editor__nav { display: flex; gap: 8px; margin-bottom: 32px; }
+    .editor__nav-btn { font-family: var(--font); font-size: 12px; font-weight: 400; color: var(--grey-500); background: var(--white); border: 1px solid var(--grey-100); padding: 8px 16px; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
+    .editor__nav-btn:hover { color: var(--black); border-color: var(--grey-300); }
+    .editor__nav-btn:disabled { opacity: 0.3; cursor: default; }
+
+    /* SECTION FIELDS */
+    .section-group { margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid var(--grey-100); }
+    .section-group:last-child { border-bottom: none; }
+    .section-group__heading { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .field { margin-bottom: 20px; }
+    .field:last-child { margin-bottom: 0; }
+    .field__label { font-size: 13px; font-weight: 500; color: var(--black); margin-bottom: 4px; }
+    .field__guidance { font-size: 12px; color: var(--grey-500); margin-bottom: 8px; line-height: 1.5; }
+    .field__input { width: 100%; font-family: var(--font); font-size: 14px; font-weight: 300; color: var(--black); background: var(--white); border: 1px solid var(--grey-100); padding: 10px 12px; outline: none; transition: border-color 0.2s; resize: vertical; border-radius: 0; }
+    .field__input:focus { border-color: var(--gold); }
+    .field__input--short { resize: none; }
+    .field__input--dirty { border-left: 3px solid var(--gold); }
+    .field__charcount { font-size: 11px; color: var(--grey-300); text-align: right; margin-top: 4px; }
+
+    /* SAVE BAR */
+    .save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 1px solid var(--grey-100); padding: 12px 32px; display: none; align-items: center; justify-content: space-between; z-index: 100; box-shadow: 0 -2px 12px rgba(0,0,0,0.04); }
+    .save-bar__status { display: flex; align-items: center; gap: 12px; }
+    .save-bar__actions { display: flex; align-items: center; gap: 12px; }
+    .save-bar__btn { font-family: var(--font); font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 24px; cursor: pointer; transition: background 0.2s; border: none; }
+    .save-bar__btn--save { background: var(--gold); color: var(--black); }
+    .save-bar__btn--save:hover { background: var(--gold-hover); }
+    .save-bar__btn--save:disabled { opacity: 0.4; cursor: default; }
+    .save-bar__btn--done { background: none; color: var(--grey-500); border: 1px solid var(--grey-100); }
+    .save-bar__btn--done:hover { color: var(--green); border-color: var(--green); }
+    .save-bar__btn--done.is-done { background: var(--green); color: var(--white); border-color: var(--green); }
+    .save-bar__msg { font-size: 12px; color: var(--grey-500); }
+    .save-bar__msg--error { color: #DC3545; }
+    .save-bar__msg--success { color: var(--green); }
+
+    /* LOADING */
+    .loading { text-align: center; padding: 80px 24px; color: var(--grey-500); font-size: 14px; }
+    .spinner { width: 24px; height: 24px; border: 2px solid var(--grey-100); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.6s linear infinite; margin: 0 auto 12px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 600px) {
+      .header { padding: 12px 16px; }
+      .dashboard, .editor { padding: 24px 16px 80px; }
+      .page-grid { grid-template-columns: 1fr; }
+      .editor__header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <button class="header__back" id="backBtn">← All Pages</button>
+      <div class="header__title"><span>PhotonAssay</span> Copy Editor</div>
+    </div>
+    <div class="header__progress">
+      <div class="header__progress-bar"><div class="header__progress-fill" id="progressFill" style="width:0%"></div></div>
+      <span id="progressText">0/10 done</span>
+    </div>
+  </header>
+
+  <!-- DASHBOARD VIEW -->
+  <div class="dashboard" id="dashboardView">
+    <div class="dashboard__intro">
+      <h1>Welcome, Robyn</h1>
+      <p>Edit copy for each page below. Your changes save directly to the live prototype. Click a page to start editing, and mark it as Done when you're happy with the copy.</p>
+    </div>
+    <div class="page-grid" id="pageGrid">
+      <div class="loading"><div class="spinner"></div>Loading pages...</div>
+    </div>
+  </div>
+
+  <!-- EDITOR VIEW -->
+  <div class="editor" id="editorView">
+    <div class="editor__header">
+      <div>
+        <div class="editor__page-title" id="editorTitle">Page Title</div>
+      </div>
+      <a class="editor__preview" id="previewLink" href="#" target="_blank">Preview on site ↗</a>
+    </div>
+    <div class="editor__nav">
+      <button class="editor__nav-btn" id="prevBtn">← Previous</button>
+      <button class="editor__nav-btn" id="nextBtn">Next →</button>
+    </div>
+    <div id="editorFields">
+      <div class="loading"><div class="spinner"></div>Loading sections...</div>
+    </div>
+  </div>
+
+  <!-- SAVE BAR -->
+  <div class="save-bar" id="saveBar">
+    <div class="save-bar__status">
+      <span class="save-bar__msg" id="saveMsg"></span>
+    </div>
+    <div class="save-bar__actions">
+      <button class="save-bar__btn save-bar__btn--done" id="doneBtn">Mark as Done</button>
+      <button class="save-bar__btn save-bar__btn--save" id="saveBtn">Save Changes</button>
+    </div>
+  </div>
+
+  <script>
+    const SITE_URL = 'https://photonassay-website.vercel.app';
+    const RAW_BASE = 'https://raw.githubusercontent.com/Neue-Studio/photonassay-website/main';
+    const API_URL = '/api/save';
+
+    let config = null;
+    let status = {};
+    let currentPageIndex = -1;
+    let originalValues = {};
+    let dirty = false;
+
+    const pageFiles = [
+      'index.html', 'about.html', 'contact.html', 'resources.html',
+      'resource-example.html', 'case-study-example.html', 'ravenswood.html',
+      'latest.html', 'news-example.html', 'event-example.html'
+    ];
+
+    // DOM refs
+    const dashboardView = document.getElementById('dashboardView');
+    const editorView = document.getElementById('editorView');
+    const pageGrid = document.getElementById('pageGrid');
+    const editorTitle = document.getElementById('editorTitle');
+    const editorFields = document.getElementById('editorFields');
+    const previewLink = document.getElementById('previewLink');
+    const backBtn = document.getElementById('backBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const saveBar = document.getElementById('saveBar');
+    const saveBtn = document.getElementById('saveBtn');
+    const doneBtn = document.getElementById('doneBtn');
+    const saveMsg = document.getElementById('saveMsg');
+    const progressFill = document.getElementById('progressFill');
+    const progressText = document.getElementById('progressText');
+
+    // ─── INIT ───
+    async function init() {
+      try {
+        const [configRes, statusRes] = await Promise.all([
+          fetch(RAW_BASE + '/copy-config.json').then(r => r.json()),
+          fetch(RAW_BASE + '/copy-status.json').then(r => r.json())
+        ]);
+        config = configRes;
+        status = statusRes;
+        renderDashboard();
+        updateProgress();
+      } catch (err) {
+        pageGrid.innerHTML = '<p style="color:#DC3545;">Failed to load config. Check that copy-config.json exists in the repo.</p>';
+      }
+    }
+
+    // ─── DASHBOARD ───
+    function renderDashboard() {
+      pageGrid.innerHTML = '';
+      pageFiles.forEach((file, i) => {
+        const pageConf = config[file];
+        if (!pageConf) return;
+        const s = status[file] || 'not-started';
+        const sectionCount = pageConf.sections ? pageConf.sections.length : 0;
+
+        const card = document.createElement('div');
+        card.className = 'page-card';
+        card.innerHTML = `
+          <div class="page-card__name">${pageConf.title}</div>
+          <div class="page-card__count">${sectionCount} sections</div>
+          <div class="page-card__status page-card__status--${s}">${formatStatus(s)}</div>
+        `;
+        card.addEventListener('click', () => openEditor(i));
+        pageGrid.appendChild(card);
+      });
+    }
+
+    function formatStatus(s) {
+      return s === 'not-started' ? 'Not Started' : s === 'in-progress' ? 'In Progress' : 'Done';
+    }
+
+    function updateProgress() {
+      const done = pageFiles.filter(f => status[f] === 'done').length;
+      const pct = Math.round((done / pageFiles.length) * 100);
+      progressFill.style.width = pct + '%';
+      progressText.textContent = done + '/' + pageFiles.length + ' done';
+    }
+
+    // ─── EDITOR ───
+    async function openEditor(index) {
+      if (dirty && !confirm('You have unsaved changes. Discard them?')) return;
+      currentPageIndex = index;
+      dirty = false;
+      const file = pageFiles[index];
+      const pageConf = config[file];
+
+      dashboardView.style.display = 'none';
+      editorView.style.display = 'block';
+      saveBar.style.display = 'flex';
+      backBtn.style.display = 'inline-block';
+
+      editorTitle.textContent = pageConf.title;
+      previewLink.href = SITE_URL + '/' + (file === 'index.html' ? '' : file);
+
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === pageFiles.length - 1;
+
+      updateDoneButton();
+      saveMsg.textContent = '';
+      saveMsg.className = 'save-bar__msg';
+
+      editorFields.innerHTML = '<div class="loading"><div class="spinner"></div>Loading copy from live site...</div>';
+
+      try {
+        const html = await fetch(RAW_BASE + '/site/' + file).then(r => r.text());
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        renderFields(pageConf.sections, doc);
+      } catch (err) {
+        editorFields.innerHTML = '<p style="color:#DC3545;">Failed to load page. Try refreshing.</p>';
+      }
+    }
+
+    function renderFields(sections, doc) {
+      editorFields.innerHTML = '';
+      originalValues = {};
+      let currentGroup = '';
+
+      sections.forEach(section => {
+        const groupName = getGroupName(section.id);
+        if (groupName !== currentGroup) {
+          currentGroup = groupName;
+          const heading = document.createElement('div');
+          heading.className = 'section-group__heading';
+          heading.textContent = groupName;
+          editorFields.appendChild(heading);
+        }
+
+        const el = doc.querySelector('[data-copy-id="' + section.id + '"]');
+        const currentText = el ? el.textContent.trim() : '';
+        originalValues[section.id] = currentText;
+
+        const field = document.createElement('div');
+        field.className = 'field';
+
+        const isShort = section.type === 'short';
+        const rows = isShort ? 1 : Math.max(3, Math.min(8, Math.ceil(currentText.length / 80)));
+
+        field.innerHTML = `
+          <div class="field__label">${section.label}</div>
+          <div class="field__guidance">${section.guidance}</div>
+          <textarea class="field__input ${isShort ? 'field__input--short' : ''}"
+                    data-id="${section.id}"
+                    rows="${rows}"
+                    spellcheck="true">${escapeHtml(currentText)}</textarea>
+          <div class="field__charcount"><span class="cc-count">${currentText.length}</span> chars</div>
+        `;
+
+        const textarea = field.querySelector('textarea');
+        textarea.addEventListener('input', function() {
+          dirty = true;
+          this.classList.toggle('field__input--dirty', this.value !== originalValues[section.id]);
+          this.closest('.field').querySelector('.cc-count').textContent = this.value.length;
+
+          const file = pageFiles[currentPageIndex];
+          if (status[file] === 'not-started') {
+            status[file] = 'in-progress';
+            updateDoneButton();
+          }
+        });
+
+        editorFields.appendChild(field);
+      });
+    }
+
+    function getGroupName(id) {
+      const parts = id.split('-');
+      if (parts.length >= 2) {
+        return parts[1].charAt(0).toUpperCase() + parts[1].slice(1);
+      }
+      return 'General';
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // ─── SAVE ───
+    async function save() {
+      const file = pageFiles[currentPageIndex];
+      saveBtn.disabled = true;
+      saveMsg.textContent = 'Saving...';
+      saveMsg.className = 'save-bar__msg';
+
+      try {
+        const html = await fetch(RAW_BASE + '/site/' + file).then(r => r.text());
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+
+        document.querySelectorAll('.field__input[data-id]').forEach(textarea => {
+          const id = textarea.dataset.id;
+          const el = doc.querySelector('[data-copy-id="' + id + '"]');
+          if (el) el.textContent = textarea.value;
+        });
+
+        const updatedHtml = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;
+
+        const saveRes = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ file: 'site/' + file, html: updatedHtml })
+        });
+
+        if (!saveRes.ok) {
+          const err = await saveRes.json();
+          throw new Error(err.error || 'Save failed');
+        }
+
+        await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status })
+        });
+
+        dirty = false;
+        document.querySelectorAll('.field__input--dirty').forEach(el => el.classList.remove('field__input--dirty'));
+        Object.keys(originalValues).forEach(id => {
+          const ta = document.querySelector('[data-id="' + id + '"]');
+          if (ta) originalValues[id] = ta.value;
+        });
+
+        saveMsg.textContent = 'Saved! Changes will be live in ~60 seconds.';
+        saveMsg.className = 'save-bar__msg save-bar__msg--success';
+      } catch (err) {
+        saveMsg.textContent = 'Error: ' + err.message;
+        saveMsg.className = 'save-bar__msg save-bar__msg--error';
+      } finally {
+        saveBtn.disabled = false;
+      }
+    }
+
+    function toggleDone() {
+      const file = pageFiles[currentPageIndex];
+      if (status[file] === 'done') {
+        status[file] = 'in-progress';
+      } else {
+        status[file] = 'done';
+      }
+      updateDoneButton();
+      updateProgress();
+
+      fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status })
+      });
+    }
+
+    function updateDoneButton() {
+      const file = pageFiles[currentPageIndex];
+      const isDone = status[file] === 'done';
+      doneBtn.textContent = isDone ? 'Marked Done ✓' : 'Mark as Done';
+      doneBtn.classList.toggle('is-done', isDone);
+    }
+
+    // ─── NAVIGATION ───
+    function goBack() {
+      if (dirty && !confirm('You have unsaved changes. Discard them?')) return;
+      dirty = false;
+      currentPageIndex = -1;
+      editorView.style.display = 'none';
+      saveBar.style.display = 'none';
+      dashboardView.style.display = 'block';
+      backBtn.style.display = 'none';
+      renderDashboard();
+      updateProgress();
+    }
+
+    backBtn.addEventListener('click', goBack);
+    prevBtn.addEventListener('click', () => { if (currentPageIndex > 0) openEditor(currentPageIndex - 1); });
+    nextBtn.addEventListener('click', () => { if (currentPageIndex < pageFiles.length - 1) openEditor(currentPageIndex + 1); });
+    saveBtn.addEventListener('click', save);
+    doneBtn.addEventListener('click', toggleDone);
+
+    window.addEventListener('beforeunload', function(e) {
+      if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    });
+
+    init();
+  </script>
+</body>
+</html>
