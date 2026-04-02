@@ -21,10 +21,10 @@ export default async function handler(req, res) {
     }
 
     if (file && html) {
-      if (!file.startsWith('site/') || file.includes('..')) {
+      if (!file.endsWith('.html') || file.includes('..') || file.includes('/')) {
         return res.status(400).json({ error: 'Invalid file path' });
       }
-      await commitFile(token, file, html, `Copy update: ${file.replace('site/', '')}`);
+      await commitFile(token, file, html, `Copy update: ${file}`);
       return res.status(200).json({ ok: true, type: 'copy', file });
     }
 

@@ -358,7 +358,7 @@
         const saveRes = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ file: 'site/' + file, html: updatedHtml })
+          body: JSON.stringify({ file: file, html: updatedHtml })
         });
 
         if (!saveRes.ok) {
