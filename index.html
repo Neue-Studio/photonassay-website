@@ -1928,6 +1928,32 @@
       line-height: 1.7;
       color: var(--grey-500);
     }
+    .faq__answer-inner p {
+      margin-bottom: var(--space-3);
+    }
+    .faq__answer-inner p:last-of-type {
+      margin-bottom: var(--space-4);
+    }
+    .faq__answer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .faq__answer-cta:hover {
+      color: var(--gold-hover);
+    }
+    .faq__answer-cta svg {
+      transition: transform 0.3s ease;
+    }
+    .faq__answer-cta:hover svg {
+      transform: translateX(4px);
+    }
 
     /* ============================================
        SCROLL ANIMATIONS
@@ -3587,7 +3613,11 @@
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a1">PhotonAssay™ uses high-energy X-rays from a linear accelerator to excite atomic nuclei within a sample. The resulting gamma-ray signatures are measured to determine gold and other element concentrations — all without destroying or chemically altering the sample.</div>
+            <div class="faq__answer-inner" data-copy-id="home-faq-a1">
+              <p>PhotonAssay™ uses high-energy X-rays from a linear accelerator to excite atomic nuclei within a sample. The resulting gamma-ray signatures are measured to determine gold and other element concentrations — all without destroying or chemically altering the sample.</p>
+              <p>The entire process takes approximately two minutes per sample, analysing up to 500 grams at a time — significantly more representative than traditional methods.</p>
+              <a href="#" class="faq__answer-cta">Learn more about the technology <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
         <div class="faq__item reveal">
@@ -3596,7 +3626,11 @@
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a2">Fire assay requires high-temperature furnaces, lead-based fluxes, and hours of processing time. PhotonAssay™ delivers results in approximately two minutes, uses no hazardous chemicals, generates zero Scope 1 emissions, and preserves the sample for re-analysis.</div>
+            <div class="faq__answer-inner" data-copy-id="home-faq-a2">
+              <p>Fire assay requires high-temperature furnaces, lead-based fluxes, and hours of processing time. PhotonAssay™ delivers results in approximately two minutes, uses no hazardous chemicals, generates zero Scope 1 emissions, and preserves the sample for re-analysis.</p>
+              <p>Unlike fire assay, PhotonAssay™ is non-destructive — samples can be re-tested or archived for future reference, providing greater confidence in results.</p>
+              <a href="#" class="faq__answer-cta">See the full comparison <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
         <div class="faq__item reveal">
@@ -3605,7 +3639,11 @@
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a3">PhotonAssay™ analyses samples up to 500 grams — significantly larger than the typical 30–50 gram fire assay charge. This larger sample size provides more representative results and reduces sampling error.</div>
+            <div class="faq__answer-inner" data-copy-id="home-faq-a3">
+              <p>PhotonAssay™ analyses samples up to 500 grams — significantly larger than the typical 30–50 gram fire assay charge. This larger sample size provides more representative results and reduces sampling error.</p>
+              <p>Sample preparation is straightforward and compatible with existing laboratory workflows. Detailed guidelines are available in our technical documentation.</p>
+              <a href="resources.html" class="faq__answer-cta">View sample preparation guidelines <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
         <div class="faq__item reveal">
@@ -3614,7 +3652,11 @@
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a4">Yes. PhotonAssay™ units can be deployed directly to mine sites or operated within commercial laboratories. Chrysos offers multiple flexible leasing models to suit different operational requirements.</div>
+            <div class="faq__answer-inner" data-copy-id="home-faq-a4">
+              <p>Yes. PhotonAssay™ units can be deployed directly to mine sites or operated within commercial laboratories. Chrysos offers multiple flexible leasing models to suit different operational requirements.</p>
+              <p>On-site deployments deliver real-time grade control data, reducing reliance on external labs and cutting turnaround times from days to minutes.</p>
+              <a href="contact.html" class="faq__answer-cta">Talk to us about deployment options <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
         <div class="faq__item reveal">
@@ -3623,7 +3665,11 @@
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a5">PhotonAssay™ currently measures gold, silver, and copper concentrations. Research and development is underway to expand the range of detectable elements.</div>
+            <div class="faq__answer-inner" data-copy-id="home-faq-a5">
+              <p>PhotonAssay™ currently measures gold, silver, and copper concentrations. Research and development is underway to expand the range of detectable elements.</p>
+              <p>Multi-element analysis is performed simultaneously from a single measurement, providing broader geochemical insight without additional processing time.</p>
+              <a href="resources.html" class="faq__answer-cta">Read the multi-element technical note <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
         <div class="faq__item reveal">
@@ -3632,7 +3678,11 @@
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a6">Yes. PhotonAssay™ results have been independently validated and the technology is deployed in accredited commercial laboratories worldwide. A 2025 GHD lifecycle assessment also confirmed its environmental performance benefits.</div>
+            <div class="faq__answer-inner" data-copy-id="home-faq-a6">
+              <p>Yes. PhotonAssay™ results have been independently validated and the technology is deployed in accredited commercial laboratories worldwide. A 2025 GHD lifecycle assessment also confirmed its environmental performance benefits.</p>
+              <p>Independent validation studies and accreditation documentation are available for review. Chrysos works closely with regulatory bodies and industry standards organisations.</p>
+              <a href="resources.html" class="faq__answer-cta">Access validation documentation <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
       </div>
