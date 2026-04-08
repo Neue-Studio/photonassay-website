@@ -73,6 +73,7 @@
     .field__input:focus { border-color: var(--gold); }
     .field__input--short { resize: none; }
     .field__input--dirty { border-left: 3px solid var(--gold); }
+    .field__input--url { font-family: var(--font); font-size: 13px; color: var(--grey-700); resize: none; }
     .field__charcount { font-size: 11px; color: var(--grey-300); text-align: right; margin-top: 4px; }
 
     /* SAVE BAR */
@@ -287,31 +288,49 @@
           editorFields.appendChild(heading);
         }
 
-        const el = doc.querySelector('[data-copy-id="' + section.id + '"]');
-        const currentText = el ? el.textContent.trim() : '';
-        originalValues[section.id] = currentText;
+        const isUrl = section.type === 'url';
+        const lookupId = isUrl ? section.id.replace(/-url$/, '') : section.id;
+        const el = doc.querySelector('[data-copy-id="' + lookupId + '"]');
+        const linkEl = el && isUrl ? (el.tagName === 'A' ? el : el.closest('a')) : null;
+        const currentValue = el ? (isUrl ? ((linkEl && linkEl.getAttribute('href')) || '') : el.textContent.trim()) : '';
+        originalValues[section.id] = currentValue;
 
         const field = document.createElement('div');
         field.className = 'field';
 
-        const isShort = section.type === 'short';
-        const rows = isShort ? 1 : Math.max(3, Math.min(8, Math.ceil(currentText.length / 80)));
+        if (isUrl) {
+          field.innerHTML = `
+            <div class="field__label">${section.label}</div>
+            <div class="field__guidance">${section.guidance}</div>
+            <input type="url" class="field__input field__input--url"
+                   data-id="${section.id}"
+                   data-type="url"
+                   placeholder="https://..."
+                   value="${escapeHtml(currentValue)}"
+                   spellcheck="false">
+          `;
+        } else {
+          const isShort = section.type === 'short';
+          const rows = isShort ? 1 : Math.max(3, Math.min(8, Math.ceil(currentValue.length / 80)));
 
-        field.innerHTML = `
-          <div class="field__label">${section.label}</div>
-          <div class="field__guidance">${section.guidance}</div>
-          <textarea class="field__input ${isShort ? 'field__input--short' : ''}"
-                    data-id="${section.id}"
-                    rows="${rows}"
-                    spellcheck="true">${escapeHtml(currentText)}</textarea>
-          <div class="field__charcount"><span class="cc-count">${currentText.length}</span> chars</div>
-        `;
+          field.innerHTML = `
+            <div class="field__label">${section.label}</div>
+            <div class="field__guidance">${section.guidance}</div>
+            <textarea class="field__input ${isShort ? 'field__input--short' : ''}"
+                      data-id="${section.id}"
+                      data-type="${section.type}"
+                      rows="${rows}"
+                      spellcheck="true">${escapeHtml(currentValue)}</textarea>
+            <div class="field__charcount"><span class="cc-count">${currentValue.length}</span> chars</div>
+          `;
+        }
 
-        const textarea = field.querySelector('textarea');
-        textarea.addEventListener('input', function() {
+        const inputEl = field.querySelector('.field__input');
+        inputEl.addEventListener('input', function() {
           dirty = true;
           this.classList.toggle('field__input--dirty', this.value !== originalValues[section.id]);
-          this.closest('.field').querySelector('.cc-count').textContent = this.value.length;
+          const ccEl = this.closest('.field').querySelector('.cc-count');
+          if (ccEl) ccEl.textContent = this.value.length;
 
           const file = pageFiles[currentPageIndex];
           if (status[file] === 'not-started') {
@@ -347,10 +366,19 @@
         const html = await fetch(RAW_BASE + '/' + file + '?t=' + Date.now()).then(r => r.text());
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        document.querySelectorAll('.field__input[data-id]').forEach(textarea => {
-          const id = textarea.dataset.id;
-          const el = doc.querySelector('[data-copy-id="' + id + '"]');
-          if (el) el.textContent = textarea.value;
+        document.querySelectorAll('.field__input[data-id]').forEach(input => {
+          const id = input.dataset.id;
+          const type = input.dataset.type;
+          const lookupId = type === 'url' ? id.replace(/-url$/, '') : id;
+          const el = doc.querySelector('[data-copy-id="' + lookupId + '"]');
+          if (el) {
+            if (type === 'url') {
+              var linkEl = el.tagName === 'A' ? el : el.closest('a');
+              if (linkEl) linkEl.setAttribute('href', input.value);
+            } else {
+              el.textContent = input.value;
+            }
+          }
         });
 
         const updatedHtml = '<!DOCTYPE html>\n' + doc.documentElement.outerHTML;

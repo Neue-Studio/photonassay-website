@@ -3160,7 +3160,7 @@ No chemicals. No fire. No compromise. </p>
           <!-- Slide 1: Ravenswood Case Study -->
           <div class="cases__carousel-slide">
             <div class="cases__featured-content">
-              <div class="cases__featured-label">Featured Case Study</div>
+              <div class="cases__featured-label" data-copy-id="home-cases-card1-label">Featured Case Study</div>
               <h3 data-copy-id="home-cases-card1-title">How Ravenswood Gold reduced assay costs by 5-10%</h3>
               <p data-copy-id="home-cases-card1-body">Deploying PhotonAssay™ on-site transformed grade control enabling near real-time decision making while increasing reconciliation.</p>
               <a href="ravenswood.html" class="arrow-link" data-copy-id="home-cases-card1-link">Read the full story</a>
@@ -3172,7 +3172,7 @@ No chemicals. No fire. No compromise. </p>
           <!-- Slide 2: Data Quality Interview -->
           <div class="cases__carousel-slide">
             <div class="cases__featured-content">
-              <div class="cases__featured-label">Featured Interview</div>
+              <div class="cases__featured-label" data-copy-id="home-cases-card2-label">Featured Interview</div>
               <h3 data-copy-id="home-cases-card2-title">The data quality conversation your block model depends on</h3>
               <p data-copy-id="home-cases-card2-body">We sat down to talk with Dr. Simon Dominy CP/QP to learn what better assay data actually means for gold miners from early exploration through to production.</p>
               <a href="#" class="arrow-link" data-copy-id="home-cases-card2-link">Read the full story</a>
@@ -3184,10 +3184,10 @@ No chemicals. No fire. No compromise. </p>
           <!-- Slide 3: Code Compliance Webinar -->
           <div class="cases__carousel-slide">
             <div class="cases__featured-content">
-              <div class="cases__featured-label">Featured Webinar</div>
-              <h3 data-copy-id="”home-cases-card3-title”">PhotonAssay™ code “compliance” explained</h3>
-              <p data-copy-id="”home-cases-card3-body”">CP/QP Dr. Simon Dominy explains how PhotonAssay™ fits within international reporting codes (JORC, NI-43101 &amp; PERC) and what MRM teams need to know when using PhotonAssay™ data in public reporting.</p>
-              <a href="”#”" class="”arrow-link”" data-copy-id="”home-cases-card3-link”">Read the full story</a>
+              <div class="cases__featured-label" data-copy-id="home-cases-card3-label">Featured Webinar</div>
+              <h3 data-copy-id="home-cases-card3-title">PhotonAssay™ code "compliance" explained</h3>
+              <p data-copy-id="home-cases-card3-body">CP/QP Dr. Simon Dominy explains how PhotonAssay™ fits within international reporting codes (JORC, NI-43101 &amp; PERC) and what MRM teams need to know when using PhotonAssay™ data in public reporting.</p>
+              <a href="#" class="arrow-link" data-copy-id="home-cases-card3-link">Read the full story</a>
             </div>
             <div class="cases__featured-image">
               <div style="width:100%;height:100%;background:var(--grey-700);display:flex;align-items:center;justify-content:center;color:var(--grey-300);font-size:13px;letter-spacing:0.05em;">Compliance Webinar — Image TBC</div>
@@ -3196,7 +3196,7 @@ No chemicals. No fire. No compromise. </p>
           <!-- Slide 4: DQO Paper -->
           <div class="cases__carousel-slide">
             <div class="cases__featured-content">
-              <div class="cases__featured-label">Featured Paper</div>
+              <div class="cases__featured-label" data-copy-id="home-cases-card4-label">Featured Paper</div>
               <h3 data-copy-id="home-cases-card4-title">Studies without DQOs are just guesswork</h3>
               <p data-copy-id="home-cases-card4-body">Rene Sterk (RSC) explains why every feasibility study should start with data quality objectives.</p>
               <a href="#" class="arrow-link" data-copy-id="home-cases-card4-link">Read the full story</a>
@@ -3208,7 +3208,7 @@ No chemicals. No fire. No compromise. </p>
           <!-- Slide 5: Spanish Webinar -->
           <div class="cases__carousel-slide">
             <div class="cases__featured-content">
-              <div class="cases__featured-label">Featured Webinar</div>
+              <div class="cases__featured-label" data-copy-id="home-cases-card5-label">Featured Webinar</div>
               <h3 data-copy-id="home-cases-card5-title">Introducción a PhotonAssay™ en español</h3>
               <p data-copy-id="home-cases-card5-body">Únete al equipo de Chrysos para aprender cómo PhotonAssay™ está cambiando las reglas del juego para el oro, la plata y el cobre</p>
               <a href="#" class="arrow-link" data-copy-id="home-cases-card5-link">Ver el webinar</a>
@@ -3413,7 +3413,7 @@ No chemicals. No fire. No compromise. </p>
     <div class="container">
       <div class="global__header reveal">
         <p class="eyebrow" data-copy-id="home-global-eyebrow">Global Presence</p>
-        <div class="global__hero-stat counter-value" data-target="30" data-suffix="+" data-copy-id="home-global-stat-value">40+</div>
+        <div class="global__hero-stat counter-value" data-target="40" data-suffix="+" data-copy-id="home-global-stat-value">40+</div>
         <div class="global__hero-stat-label" data-copy-id="home-global-stat-label">units deployed across 5 continents</div>
       </div>
       <div class="global__map reveal">
@@ -3610,68 +3610,224 @@ No chemicals. No fire. No compromise. </p>
         <h2 data-copy-id="home-faq-headline">Frequently asked questions</h2>
       </div>
       <div class="faq__list">
+        <!-- FAQ 1 -->
         <div class="faq__item reveal">
           <button class="faq__question" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
             <span data-copy-id="home-faq-q1">Can I use PhotonAssay™ results in my JORC and NI 43-101 resource and reserve statements?</span>
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a1">Yes. PhotonAssay™ results are routinely included in JORC and NI 43-101 compliant resource and reserve statements and are trusted by Competent and Qualified Persons worldwide. We sat down with Dr. Simon Dominy CP/QP to answer this question. Read the paper or watch the webinar to learn how PhotonAssay™ fits within international reporting codes.</div>
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a1-p1">Yes. PhotonAssay™ results are routinely included in JORC and NI 43-101 compliant resource and reserve statements and are trusted by Competent and Qualified Persons worldwide. We sat down with Dr. Simon Dominy CP/QP to answer this question. Read the paper or watch the webinar to learn how PhotonAssay™ fits within international reporting codes.</p>
+              <p data-copy-id="home-faq-a1-p2"></p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a1-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
+        <!-- FAQ 2 -->
         <div class="faq__item reveal">
           <button class="faq__question" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
             <span data-copy-id="home-faq-q2"> What is the lower detection limit for gold?</span>
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a2">PhotonAssay™ achieves a lower limit of detection of 0.01 ppm on reagent blanks, and 0.015–0.030 ppm on typical gold ores — well within the range required for most exploration and production applications. At the upper end, samples up to 35,000 ppm can be measured without dilution. Relative precision is around 4% at 1 ppm, comparable to fire assay at the same grade.</div>
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a2-p1">PhotonAssay™ achieves a lower limit of detection of 0.01 ppm on reagent blanks, and 0.015–0.030 ppm on typical gold ores — well within the range required for most exploration and production applications. At the upper end, samples up to 35,000 ppm can be measured without dilution. Relative precision is around 4% at 1 ppm, comparable to fire assay at the same grade.</p>
+              <p data-copy-id="home-faq-a2-p2"></p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a2-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
+        <!-- FAQ 3 -->
         <div class="faq__item reveal">
           <button class="faq__question" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
             <span data-copy-id="home-faq-q3">How do I know I can trust the results?</span>
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a3">You don't. Until you do. But really, its about you and your colleagues understanding the data and the economics of switching to PhotonAssay™ that will build the trust. The answer lies somewhere amongst the following:  
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a3-p1">You don't. Until you do. But really, its about you and your colleagues understanding the data and the economics of switching to PhotonAssay™ that will build the trust. The answer lies somewhere amongst the following:
 
 1) The data quality objectives your project needs to "prove" that PhotonAssay™ data is more accurate and precise than your current method
-2) Getting comfortable with what the industry is doing and trusting that their due diligence can support your exploration of the technology, and ultimately 
-3) Whether running your samples PhotonAssay™ will save you time and money. 
+2) Getting comfortable with what the industry is doing and trusting that their due diligence can support your exploration of the technology, and ultimately
+3) Whether running your samples PhotonAssay™ will save you time and money.
 
-These are nuanced and important pieces. And we'd love to connect with you about them. Get in touch and one of our colleagues will gladly dive in with you.</div>
+These are nuanced and important pieces. And we'd love to connect with you about them. Get in touch and one of our colleagues will gladly dive in with you.</p>
+              <p data-copy-id="home-faq-a3-p2"></p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a3-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
+        <!-- FAQ 4 -->
         <div class="faq__item reveal">
-          <button class="faq__question" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
             <span data-copy-id="home-faq-q4">What’s the QA/QC process?</span>
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a4">PhotonAssay™ uses blanks and Certified Reference Materials to validate instrument performance, precision and calibration in real time. Every result is accompanied by an instrument precision value calculated specifically for that sample — not a batch average, but a value tied to exactly what was just measured. 
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a4-p1">PhotonAssay™ uses blanks and Certified Reference Materials to validate instrument performance, precision and calibration in real time. Every result is accompanied by an instrument precision value calculated specifically for that sample — not a batch average, but a value tied to exactly what was just measured.
 
-The system automatically flags samples with unusual properties, including high naturally occurring uranium or thorium, interfering elements, or unusually heterogeneous samples that may indicate coarse or nuggety gold. All QA/QC data is logged digitally and integrates seamlessly with LIMS and mine information systems, maintaining complete audit trails. 
+The system automatically flags samples with unusual properties, including high naturally occurring uranium or thorium, interfering elements, or unusually heterogeneous samples that may indicate coarse or nuggety gold. All QA/QC data is logged digitally and integrates seamlessly with LIMS and mine information systems, maintaining complete audit trails.
 
-Unit performance is benchmarked against the global PhotonAssay™ fleet and monitored by specialist support around the clock.</div>
+Unit performance is benchmarked against the global PhotonAssay™ fleet and monitored by specialist support around the clock.</p>
+              <p data-copy-id="home-faq-a4-p2"></p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a4-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
+        <!-- FAQ 5 -->
         <div class="faq__item reveal">
-          <button class="faq__question" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
             <span data-copy-id="home-faq-q5">Which CRMs are compatible with PhotonAssay™? </span>
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a5">PhotonAssay™ has been validated against a broad range of Certified Reference Materials, showing excellent agreement with fire assay across all ore types and grades, with a correlation greater than 0.99. In most cases the same CRMs used in your current fire assay workflow are compatible with PhotonAssay™. For specific compatibility guidance, reach out to your local PhotonAssay™ laboratory or specialist.</div>
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a5-p1">PhotonAssay™ has been validated against a broad range of Certified Reference Materials, showing excellent agreement with fire assay across all ore types and grades, with a correlation greater than 0.99. In most cases the same CRMs used in your current fire assay workflow are compatible with PhotonAssay™. For specific compatibility guidance, reach out to your local PhotonAssay™ laboratory or specialist.</p>
+              <p data-copy-id="home-faq-a5-p2"></p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a5-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
+        <!-- FAQ 6 -->
         <div class="faq__item reveal">
-          <button class="faq__question" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
             <span data-copy-id="home-faq-q6">How does PhotonAssay™ work?</span>
             <span class="faq__icon"></span>
           </button>
           <div class="faq__answer">
-            <div class="faq__answer-inner" data-copy-id="home-faq-a6">A high-energy linear accelerator (LINAC) fires precisely timed pulses of X-rays through a 500-gram sample. Those X-rays penetrate the entire sample — not just the surface — exciting atomic nuclei directly. Gold, silver and copper each respond with a distinct gamma ray signature. Precision germanium detectors read those signatures and return a result in under two minutes. The whole process is fully automated. Samples are barcoded, queued, irradiated and measured without operator intervention. Results are delivered digitally to LIMS, with QA/QC data logged in real time. </div>
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a6-p1">A high-energy linear accelerator (LINAC) fires precisely timed pulses of X-rays through a 500-gram sample. Those X-rays penetrate the entire sample — not just the surface — exciting atomic nuclei directly. Gold, silver and copper each respond with a distinct gamma ray signature. Precision germanium detectors read those signatures and return a result in under two minutes. The whole process is fully automated. Samples are barcoded, queued, irradiated and measured without operator intervention. Results are delivered digitally to LIMS, with QA/QC data logged in real time. </p>
+              <p data-copy-id="home-faq-a6-p2"></p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a6-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 7 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q7">What sample sizes can PhotonAssay™ analyse?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a7-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a7-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a7-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 8 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q8">Can PhotonAssay™ be deployed at a mine site?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a8-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a8-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a8-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 9 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q9">What elements can PhotonAssay™ detect?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a9-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a9-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a9-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 10 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q10">Is PhotonAssay™ accredited and independently validated?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a10-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a10-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a10-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 11 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q11">How long does analysis take?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a11-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a11-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a11-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 12 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q12">What are the environmental benefits?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a12-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a12-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a12-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 13 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q13">How does PhotonAssay™ handle high-grade samples?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a13-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a13-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a13-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 14 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q14">What is the cost of using PhotonAssay™?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a14-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a14-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a14-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </div>
+        </div>
+        <!-- FAQ 15 -->
+        <div class="faq__item reveal">
+          <button class="faq__question" onclick="this.parentElement.classList.toggle(‘is-open’);var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+’px’;">
+            <span data-copy-id="home-faq-q15">Where is PhotonAssay™ currently deployed?</span>
+            <span class="faq__icon"></span>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">
+              <p data-copy-id="home-faq-a15-p1">Placeholder answer paragraph one.</p>
+              <p data-copy-id="home-faq-a15-p2">Placeholder answer paragraph two.</p>
+              <a href="#" class="faq__answer-cta"><span data-copy-id="home-faq-a15-cta">Learn more</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
           </div>
         </div>
       </div>
@@ -3783,13 +3939,19 @@ Unit performance is benchmarked against the global PhotonAssay™ fleet and moni
     if (timeline) timelineObserver.observe(timeline);
 
     // === NUMBER COUNTER ANIMATION ===
+    // Reads target number and suffix from the element's current textContent
+    // so the copy editor can change values without breaking the animation.
     const counterObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const el = entry.target;
-          const target = parseInt(el.dataset.target);
-          const prefix = el.dataset.prefix || '';
-          const suffix = el.dataset.suffix || '';
+          const text = el.textContent.trim();
+          const match = text.match(/^([~]?)(\d+)(.*)$/);
+          if (!match) return;
+
+          const prefix = match[1] || '';
+          const target = parseInt(match[2]);
+          const suffix = match[3] || '';
 
           if (isNaN(target)) return;
 
@@ -3812,7 +3974,7 @@ Unit performance is benchmarked against the global PhotonAssay™ fleet and moni
       });
     }, { threshold: 0.5 });
 
-    document.querySelectorAll('.counter-value[data-target]').forEach(el => {
+    document.querySelectorAll('.counter-value').forEach(el => {
       counterObserver.observe(el);
     });
 
