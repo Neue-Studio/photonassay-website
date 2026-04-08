@@ -914,6 +914,68 @@
     }
 
     /* ============================================
+       SPEAKER ACCORDION
+       ============================================ */
+    .speaker-list { display: flex; flex-direction: column; gap: 0; }
+    .speaker-item { border-bottom: 1px solid var(--grey-100); }
+    .speaker-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--space-3) 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font);
+      text-align: left;
+      transition: opacity 0.2s;
+    }
+    .speaker-header:hover { opacity: 0.7; }
+    .speaker-toggle {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .speaker-toggle::before,
+    .speaker-toggle::after {
+      content: '';
+      position: absolute;
+      background: var(--grey-300);
+      transition: transform 0.3s ease;
+    }
+    .speaker-toggle::before { width: 12px; height: 1.5px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .speaker-toggle::after { width: 1.5px; height: 12px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+    .speaker-item.is-open .speaker-toggle::after { transform: translate(-50%, -50%) rotate(90deg); }
+    .speaker-bio {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .speaker-bio__inner {
+      padding: 0 0 var(--space-4) 60px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--grey-500);
+    }
+    .speaker-bio__inner p { margin-bottom: var(--space-3); }
+    .speaker-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--gold);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .speaker-linkedin:hover { color: var(--gold-hover); }
+    .speaker-linkedin svg { transition: transform 0.3s ease; }
+    .speaker-linkedin:hover svg { transform: translateX(4px); }
+
+    /* ============================================
        FOOTER
        ============================================ */
     .footer {
@@ -1359,33 +1421,77 @@
           <p style="margin-bottom: var(--space-4);" data-copy-id="event-details-p1">[As PhotonAssay™ adoption grows, the question of how its data integrates with international mineral resource reporting standards becomes increasingly important. This webinar addresses that directly.]</p>
           <p style="margin-bottom: var(--space-4);" data-copy-id="event-details-p2">[Our panel of technical experts will walk through how PhotonAssay results meet the requirements of both JORC Code (2012) and NI 43-101 reporting frameworks. We'll cover data quality assurance protocols, certified reference material performance, and how major audit firms are treating PhotonAssay data in their reviews.]</p>
           <h3 style="margin-top: var(--space-6); margin-bottom: var(--space-4);" data-copy-id="event-speakers-heading">Speakers</h3>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); margin-bottom: var(--space-6);">
-            <div style="display: flex; align-items: center; gap: var(--space-3);">
-              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
-              <div>
-                <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name1">Speaker Name</div>
-                <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role1">Position, Company</div>
+          <div class="speaker-list" style="margin-bottom: var(--space-6);">
+            <div class="speaker-item">
+              <button class="speaker-header" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                <div style="display: flex; align-items: center; gap: var(--space-3); flex: 1;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
+                  <div>
+                    <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name1">Dr. Simon Dominy</div>
+                    <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role1">Consulting Geologist, CP/QP</div>
+                  </div>
+                </div>
+                <span class="speaker-toggle"></span>
+              </button>
+              <div class="speaker-bio">
+                <div class="speaker-bio__inner">
+                  <p data-copy-id="event-speakers-bio1">Placeholder biography. Add speaker credentials, experience, and relevance to this event.</p>
+                  <a href="#" class="speaker-linkedin" data-copy-id="event-speakers-linkedin1"><span data-copy-id="event-speakers-linkedin1-text">View LinkedIn profile</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
               </div>
             </div>
-            <div style="display: flex; align-items: center; gap: var(--space-3);">
-              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
-              <div>
-                <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name2">Speaker Name</div>
-                <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role2">Position, Company</div>
+            <div class="speaker-item">
+              <button class="speaker-header" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                <div style="display: flex; align-items: center; gap: var(--space-3); flex: 1;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
+                  <div>
+                    <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name2">Speaker Name</div>
+                    <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role2">Position, Company</div>
+                  </div>
+                </div>
+                <span class="speaker-toggle"></span>
+              </button>
+              <div class="speaker-bio">
+                <div class="speaker-bio__inner">
+                  <p data-copy-id="event-speakers-bio2">Placeholder biography.</p>
+                  <a href="#" class="speaker-linkedin" data-copy-id="event-speakers-linkedin2"><span data-copy-id="event-speakers-linkedin2-text">View LinkedIn profile</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
               </div>
             </div>
-            <div style="display: flex; align-items: center; gap: var(--space-3);">
-              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
-              <div>
-                <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name3">Speaker Name</div>
-                <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role3">Position, Company</div>
+            <div class="speaker-item">
+              <button class="speaker-header" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                <div style="display: flex; align-items: center; gap: var(--space-3); flex: 1;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
+                  <div>
+                    <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name3">Speaker Name</div>
+                    <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role3">Position, Company</div>
+                  </div>
+                </div>
+                <span class="speaker-toggle"></span>
+              </button>
+              <div class="speaker-bio">
+                <div class="speaker-bio__inner">
+                  <p data-copy-id="event-speakers-bio3">Placeholder biography.</p>
+                  <a href="#" class="speaker-linkedin" data-copy-id="event-speakers-linkedin3"><span data-copy-id="event-speakers-linkedin3-text">View LinkedIn profile</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
               </div>
             </div>
-            <div style="display: flex; align-items: center; gap: var(--space-3);">
-              <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
-              <div>
-                <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name4">Speaker Name</div>
-                <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role4">Position, Company</div>
+            <div class="speaker-item">
+              <button class="speaker-header" onclick="this.parentElement.classList.toggle('is-open');var a=this.nextElementSibling;a.style.maxHeight=a.style.maxHeight?null:a.scrollHeight+'px';">
+                <div style="display: flex; align-items: center; gap: var(--space-3); flex: 1;">
+                  <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--grey-100); flex-shrink: 0;"></div>
+                  <div>
+                    <div style="font-weight: 500; color: var(--grey-900); font-size: 15px;" data-copy-id="event-speakers-name4">Speaker Name</div>
+                    <div style="font-size: 13px; color: var(--grey-500);" data-copy-id="event-speakers-role4">Position, Company</div>
+                  </div>
+                </div>
+                <span class="speaker-toggle"></span>
+              </button>
+              <div class="speaker-bio">
+                <div class="speaker-bio__inner">
+                  <p data-copy-id="event-speakers-bio4">Placeholder biography.</p>
+                  <a href="#" class="speaker-linkedin" data-copy-id="event-speakers-linkedin4"><span data-copy-id="event-speakers-linkedin4-text">View LinkedIn profile</span> <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
               </div>
             </div>
           </div>
