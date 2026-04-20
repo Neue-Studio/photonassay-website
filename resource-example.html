@@ -183,7 +183,9 @@
     .dl-modal {
       background: var(--white);
       width: 100%;
-      max-width: 480px;
+      max-width: 520px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
       padding: 48px 48px 40px;
       position: relative;
       transform: translateY(16px) scale(0.98);
@@ -247,7 +249,8 @@
       color: var(--grey-700);
     }
     .dl-form__field input,
-    .dl-form__field select {
+    .dl-form__field select,
+    .dl-form__field textarea {
       font-family: var(--font);
       font-size: 14px;
       font-weight: 300;
@@ -261,12 +264,26 @@
       -webkit-appearance: none;
       border-radius: 0;
     }
-    .dl-form__field input:focus,
-    .dl-form__field select:focus {
-      border-color: var(--gold);
-      background: var(--white);
+    .dl-form__field textarea {
+      resize: vertical;
+      min-height: 96px;
+      line-height: 1.5;
     }
-    .dl-form__field input::placeholder { color: var(--grey-300); }
+    .dl-form__field select {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23555' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .dl-form__field input:focus,
+    .dl-form__field select:focus,
+    .dl-form__field textarea:focus {
+      border-color: var(--gold);
+      background-color: var(--white);
+    }
+    .dl-form__field input::placeholder,
+    .dl-form__field textarea::placeholder { color: var(--grey-300); }
+    .dl-form__required { color: #E53935; font-weight: 400; }
     .dl-form__consent {
       font-size: 12px;
       font-weight: 300;
@@ -1628,37 +1645,46 @@
       <div class="dl-modal__title" data-copy-id="resource-modal-title">Get the full technical note</div>
       <p class="dl-modal__doc" data-copy-id="resource-modal-doc"><strong>TN-101: PhotonAssay™ Measurement Performance</strong><br>PDF · 12 pages · 2.4 MB</p>
       <form class="dl-form" id="dlForm">
+        <div class="dl-form__field">
+          <label for="dl-email">Email <span class="dl-form__required">*</span></label>
+          <input type="email" id="dl-email" placeholder="name@company.com" autocomplete="email" required>
+        </div>
         <div class="dl-form__row">
           <div class="dl-form__field">
-            <label for="dl-first">First name</label>
-            <input type="text" id="dl-first" placeholder="Jane" autocomplete="given-name">
+            <label for="dl-first">First name <span class="dl-form__required">*</span></label>
+            <input type="text" id="dl-first" autocomplete="given-name" required>
           </div>
           <div class="dl-form__field">
-            <label for="dl-last">Last name</label>
-            <input type="text" id="dl-last" placeholder="Smith" autocomplete="family-name">
+            <label for="dl-last">Last Name <span class="dl-form__required">*</span></label>
+            <input type="text" id="dl-last" autocomplete="family-name" required>
           </div>
         </div>
         <div class="dl-form__field">
-          <label for="dl-email">Work email</label>
-          <input type="email" id="dl-email" placeholder="jane@company.com" autocomplete="email">
-        </div>
-        <div class="dl-form__field">
-          <label for="dl-company">Company</label>
-          <input type="text" id="dl-company" placeholder="Acme Mining Co." autocomplete="organization">
-        </div>
-        <div class="dl-form__field">
-          <label for="dl-role">Role</label>
-          <select id="dl-role">
-            <option value="" disabled selected>Select your role</option>
-            <option>Lab Manager</option>
-            <option>Mine Site Operator</option>
-            <option>Geologist</option>
-            <option>Technical Director</option>
-            <option>Business Development</option>
-            <option>Other</option>
+          <label for="dl-region">Global Region <span class="dl-form__required">*</span></label>
+          <select id="dl-region" required>
+            <option value="" disabled selected>Please select</option>
+            <option>Asia Pacific</option>
+            <option>Africa</option>
+            <option>Middle East</option>
+            <option>Europe</option>
+            <option>USA &amp; Canada</option>
+            <option>Latin America &amp; Caribbean</option>
           </select>
         </div>
-        <p class="dl-form__consent">By submitting, you agree to Chrysos Corporation contacting you about PhotonAssay™. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <div class="dl-form__field">
+          <label for="dl-purpose">What is the purpose of your enquiry? <span class="dl-form__required">*</span></label>
+          <select id="dl-purpose" required>
+            <option value="" disabled selected>Please select</option>
+            <option>PhotonAssay Technology: for questions about leasing, pricing and unit specifications</option>
+            <option>Chrysos Careers: For job applications and career opportunities</option>
+            <option>Personal Interest: For general enquiries, or to stay up-to-date via news and email updates</option>
+          </select>
+        </div>
+        <div class="dl-form__field">
+          <label for="dl-message">What would you like to know or discuss?</label>
+          <textarea id="dl-message" rows="4" placeholder="Let us know your interest, questions, or what you're hoping to achieve with PhotonAssay&trade;"></textarea>
+        </div>
+        <p class="dl-form__consent">By submitting, you agree to Chrysos Corporation contacting you about PhotonAssay&trade;. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
         <button type="submit" class="dl-form__submit">
           Download now
           <svg viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
