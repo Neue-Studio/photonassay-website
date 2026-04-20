@@ -952,33 +952,65 @@
        NEWSLETTER
        ============================================ */
     .newsletter {
-      max-width: 480px;
-      margin: 0 auto;
+      background: var(--black);
+      padding: var(--section-pad) 0;
       text-align: center;
+    }
+    .newsletter .eyebrow {
+      justify-content: center;
+      color: var(--grey-300);
+      margin-bottom: var(--space-3);
+    }
+    .newsletter h2 {
+      color: var(--white);
+      margin-bottom: var(--space-2);
+    }
+    .newsletter__subtitle {
+      max-width: 480px;
+      margin: 0 auto var(--space-6);
+      color: var(--grey-300);
     }
     .newsletter__form {
       display: flex;
-      gap: var(--space-2);
-      margin-top: var(--space-4);
+      max-width: 480px;
+      margin: 0 auto;
+      gap: 0;
     }
-    .newsletter__form input {
+    .newsletter__input {
       flex: 1;
+      padding: 16px 0;
       font-family: var(--font);
       font-size: 15px;
       font-weight: 300;
-      padding: 14px 20px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.05);
       color: var(--white);
-      border-radius: 2px;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--grey-700);
       outline: none;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s ease;
     }
-    .newsletter__form input:focus {
-      border-color: var(--gold);
-    }
-    .newsletter__form input::placeholder {
+    .newsletter__input::placeholder {
       color: var(--grey-500);
+    }
+    .newsletter__input:focus {
+      border-bottom-color: var(--gold);
+    }
+    .newsletter__submit {
+      padding: 16px 32px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--black);
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .newsletter__submit:hover {
+      background: var(--gold);
+      color: var(--black);
     }
 
     /* EVENT FORM */
@@ -1168,17 +1200,9 @@
       .article h1 { font-size: 32px; }
 
       /* Newsletter */
-      .newsletter__form { flex-direction: column; }
-      .newsletter__form input {
-        font-size: 16px;
-        min-height: 48px;
-        width: 100%;
-      }
-      .newsletter__form .btn {
-        width: 100%;
-        justify-content: center;
-        min-height: 48px;
-      }
+      .newsletter__form { flex-direction: column; gap: var(--space-2); }
+      .newsletter__input { width: 100%; font-size: 16px; }
+      .newsletter__submit { width: 100%; min-height: 48px; }
 
       /* Buttons — global full-width + touch target */
       .btn {
@@ -1607,16 +1631,16 @@
   </section>
 
   <!-- NEWSLETTER CTA -->
-  <section class="section-dark">
-    <div class="container reveal">
-      <div class="newsletter">
-        <p class="eyebrow" style="justify-content: center;" data-copy-id="resources-newsletter-eyebrow">Stay Informed</p>
-        <h2 style="color: var(--white); font-size: 36px;" data-copy-id="resources-newsletter-headline">Get the latest from PhotonAssay™</h2>
-        <p style="color: var(--grey-300); margin-top: var(--space-2);" data-copy-id="resources-newsletter-body">The latest PhotonAssay™ news, deployment updates and technical insights delivered (with pleasant infrequence) straight to your inbox.</p>
-        <div class="newsletter__form">
-          <input type="email" placeholder="Your email address">
-          <a href="#" class="btn btn--gold">Subscribe</a>
-        </div>
+  <section class="newsletter">
+    <div class="container">
+      <div class="reveal">
+        <p class="eyebrow" data-copy-id="resources-newsletter-eyebrow">Stay Informed</p>
+        <h2 data-copy-id="resources-newsletter-headline">Stay up to date</h2>
+        <p class="newsletter__subtitle" data-copy-id="resources-newsletter-body">The latest PhotonAssay™ news, deployment updates and technical insights delivered (with pleasant infrequence) straight to your inbox.</p>
+        <form class="newsletter__form" onsubmit="return false;">
+          <input type="email" class="newsletter__input" placeholder="Your email address">
+          <button type="submit" class="newsletter__submit" data-copy-id="resources-newsletter-cta">Subscribe</button>
+        </form>
       </div>
     </div>
   </section>

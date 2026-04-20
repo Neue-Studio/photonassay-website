@@ -198,6 +198,7 @@
       { "id": "home-faq-a15-p2", "label": "FAQ 15 Answer Paragraph 2", "guidance": "Optional second paragraph. Leave empty if not needed.", "type": "long" },
       { "id": "home-faq-a15-cta", "label": "FAQ 15 CTA Text", "guidance": "Link text for the CTA. e.g. 'Learn more', 'Read the paper'. 2-5 words.", "type": "short" },
       { "id": "home-faq-a15-cta-url", "label": "FAQ 15 CTA Link URL", "guidance": "URL for the CTA link. e.g. 'resources.html' or '#'.", "type": "url" },
+      { "id": "home-newsletter-eyebrow", "label": "Newsletter Eyebrow", "guidance": "Section label. 1-3 words, uppercase.", "type": "short" },
       { "id": "home-newsletter-headline", "label": "Newsletter Headline", "guidance": "CTA headline for newsletter signup. 5-10 words. Compelling reason to subscribe.", "type": "short" },
       { "id": "home-newsletter-body", "label": "Newsletter Body", "guidance": "Supporting text for newsletter signup. 15-25 words. What subscribers get.", "type": "long" },
       { "id": "home-newsletter-cta", "label": "Newsletter CTA", "guidance": "Button text. 2-4 words, action-oriented.", "type": "short" },
@@ -361,7 +362,8 @@
       { "id": "resources-row10-desc", "label": "Library Row 10 Description", "guidance": "Brief description. 10-20 words.", "type": "long" },
       { "id": "resources-newsletter-eyebrow", "label": "Newsletter Eyebrow", "guidance": "Section label. 1-3 words, uppercase.", "type": "short" },
       { "id": "resources-newsletter-headline", "label": "Newsletter Headline", "guidance": "CTA headline for newsletter signup. 5-10 words.", "type": "short" },
-      { "id": "resources-newsletter-body", "label": "Newsletter Body", "guidance": "Supporting text for newsletter signup. 15-25 words.", "type": "long" }
+      { "id": "resources-newsletter-body", "label": "Newsletter Body", "guidance": "Supporting text for newsletter signup. 15-25 words.", "type": "long" },
+      { "id": "resources-newsletter-cta", "label": "Newsletter CTA", "guidance": "Button text. 2-4 words, action-oriented.", "type": "short" }
     ]
   },
   "resource-example.html": {
@@ -556,7 +558,8 @@
       { "id": "latest-events-card2-body", "label": "Events Card 2 Body", "guidance": "Placeholder or message for when no more events are listed. 10-20 words.", "type": "long" },
       { "id": "latest-newsletter-eyebrow", "label": "Newsletter Eyebrow", "guidance": "Section label. 1-3 words, uppercase.", "type": "short" },
       { "id": "latest-newsletter-heading", "label": "Newsletter Heading", "guidance": "CTA headline for newsletter signup. 5-10 words.", "type": "short" },
-      { "id": "latest-newsletter-body", "label": "Newsletter Body", "guidance": "Supporting text for newsletter signup. 15-25 words.", "type": "long" }
+      { "id": "latest-newsletter-body", "label": "Newsletter Body", "guidance": "Supporting text for newsletter signup. 15-25 words.", "type": "long" },
+      { "id": "latest-newsletter-cta", "label": "Newsletter CTA", "guidance": "Button text. 2-4 words, action-oriented.", "type": "short" }
     ]
   },
   "news-example.html": {
