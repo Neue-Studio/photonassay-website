@@ -1645,6 +1645,11 @@
     .tech__intro-image:hover .tech__intro-hint svg {
       transform: rotate(45deg);
     }
+    .tech__intro-hint-mobile { display: none; }
+    @media (hover: none) {
+      .tech__intro-hint-desktop { display: none; }
+      .tech__intro-hint-mobile { display: inline; }
+    }
 
     /* Process step images */
     .process__step-image {
@@ -3072,7 +3077,8 @@ No chemicals. No fire. No compromise.</p>
           </video>
           <div class="tech__intro-hint" aria-hidden="true">
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1v6m0 0v6m0-6h6M7 7H1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-            <span>Hover to open</span>
+            <span class="tech__intro-hint-desktop">Hover to open</span>
+            <span class="tech__intro-hint-mobile">Tap to open</span>
           </div>
         </div>
       </div>
