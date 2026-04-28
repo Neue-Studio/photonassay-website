@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500&amp;display=swap" rel="stylesheet">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <style>
     /* ============================================
        V2 DESIGN SYSTEM — Black & White Editorial
@@ -2634,6 +2635,77 @@
       line-height: 1.5;
     }
 
+    /* View switching inside modal */
+    .data-view[hidden] { display: none; }
+
+    /* Chart view */
+    .data-chart__legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-bottom: var(--space-4);
+      font-size: 12px;
+      color: var(--grey-500);
+    }
+    .data-chart__legend-item { display: inline-flex; align-items: center; gap: 8px; }
+    .data-chart__legend-swatch--square {
+      width: 10px; height: 10px; display: inline-block;
+    }
+    .data-chart__legend-swatch--line {
+      width: 16px; height: 2px; display: inline-block;
+    }
+    .data-chart__legend-swatch--dashed {
+      width: 16px; height: 0; display: inline-block;
+      border-top: 2px dashed var(--grey-500);
+    }
+    .data-chart__canvas-wrap {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      margin-bottom: var(--space-3);
+    }
+    .data-chart__footnote {
+      font-size: 12px;
+      color: var(--grey-400);
+      margin-bottom: var(--space-5);
+    }
+    .data-chart__cta-row {
+      display: flex;
+      justify-content: center;
+      padding-top: var(--space-3);
+      border-top: 1px solid var(--grey-100);
+    }
+
+    /* Back-to-chart link in values view */
+    .data-view__back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: var(--space-4);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: inherit;
+      transition: color 0.2s ease;
+    }
+    .data-view__back svg {
+      width: 12px; height: 12px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .data-view__back:hover { color: var(--gold); }
+    .data-view__back:hover svg { transform: translateX(-3px); }
+
+    @media (max-width: 700px) {
+      .data-chart__canvas-wrap { height: 320px; }
+      .data-chart__legend { gap: 12px; font-size: 11px; }
+    }
+
     /* Dense data table inside modal */
     .data-table {
       width: 100%;
@@ -4205,7 +4277,31 @@ Unit performance is benchmarked against the global PhotonAssay™ fleet and moni
       </button>
       <div class="data-modal__title">Real-world accuracy and precision</div>
       <div class="data-modal__sub">Results from a PhotonAssay™ implementation study, conducted on a gold deposit with moderate heterogeneity. Eight samples run seven times each via fire assay — then compared to a single PhotonAssay™ result.</div>
-      <div class="data-table__overflow">
+
+      <!-- Chart view (default) -->
+      <div class="data-view" id="dataView-chart">
+        <div class="data-chart__legend">
+          <span class="data-chart__legend-item"><span class="data-chart__legend-swatch--square" style="background:var(--near-black);"></span>Fire assay</span>
+          <span class="data-chart__legend-item"><span class="data-chart__legend-swatch--square" style="background:#C8102E;"></span>Fire assay outlier</span>
+          <span class="data-chart__legend-item"><span class="data-chart__legend-swatch--line" style="background:var(--gold);"></span>PhotonAssay™</span>
+          <span class="data-chart__legend-item"><span class="data-chart__legend-swatch--dashed"></span>Fire assay-to-extinction</span>
+        </div>
+        <div class="data-chart__canvas-wrap">
+          <canvas id="assayChart" role="img" aria-label="Log-scale comparison of fire assay measurements vs PhotonAssay across 8 samples, with red outlier markers">PhotonAssay closely tracks fire-assay-to-extinction even where individual fire assays vary widely (red points).</canvas>
+        </div>
+        <p class="data-chart__footnote">PA = PhotonAssay™ · FA = Fire Assay · All values in g/t Au · Highlighted outliers show fire assay variability on a single sample</p>
+        <div class="data-chart__cta-row">
+          <a href="#" class="btn btn--gold" onclick="showDataView('values'); return false;">View the values</a>
+        </div>
+      </div>
+
+      <!-- Values view -->
+      <div class="data-view" id="dataView-values" hidden>
+        <button type="button" class="data-view__back" onclick="showDataView('chart')">
+          <svg viewBox="0 0 12 12" fill="none"><path d="M11 6H1m0 0l4-4m-4 4l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back to chart
+        </button>
+        <div class="data-table__overflow">
         <table class="data-table">
           <thead>
             <tr>
@@ -4339,7 +4435,8 @@ Unit performance is benchmarked against the global PhotonAssay™ fleet and moni
           </tbody>
         </table>
       </div>
-      <div class="data-table__footnote">PA = PhotonAssay™ · FA = Fire Assay · All values in g/t Au · Highlighted outliers show fire assay variability on a single sample</div>
+        <div class="data-table__footnote">PA = PhotonAssay™ · FA = Fire Assay · All values in g/t Au · Highlighted outliers show fire assay variability on a single sample</div>
+      </div>
     </div>
   </div>
 
@@ -4347,10 +4444,152 @@ Unit performance is benchmarked against the global PhotonAssay™ fleet and moni
     function openDataModal() {
       document.getElementById('dataModal').classList.add('is-open');
       document.body.style.overflow = 'hidden';
+      // Always reset to the chart view when opening
+      showDataView('chart');
+      // Lazy-init the chart on first open
+      ensureAssayChart();
     }
     function closeDataModal() {
       document.getElementById('dataModal').classList.remove('is-open');
       document.body.style.overflow = '';
+    }
+
+    function showDataView(name) {
+      const chart = document.getElementById('dataView-chart');
+      const values = document.getElementById('dataView-values');
+      if (!chart || !values) return;
+      if (name === 'values') {
+        chart.hidden = true;
+        values.hidden = false;
+      } else {
+        chart.hidden = false;
+        values.hidden = true;
+      }
+      // Scroll modal back to top whenever the view changes
+      const inner = document.querySelector('.data-modal__inner');
+      if (inner) inner.scrollTop = 0;
+    }
+
+    let assayChartInstance = null;
+    function ensureAssayChart() {
+      if (assayChartInstance) return;
+      const canvas = document.getElementById('assayChart');
+      if (!canvas) return;
+      // Wait for Chart.js to be loaded
+      if (typeof Chart === 'undefined') {
+        setTimeout(ensureAssayChart, 80);
+        return;
+      }
+
+      const samples = ['S1','S2','S3','S4','S5','S6','S7','S8'];
+      const fa = [
+        [1.30, 0.79, 0.55, 0.48, 0.54, 0.49, 0.44],
+        [0.40, 0.44, 1.03, 0.36, 2.50, 0.67, 0.50],
+        [0.35, 0.65, 1.02, 5.34, 0.56, 0.35, 0.62],
+        [1.68, 5.46, 1.72, 1.66, 2.34, 1.93, 1.46],
+        [6.31, 2.95, 2.92, 3.40, 2.50, 2.68, 3.04],
+        [6.78, 7.16, 4.94, 7.21, 5.86, 6.92, 13.35],
+        [20.44, 21.22, 14.26, 15.33, 13.10, 12.68, 12.11],
+        [44.82, 36.72, 35.14, 31.19, 35.14, 26.36, 32.34]
+      ];
+      const outlierSet = new Set([
+        '0,0','1,2','1,4','2,3','3,1','4,0','5,0','5,6','6,0','6,1','7,0','7,1'
+      ]);
+      const faExt = [0.66, 0.84, 1.27, 2.32, 3.40, 7.46, 15.59, 34.53];
+      const pa    = [0.68, 0.81, 1.22, 2.39, 3.49, 7.65, 15.43, 34.80];
+
+      const normalPts = [];
+      const outlierPts = [];
+      fa.forEach((row, i) => {
+        row.forEach((v, j) => {
+          const pt = { x: i + (j - 3) * 0.06, y: v, s: samples[i], fa: 'FA' + (j + 1) };
+          if (outlierSet.has(i + ',' + j)) outlierPts.push(pt);
+          else normalPts.push(pt);
+        });
+      });
+
+      const NEAR_BLACK = '#0A0A0A';
+      const RED = '#C8102E';
+      const GOLD = '#F2B705';
+      const GREY = '#888888';
+      const FONT = "Roboto, -apple-system, BlinkMacSystemFont, sans-serif";
+
+      assayChartInstance = new Chart(canvas, {
+        data: {
+          datasets: [
+            {
+              type: 'scatter', label: 'Fire assay', data: normalPts,
+              backgroundColor: NEAR_BLACK, borderColor: NEAR_BLACK,
+              pointStyle: 'rect', pointRadius: 3.5, pointHoverRadius: 5
+            },
+            {
+              type: 'scatter', label: 'Fire assay outlier', data: outlierPts,
+              backgroundColor: RED, borderColor: RED,
+              pointStyle: 'rect', pointRadius: 3.5, pointHoverRadius: 5
+            },
+            {
+              type: 'line', label: 'Fire assay-to-extinction',
+              data: faExt.map((v, i) => ({ x: i, y: v })),
+              borderColor: GREY, borderWidth: 1.5, borderDash: [5, 4],
+              pointRadius: 0, tension: 0.25, fill: false
+            },
+            {
+              type: 'line', label: 'PhotonAssay™',
+              data: pa.map((v, i) => ({ x: i, y: v })),
+              borderColor: GOLD, backgroundColor: GOLD,
+              borderWidth: 2.25, pointRadius: 3,
+              pointBackgroundColor: GOLD, tension: 0.25, fill: false
+            }
+          ]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              titleFont: { family: FONT, weight: '500' },
+              bodyFont: { family: FONT, weight: '300' },
+              backgroundColor: 'rgba(10,10,10,0.95)',
+              padding: 10,
+              cornerRadius: 4,
+              callbacks: {
+                title: (items) => {
+                  const d = items[0].raw;
+                  return d.s ? d.s + ' · ' + d.fa : 'Sample ' + samples[Math.round(items[0].parsed.x)];
+                },
+                label: (ctx) => ctx.dataset.label + ': ' + ctx.parsed.y.toFixed(2) + ' g/t'
+              }
+            }
+          },
+          scales: {
+            x: {
+              type: 'linear', min: -0.5, max: 7.5,
+              ticks: {
+                stepSize: 1,
+                callback: (v) => samples[v] ?? '',
+                color: GREY,
+                font: { family: FONT, size: 12 }
+              },
+              grid: { color: 'rgba(0,0,0,0.04)' }
+            },
+            y: {
+              type: 'logarithmic', min: 0.1, max: 100,
+              ticks: {
+                color: GREY,
+                font: { family: FONT, size: 12 },
+                callback: (v) => [0.1, 1, 10, 100].includes(v) ? v.toString() : ''
+              },
+              grid: { color: 'rgba(0,0,0,0.06)' },
+              title: {
+                display: true,
+                text: 'Gold Grade (g/t Au)',
+                color: GREY,
+                font: { family: FONT, size: 12, weight: '500' }
+              }
+            }
+          }
+        }
+      });
     }
   </script>
 
