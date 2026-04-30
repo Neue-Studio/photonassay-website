@@ -1180,6 +1180,19 @@
       box-shadow: 0 0 16px rgba(232, 116, 42, 0.6);
     }
 
+    /* Contracted pins — grey (not online yet) */
+    .map-dot--contracted {
+      width: 9px;
+      height: 9px;
+      background: #B0B0B0;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      opacity: 0.85;
+    }
+    .map-dot--contracted:hover {
+      box-shadow: 0 0 16px rgba(176, 176, 176, 0.5);
+      opacity: 1;
+    }
+
     .map-dot:hover {
       transform: translate(-50%, -50%) scale(1.5);
       opacity: 1;
@@ -1246,6 +1259,7 @@
     .map-card__type--mine { color: var(--gold); }
     .map-card__type--lab { color: #0D7377; }
     .map-card__type--office { color: #E8742A; }
+    .map-card__type--contracted { color: #B0B0B0; }
     .map-card__name {
       font-size: 14px;
       font-weight: 600;
@@ -1305,6 +1319,7 @@
     .global__dot--gold { background: var(--gold); }
     .global__dot--teal { background: #0D7377; }
     .global__dot--orange { background: #E8742A; }
+    .global__dot--grey { background: #B0B0B0; opacity: 0.85; }
 
     /* ============================================
        ENVIRONMENTAL IMPACT — Rows
@@ -3681,10 +3696,19 @@ No chemicals. No fire. No compromise.</p>
             <div class="map-card__detail">Vancouver, British Columbia</div>
           </div>
         </div>
+        <!-- Contracted (grey) — example pin, replace with real data -->
+        <div class="map-dot map-dot--contracted map-dot--has-card" style="left:65%;top:45%" data-label="Contracted — Example">
+          <div class="map-card">
+            <div class="map-card__type map-card__type--contracted">Contracted</div>
+            <div class="map-card__name">Mine site deployment</div>
+            <div class="map-card__detail">Region/City, Country</div>
+          </div>
+        </div>
       </div>
       <div class="global__details reveal">
         <span><span class="global__dot global__dot--gold"></span> Mine site deployments</span>
-        <span><span class="global__dot global__dot--teal"></span> Commercial laboratories</span>
+        <span><span class="global__dot global__dot--teal"></span> Commercial laboratory</span>
+        <span><span class="global__dot global__dot--grey"></span> Contracted</span>
         <span><span class="global__dot global__dot--orange"></span> Chrysos offices</span>
       </div>
   </div></section>
