@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Study Template — PhotonAssay™ by Chrysos Corporation</title>
+  <title>PhotonAssay™ at AusIMM Mill Operators 2026 — Presentation — PhotonAssay™ by Chrysos Corporation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@200;300;400;500&display=swap" rel="stylesheet">
@@ -156,6 +156,165 @@
     .btn--gold:hover {
       background: var(--gold-hover);
       box-shadow: 0 4px 20px rgba(242, 183, 5, 0.3);
+    }
+
+    /* ============================================
+       DOWNLOAD FORM MODAL
+       ============================================ */
+    .dl-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .dl-overlay.is-open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .dl-modal {
+      background: var(--white);
+      width: 100%;
+      max-width: 520px;
+      max-height: calc(100vh - 48px);
+      overflow-y: auto;
+      padding: 48px 48px 40px;
+      position: relative;
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .dl-overlay.is-open .dl-modal {
+      transform: translateY(0) scale(1);
+    }
+    .dl-modal__close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--grey-500);
+      transition: color 0.2s;
+    }
+    .dl-modal__close:hover { color: var(--black); }
+    .dl-modal__close svg { width: 16px; height: 16px; }
+    .dl-modal__eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey-500);
+      margin-bottom: 12px;
+    }
+    .dl-modal__title {
+      font-size: 26px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .dl-modal__doc {
+      font-size: 13px;
+      color: var(--grey-500);
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--grey-100);
+    }
+    .dl-modal__doc strong {
+      color: var(--grey-700);
+      font-weight: 500;
+    }
+    .dl-form { display: flex; flex-direction: column; gap: 16px; }
+    .dl-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .dl-form__field { display: flex; flex-direction: column; gap: 6px; }
+    .dl-form__field label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-700);
+    }
+    .dl-form__field input,
+    .dl-form__field select,
+    .dl-form__field textarea {
+      font-family: var(--font);
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--black);
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+    }
+    .dl-form__field textarea {
+      resize: vertical;
+      min-height: 96px;
+      line-height: 1.5;
+    }
+    .dl-form__field select {
+      background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23555' stroke-width='1.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+    .dl-form__field input:focus,
+    .dl-form__field select:focus,
+    .dl-form__field textarea:focus {
+      border-color: var(--gold);
+      background-color: var(--white);
+    }
+    .dl-form__field input::placeholder,
+    .dl-form__field textarea::placeholder { color: var(--grey-300); }
+    .dl-form__required { color: #E53935; font-weight: 400; }
+    .dl-form__consent {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--grey-500);
+      line-height: 1.6;
+    }
+    .dl-form__consent a { color: var(--grey-700); text-decoration: underline; }
+    .dl-form__submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--near-black);
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .dl-form__submit:hover { background: var(--gold-hover); }
+    .dl-form__submit svg { width: 12px; height: 12px; }
+    @media (max-width: 540px) {
+      .dl-modal { padding: 36px 24px 28px; }
+      .dl-form__row { grid-template-columns: 1fr; }
     }
     .arrow-link {
       font-size: 13px;
@@ -1031,24 +1190,81 @@
         --section-pad: 80px;
         --container-pad: 24px;
       }
-      h1 { font-size: 40px; }
-      h2 { font-size: 32px; }
+      h1 { font-size: 38px; }
+      h2 { font-size: 34px; }
+      h3 { font-size: 21px; }
       .nav__links { display: none; }
+
+      /* Breadcrumb */
+      .breadcrumb {
+        padding: calc(var(--nav-height) + var(--space-3)) 0 var(--space-2);
+      }
+      .breadcrumb__list {
+        flex-wrap: wrap;
+        font-size: 12px;
+      }
+
+      /* Page hero */
       .page-hero h1 { font-size: 36px; }
+      .page-hero__subtitle { font-size: 16px; }
+
+      /* Article header */
+      .article h1 { font-size: 30px; }
+
+      /* Download button — full-width + touch target */
+      .btn {
+        min-height: 48px;
+      }
+      .article .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Grids */
       .grid-3 { grid-template-columns: 1fr; }
       .grid-2 { grid-template-columns: 1fr; }
+
+      /* Resource table (shared styles) */
       .resource-table__row {
         grid-template-columns: 1fr;
         gap: var(--space-1);
       }
       .resource-table__desc { display: none; }
+
+      /* Stats */
       .stat__number { font-size: 48px; }
-      .article h1 { font-size: 32px; }
+
+      /* Newsletter */
       .newsletter__form { flex-direction: column; }
+      .newsletter__form input {
+        font-size: 16px;
+        min-height: 48px;
+        width: 100%;
+      }
+      .newsletter__form .btn {
+        width: 100%;
+        justify-content: center;
+        min-height: 48px;
+      }
+
+      /* Forms */
       .form__row { grid-template-columns: 1fr; }
+      .form__input,
+      .form__select,
+      .form__textarea {
+        font-size: 16px;
+        min-height: 48px;
+      }
+
+      /* Footer */
       .footer__inner {
         flex-direction: column;
         gap: var(--space-6);
+      }
+      .footer__links {
+        flex-direction: column;
+        gap: var(--space-5);
       }
       .footer__bottom {
         flex-direction: column;
@@ -1060,85 +1276,6 @@
         justify-content: center;
       }
       .sticky-cta { display: none; }
-
-      /* Hero stat callout */
-      .hero-stat__number { font-size: 48px; }
-      .hero-stat__label { font-size: 16px; }
-
-      /* Challenge/Solution 2-col → stack */
-      .content-split {
-        grid-template-columns: 1fr;
-        gap: var(--space-4);
-      }
-
-      /* Stats grid: 2-col on mobile for compact stat blocks */
-      .section-offwhite .grid-3 { grid-template-columns: repeat(2, 1fr); }
-
-      /* Quote block */
-      .quote-block__text { font-size: 20px; }
-
-      /* Section heading large */
-      .section-heading-lg { font-size: 32px; }
-
-      /* Hero image placeholder */
-      .cs-hero-img { height: 220px; }
-
-      /* Buttons: full-width, 48px min-height */
-      .btn {
-        width: 100%;
-        justify-content: center;
-        min-height: 48px;
-      }
-
-      /* Hero subtitle */
-      .page-hero__subtitle { font-size: 17px; }
-    }
-
-    /* ============================================
-       CASE STUDY: CONTENT SPLIT (2-col sidebar)
-       ============================================ */
-    .content-split {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: var(--space-15);
-      align-items: start;
-    }
-
-    /* ============================================
-       CASE STUDY: HERO STAT CALLOUT
-       ============================================ */
-    .hero-stat {
-      display: flex;
-      align-items: baseline;
-      gap: var(--space-2);
-      margin-bottom: var(--space-5);
-    }
-    .hero-stat__number {
-      font-size: 72px;
-      font-weight: 200;
-      color: var(--gold);
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
-    .hero-stat__label {
-      font-size: 18px;
-      font-weight: 300;
-      color: var(--grey-300);
-    }
-
-    /* ============================================
-       CASE STUDY: HERO IMAGE
-       ============================================ */
-    .cs-hero-img {
-      width: 100%;
-      height: 420px;
-    }
-
-    /* ============================================
-       SECTION HEADING LARGE
-       ============================================ */
-    .section-heading-lg {
-      font-size: 40px;
     }
 
     /* PAGE-SPECIFIC OVERRIDES ARE INJECTED BELOW */
@@ -1360,136 +1497,99 @@
   </div>
 
   
-  <!-- CASE STUDY HERO -->
-  <section class="page-hero" style="padding-bottom: var(--space-10);">
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
     <div class="container">
-      <p class="eyebrow" style="color: var(--grey-300);" data-copy-id="casestudy-hero-eyebrow">Case Study</p>
-      <h1 style="margin-bottom: var(--space-2);" data-copy-id="casestudy-hero-headline">Ravenswood Gold Mine</h1>
-      <p style="font-size: 15px; color: var(--grey-500); margin-bottom: var(--space-5);" data-copy-id="casestudy-hero-location">Queensland, Australia</p>
-      <div class="hero-stat">
-        <span class="hero-stat__number" data-copy-id="casestudy-hero-stat-number">97%</span>
-        <span class="hero-stat__label" data-copy-id="casestudy-hero-stat-label">faster turnaround</span>
-      </div>
-      <p class="page-hero__subtitle" style="max-width: 640px;" data-copy-id="casestudy-hero-subtitle">When a tier-one Queensland gold operation needed to eliminate assay bottlenecks and improve grade control, they deployed PhotonAssay&#8482; directly on site. The results transformed their entire workflow.</p>
+      <ul class="breadcrumb__list">
+        <li><a href="resources.html">Resources</a></li>
+        <li class="breadcrumb__sep">/</li>
+        <li><a href="resources.html">Presentations</a></li>
+        <li class="breadcrumb__sep">/</li>
+        <li>AusIMM Mill Operators 2026</li>
+      </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- HERO IMAGE -->
-  <section class="section-light" style="padding: var(--space-8) 0;">
-    <div class="container reveal">
-      <div class="placeholder-img cs-hero-img">Case Study Hero Image &mdash; Mine Site / PhotonAssay Unit &mdash; 21:9</div>
-    </div>
-  </section>
-
-  <!-- CHALLENGE -->
-  <section class="section-light" style="padding-top: var(--space-10);">
+  <!-- RESOURCE HEADER -->
+  <section class="section-offwhite" style="padding-top: var(--space-6); padding-bottom: var(--space-4);">
     <div class="container">
-      <div class="content-split reveal">
-        <div>
-          <p class="eyebrow" data-copy-id="casestudy-challenge-eyebrow">The Challenge</p>
+      <div class="article reveal">
+        <span class="badge" style="margin-bottom: var(--space-3);" data-copy-id="presentation-header-badge">Presentation</span>
+        <h1 data-copy-id="presentation-header-headline">Operating PhotonAssay&#8482; in High-Throughput Lab Environments</h1>
+        <div class="article__meta">
+          <span class="article__date" data-copy-id="presentation-header-event">AusIMM Mill Operators &rsquo;26 &middot; Adelaide &middot; April 2026</span>
         </div>
-        <div>
-          <p style="font-size: 18px; color: var(--grey-700); line-height: 1.7;" data-copy-id="casestudy-challenge-body">Ravenswood Gold Mine relied on traditional fire assay for all gold analysis, with samples transported to an off-site commercial laboratory. Turnaround times of 24 to 48 hours created delays in grade control decisions, impacting blast planning and ore routing. Sample transport added cost and introduced chain-of-custody complexity. Inconsistent fire assay results across different laboratories meant reconciliation was an ongoing challenge.</p>
-        </div>
+        <p style="font-size: 15px; color: var(--grey-500); margin-top: 4px;" data-copy-id="presentation-header-presenter">Presented by Dr. James Tindall, Chief Technical Officer &middot; Chrysos Corporation</p>
+        <p style="font-size: 18px; color: var(--grey-700); line-height: 1.7; margin-bottom: var(--space-4);" data-copy-id="presentation-header-summary">A 22-slide presentation covering throughput, calibration, QAQC and operator training for laboratories running PhotonAssay&#8482; at scale &mdash; delivered to mill operators and assay managers at AusIMM 2026.</p>
       </div>
     </div>
   </section>
 
-  <!-- SOLUTION -->
-  <section class="section-light">
+  <!-- SLIDE DECK + DOWNLOAD SECTION -->
+  <section class="section-light" style="padding-top: var(--space-5);">
     <div class="container">
-      <div class="content-split reveal">
-        <div>
-          <p class="eyebrow" data-copy-id="casestudy-solution-eyebrow">The Solution</p>
+      <div class="article reveal">
+        <!-- Slide deck preview (16:9 slides) -->
+        <div style="background: var(--offwhite); border: 1px solid var(--grey-100); border-radius: 2px; padding: var(--space-6); text-align: center;">
+          <div style="background: var(--grey-50); border: 1px solid var(--grey-100); border-radius: 8px; height: 480px; overflow-y: auto; padding: var(--space-4); margin-bottom: var(--space-4);">
+            <div style="background: white; border: 1px solid var(--grey-200); border-radius: 4px; aspect-ratio: 16/9; margin-bottom: var(--space-3); display: flex; align-items: center; justify-content: center; color: var(--grey-400); font-size: 14px;">Slide 1 / 22</div>
+            <div style="background: white; border: 1px solid var(--grey-200); border-radius: 4px; aspect-ratio: 16/9; margin-bottom: var(--space-3); display: flex; align-items: center; justify-content: center; color: var(--grey-400); font-size: 14px;">Slide 2 / 22</div>
+            <div style="background: white; border: 1px solid var(--grey-200); border-radius: 4px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: var(--grey-400); font-size: 14px;">Slide 3 / 22</div>
+          </div>
+          <h3 style="margin-bottom: var(--space-2);" data-copy-id="presentation-download-heading">Download the slide deck</h3>
+          <p style="font-size: 15px; color: var(--grey-500); margin-bottom: var(--space-4);" data-copy-id="presentation-download-meta">PDF &middot; 22 slides &middot; 6.8 MB</p>
+          <button class="btn btn--gold" id="openDownloadModal">Download slides <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <p style="font-size: 13px; color: var(--grey-500); margin-top: var(--space-3);" data-copy-id="presentation-download-note">Fill in a quick form to access the full deck.</p>
         </div>
-        <div>
-          <p style="font-size: 18px; color: var(--grey-700); line-height: 1.7;" data-copy-id="casestudy-solution-body">Chrysos worked with Ravenswood to deploy a PhotonAssay&#8482; unit directly at the mine site under Operating Model 3 (direct deployment). The unit was installed in a purpose-built facility adjacent to the sample preparation area, enabling geologists to receive results within minutes of sample submission. Training for on-site operators was completed within two weeks, and the system was fully integrated into the existing grade control workflow.</p>
+
+        <!-- What was covered -->
+        <div style="margin-top: var(--space-10);">
+          <h2 style="font-size: 32px; margin-bottom: var(--space-4);" data-copy-id="presentation-covers-heading">What this presentation covers</h2>
+          <ul style="list-style: none; padding: 0;">
+            <li style="padding: var(--space-2) 0; border-bottom: 1px solid var(--grey-100); color: var(--grey-700);" data-copy-id="presentation-covers-item1">Throughput modelling for high-volume PhotonAssay&#8482; operations</li>
+            <li style="padding: var(--space-2) 0; border-bottom: 1px solid var(--grey-100); color: var(--grey-700);" data-copy-id="presentation-covers-item2">Calibration workflows and ongoing performance monitoring</li>
+            <li style="padding: var(--space-2) 0; border-bottom: 1px solid var(--grey-100); color: var(--grey-700);" data-copy-id="presentation-covers-item3">QAQC procedures &mdash; CRMs, duplicates, and round-robin testing</li>
+            <li style="padding: var(--space-2) 0; border-bottom: 1px solid var(--grey-100); color: var(--grey-700);" data-copy-id="presentation-covers-item4">Operator training and shift-handover protocols</li>
+            <li style="padding: var(--space-2) 0; color: var(--grey-700);" data-copy-id="presentation-covers-item5">Lessons from three years of commercial laboratory deployments</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- KEY METRICS -->
+  <!-- RELATED RESOURCES -->
   <section class="section-offwhite">
     <div class="container">
-      <div class="reveal" style="text-align: center; margin-bottom: var(--space-8);">
-        <p class="eyebrow" style="justify-content: center;" data-copy-id="casestudy-results-eyebrow">Results</p>
-        <h2 class="section-heading-lg" data-copy-id="casestudy-results-heading">Key outcomes</h2>
-      </div>
-      <div class="grid-3 reveal" style="gap: var(--space-8);">
-
-        <div class="stat">
-          <div class="stat__number" data-copy-id="casestudy-results-stat1-number">~2 min</div>
-          <div class="stat__label" data-copy-id="casestudy-results-stat1-label">Analysis time per sample</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number" data-copy-id="casestudy-results-stat2-number">97%</div>
-          <div class="stat__label" data-copy-id="casestudy-results-stat2-label">Faster than fire assay</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number" data-copy-id="casestudy-results-stat3-number">Zero</div>
-          <div class="stat__label" data-copy-id="casestudy-results-stat3-label">Scope 1 emissions from assay</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number" data-copy-id="casestudy-results-stat4-number">500g</div>
-          <div class="stat__label" data-copy-id="casestudy-results-stat4-label">Larger sample size analysed</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number" data-copy-id="casestudy-results-stat5-number">24/7</div>
-          <div class="stat__label" data-copy-id="casestudy-results-stat5-label">On-site availability</div>
-        </div>
-        <div class="stat">
-          <div class="stat__number" data-copy-id="casestudy-results-stat6-number">30 days</div>
-          <div class="stat__label" data-copy-id="casestudy-results-stat6-label">Installation to production</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- QUOTE -->
-  <section class="section-dark" style="padding: var(--space-12) 0;">
-    <div class="container reveal">
-      <div class="quote-block" style="max-width: 720px; margin: 0 auto;">
-        <p class="quote-block__text" data-copy-id="casestudy-quote-text">&ldquo;PhotonAssay has fundamentally changed how we make grade control decisions. We went from waiting days to having actionable data in minutes.&rdquo;</p>
-        <p class="quote-block__author" data-copy-id="casestudy-quote-author">Chief Geologist</p>
-        <p class="quote-block__role" data-copy-id="casestudy-quote-role">Ravenswood Gold Mine</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- RELATED CASE STUDIES -->
-  <section class="section-light">
-    <div class="container">
       <div class="reveal">
-        <p class="eyebrow" data-copy-id="casestudy-related-eyebrow">More Case Studies</p>
-        <h2 class="section-heading-lg" style="margin-bottom: var(--space-8);" data-copy-id="casestudy-related-heading">See how others are using PhotonAssay&#8482;</h2>
+        <p class="eyebrow" data-copy-id="resource-related-eyebrow">Related Resources</p>
+        <h2 style="margin-bottom: var(--space-8); font-size: 40px;" data-copy-id="resource-related-heading">You might also find useful</h2>
       </div>
       <div class="grid-3 reveal">
         <div class="card">
-          <div class="card__image">Case Study Image &mdash; 16:9</div>
+          <div class="card__image">Document Preview &mdash; 16:9</div>
           <div class="card__body">
-            <div class="card__type" data-copy-id="casestudy-related-card1-type">Case Study</div>
-            <div class="card__title" data-copy-id="casestudy-related-card1-title">SGS Minerals: Commercial Lab Adoption</div>
-            <p class="card__excerpt" data-copy-id="casestudy-related-card1-excerpt">How a major global laboratory integrated PhotonAssay into its commercial workflow.</p>
-            <a href="#" class="arrow-link">Read case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <div class="card__type" data-copy-id="resource-related-card1-type">Technical Resource</div>
+            <div class="card__title" data-copy-id="resource-related-card1-title">TN-102: Sample Preparation Guidelines</div>
+            <p class="card__excerpt" data-copy-id="resource-related-card1-excerpt">Best practices for sample preparation to maximise measurement quality.</p>
+            <a href="#" class="arrow-link">View resource <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
         <div class="card">
-          <div class="card__image">Case Study Image &mdash; 16:9</div>
+          <div class="card__image">Document Preview &mdash; 16:9</div>
           <div class="card__body">
-            <div class="card__type" data-copy-id="casestudy-related-card2-type">Case Study</div>
-            <div class="card__title" data-copy-id="casestudy-related-card2-title">Intertek Minerals: Multi-Element Analysis</div>
-            <p class="card__excerpt" data-copy-id="casestudy-related-card2-excerpt">Expanding beyond gold to deliver silver and copper analysis at commercial scale.</p>
-            <a href="#" class="arrow-link">Read case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <div class="card__type" data-copy-id="resource-related-card2-type">Performance Note</div>
+            <div class="card__title" data-copy-id="resource-related-card2-title">PN-201: Fire Assay Comparison &mdash; Gold in Oxide Ores</div>
+            <p class="card__excerpt" data-copy-id="resource-related-card2-excerpt">Head-to-head comparison across oxide ore samples from Western Australia.</p>
+            <a href="#" class="arrow-link">View resource <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
         <div class="card">
-          <div class="card__image">Case Study Image &mdash; 16:9</div>
+          <div class="card__image">Webinar Thumbnail &mdash; 16:9</div>
           <div class="card__body">
-            <div class="card__type" data-copy-id="casestudy-related-card3-type">Case Study</div>
-            <div class="card__title" data-copy-id="casestudy-related-card3-title">West African Gold: Remote Deployment</div>
-            <p class="card__excerpt" data-copy-id="casestudy-related-card3-excerpt">Deploying PhotonAssay in a remote West African mining operation with limited infrastructure.</p>
-            <a href="#" class="arrow-link">Read case study <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <div class="card__type" data-copy-id="resource-related-card3-type">Webinar</div>
+            <div class="card__title" data-copy-id="resource-related-card3-title">Gold Measurement Performance Deep Dive</div>
+            <p class="card__excerpt" data-copy-id="resource-related-card3-excerpt">45-minute walkthrough of accuracy, precision, and real-world performance data.</p>
+            <a href="#" class="arrow-link">Watch recording <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>
@@ -1542,6 +1642,95 @@
       <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
   </div>
+
+  <!-- Download Form Modal -->
+  <div class="dl-overlay" id="dlOverlay" role="dialog" aria-modal="true" aria-label="Download PDF">
+    <div class="dl-modal" id="dlModal">
+      <button class="dl-modal__close" id="closeDownloadModal" aria-label="Close">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg>
+      </button>
+      <div class="dl-modal__eyebrow" data-copy-id="resource-modal-eyebrow">Download Resource</div>
+      <div class="dl-modal__title" data-copy-id="resource-modal-title">Get the full technical note</div>
+      <p class="dl-modal__doc" data-copy-id="resource-modal-doc"><strong>TN-101: PhotonAssay™ Measurement Performance</strong><br>PDF · 12 pages · 2.4 MB</p>
+      <form class="dl-form" id="dlForm">
+        <div class="dl-form__field">
+          <label for="dl-email">Email <span class="dl-form__required">*</span></label>
+          <input type="email" id="dl-email" placeholder="name@company.com" autocomplete="email" required>
+        </div>
+        <div class="dl-form__row">
+          <div class="dl-form__field">
+            <label for="dl-first">First name <span class="dl-form__required">*</span></label>
+            <input type="text" id="dl-first" autocomplete="given-name" required>
+          </div>
+          <div class="dl-form__field">
+            <label for="dl-last">Last Name <span class="dl-form__required">*</span></label>
+            <input type="text" id="dl-last" autocomplete="family-name" required>
+          </div>
+        </div>
+        <div class="dl-form__field">
+          <label for="dl-region">Global Region <span class="dl-form__required">*</span></label>
+          <select id="dl-region" required>
+            <option value="" disabled selected>Please select</option>
+            <option>Asia Pacific</option>
+            <option>Africa</option>
+            <option>Middle East</option>
+            <option>Europe</option>
+            <option>USA &amp; Canada</option>
+            <option>Latin America &amp; Caribbean</option>
+          </select>
+        </div>
+        <div class="dl-form__field">
+          <label for="dl-purpose">What is the purpose of your enquiry? <span class="dl-form__required">*</span></label>
+          <select id="dl-purpose" required>
+            <option value="" disabled selected>Please select</option>
+            <option>PhotonAssay Technology: for questions about leasing, pricing and unit specifications</option>
+            <option>Chrysos Careers: For job applications and career opportunities</option>
+            <option>Personal Interest: For general enquiries, or to stay up-to-date via news and email updates</option>
+          </select>
+        </div>
+        <div class="dl-form__field">
+          <label for="dl-message">What would you like to know or discuss?</label>
+          <textarea id="dl-message" rows="4" placeholder="Let us know your interest, questions, or what you're hoping to achieve with PhotonAssay&trade;"></textarea>
+        </div>
+        <p class="dl-form__consent">By submitting, you agree to Chrysos Corporation contacting you about PhotonAssay&trade;. See our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+        <button type="submit" class="dl-form__submit">
+          Download now
+          <svg viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Download modal
+    const dlOverlay = document.getElementById('dlOverlay');
+    const openBtn = document.getElementById('openDownloadModal');
+    const closeBtn = document.getElementById('closeDownloadModal');
+    const dlForm = document.getElementById('dlForm');
+
+    function openModal() {
+      dlOverlay.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      dlOverlay.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    dlOverlay.addEventListener('click', function(e) {
+      if (e.target === dlOverlay) closeModal();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+    dlForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      // HubSpot form submission goes here
+      closeModal();
+    });
+  </script>
 
   <!-- SCROLL REVEAL JS -->
   <script>
