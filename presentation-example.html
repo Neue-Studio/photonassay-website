@@ -1479,6 +1479,46 @@
       letter-spacing: 0.1em; color: var(--grey-500);
       min-width: 80px; text-align: center;
     }
+    .slides__label {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: var(--space-3); margin-bottom: var(--space-2);
+    }
+    .slides__label-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--grey-700);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .slides__label-eyebrow::before {
+      content: ''; display: block;
+      width: 32px; height: 2px; background: var(--gold);
+    }
+    .slides__label-meta {
+      font-size: 12px; color: var(--grey-500);
+    }
+
+    /* Slide 7 — download CTA */
+    .slides__slide--cta {
+      background: linear-gradient(135deg, #0A0A0A 0%, #1F1A0B 100%);
+      color: var(--white);
+      gap: var(--space-2);
+    }
+    .slides__slide--cta .slides__slide-number { display: none; }
+    .slides__cta-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: var(--space-2);
+    }
+    .slides__cta-title {
+      font-size: 36px; font-weight: 200; line-height: 1.1;
+      letter-spacing: -0.02em; color: var(--white);
+      text-align: center; margin-bottom: var(--space-2);
+      max-width: 520px;
+    }
+    .slides__cta-meta {
+      font-size: 13px; color: var(--grey-300);
+      margin-bottom: var(--space-5);
+    }
   </style>
 </head>
 <body>
@@ -1580,39 +1620,55 @@
     <div class="container">
       <div class="article reveal">
 
+        <!-- Slides label -->
+        <div class="slides__label">
+          <span class="slides__label-eyebrow" data-copy-id="presentation-slides-eyebrow">Preview</span>
+          <span class="slides__label-meta" data-copy-id="presentation-slides-meta">First 6 of 22 slides</span>
+        </div>
+
         <!-- Slide deck (interactive carousel) -->
         <div class="slides">
           <div class="slides__viewer">
             <div class="slides__slide slides__slide--active" data-slide="1">
-              <div class="slides__slide-number"><span data-copy-id="presentation-slide1-num">01 / 06</span></div>
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide1-num">01 / 22</span></div>
               <div class="slides__slide-body" data-copy-id="presentation-slide1-body">Title slide &mdash; Operating PhotonAssay&trade; in High-Throughput Lab Environments</div>
             </div>
             <div class="slides__slide" data-slide="2">
-              <div class="slides__slide-number"><span data-copy-id="presentation-slide2-num">02 / 06</span></div>
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide2-num">02 / 22</span></div>
               <div class="slides__slide-body" data-copy-id="presentation-slide2-body">Slide 2 &mdash; Throughput modelling for high-volume operations</div>
             </div>
             <div class="slides__slide" data-slide="3">
-              <div class="slides__slide-number"><span data-copy-id="presentation-slide3-num">03 / 06</span></div>
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide3-num">03 / 22</span></div>
               <div class="slides__slide-body" data-copy-id="presentation-slide3-body">Slide 3 &mdash; Calibration workflows and performance monitoring</div>
             </div>
             <div class="slides__slide" data-slide="4">
-              <div class="slides__slide-number"><span data-copy-id="presentation-slide4-num">04 / 06</span></div>
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide4-num">04 / 22</span></div>
               <div class="slides__slide-body" data-copy-id="presentation-slide4-body">Slide 4 &mdash; QAQC procedures: CRMs, duplicates, round-robin testing</div>
             </div>
             <div class="slides__slide" data-slide="5">
-              <div class="slides__slide-number"><span data-copy-id="presentation-slide5-num">05 / 06</span></div>
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide5-num">05 / 22</span></div>
               <div class="slides__slide-body" data-copy-id="presentation-slide5-body">Slide 5 &mdash; Operator training and shift-handover protocols</div>
             </div>
             <div class="slides__slide" data-slide="6">
-              <div class="slides__slide-number"><span data-copy-id="presentation-slide6-num">06 / 06</span></div>
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide6-num">06 / 22</span></div>
               <div class="slides__slide-body" data-copy-id="presentation-slide6-body">Slide 6 &mdash; Lessons from three years of commercial deployments</div>
+            </div>
+            <!-- Slide 7: download CTA -->
+            <div class="slides__slide slides__slide--cta" data-slide="7">
+              <div class="slides__cta-eyebrow" data-copy-id="presentation-cta-eyebrow">That&rsquo;s the preview</div>
+              <div class="slides__cta-title" data-copy-id="presentation-cta-title">Want all 22 slides?</div>
+              <div class="slides__cta-meta" data-copy-id="presentation-cta-meta">22 slides &middot; PDF or PowerPoint</div>
+              <button type="button" class="btn btn--gold" id="openDownloadModal" data-copy-id="presentation-cta-button">
+                Download the full presentation
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
             </div>
           </div>
           <div class="slides__controls">
             <button type="button" class="slides__btn" id="slidesPrev" aria-label="Previous slide">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 1L3 7L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <span class="slides__counter" id="slidesCounter">01 / 06</span>
+            <span class="slides__counter" id="slidesCounter">01 / 22</span>
             <button type="button" class="slides__btn" id="slidesNext" aria-label="Next slide">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 1L11 7L5 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
@@ -1631,14 +1687,6 @@
           </ul>
         </div>
 
-        <!-- Secondary download action -->
-        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding-top: var(--space-6); margin-top: var(--space-8); border-top: 1px solid var(--grey-100);">
-          <a href="#" class="arrow-link" id="openDownloadModal" data-copy-id="presentation-download-action">Download the full presentation
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <span style="color: var(--grey-300);">&middot;</span>
-          <span style="font-size: 13px; color: var(--grey-500);" data-copy-id="presentation-download-meta">22 slides &middot; PDF or PowerPoint</span>
-        </div>
       </div>
     </div>
   </section>
