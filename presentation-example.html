@@ -1429,7 +1429,57 @@
     @media (max-width: 768px) {
       .nav__hamburger { display: flex; }
     }
-    </style>
+  
+    /* SLIDES — interactive deck viewer */
+    .slides { margin-top: var(--space-3); }
+    .slides__viewer {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--offwhite);
+      border: 1px solid var(--grey-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .slides__slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: var(--space-6);
+      background: var(--white);
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .slides__slide--active { opacity: 1; visibility: visible; }
+    .slides__slide-number {
+      position: absolute; top: 16px; right: 16px;
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--grey-300);
+    }
+    .slides__slide-body {
+      font-size: 18px; color: var(--grey-500); text-align: center;
+      max-width: 480px; line-height: 1.5;
+    }
+    .slides__controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--space-3); margin-top: var(--space-3);
+    }
+    .slides__btn {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--grey-100); background: var(--white);
+      border-radius: 50%; cursor: pointer;
+      color: var(--grey-700);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .slides__btn:hover { border-color: var(--gold); color: var(--gold); }
+    .slides__btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .slides__counter {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.1em; color: var(--grey-500);
+      min-width: 80px; text-align: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -1525,21 +1575,48 @@
     </div>
   </section>
 
-  <!-- SLIDE DECK + DOWNLOAD SECTION -->
+  <!-- SLIDE DECK INLINE + SECONDARY DOWNLOAD -->
   <section class="section-light" style="padding-top: var(--space-5);">
     <div class="container">
       <div class="article reveal">
-        <!-- Slide deck preview (16:9 slides) -->
-        <div style="background: var(--offwhite); border: 1px solid var(--grey-100); border-radius: 2px; padding: var(--space-6); text-align: center;">
-          <div style="background: var(--grey-50); border: 1px solid var(--grey-100); border-radius: 8px; height: 480px; overflow-y: auto; padding: var(--space-4); margin-bottom: var(--space-4);">
-            <div style="background: white; border: 1px solid var(--grey-200); border-radius: 4px; aspect-ratio: 16/9; margin-bottom: var(--space-3); display: flex; align-items: center; justify-content: center; color: var(--grey-400); font-size: 14px;">Slide 1 / 22</div>
-            <div style="background: white; border: 1px solid var(--grey-200); border-radius: 4px; aspect-ratio: 16/9; margin-bottom: var(--space-3); display: flex; align-items: center; justify-content: center; color: var(--grey-400); font-size: 14px;">Slide 2 / 22</div>
-            <div style="background: white; border: 1px solid var(--grey-200); border-radius: 4px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: var(--grey-400); font-size: 14px;">Slide 3 / 22</div>
+
+        <!-- Slide deck (interactive carousel) -->
+        <div class="slides">
+          <div class="slides__viewer">
+            <div class="slides__slide slides__slide--active" data-slide="1">
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide1-num">01 / 06</span></div>
+              <div class="slides__slide-body" data-copy-id="presentation-slide1-body">Title slide &mdash; Operating PhotonAssay&trade; in High-Throughput Lab Environments</div>
+            </div>
+            <div class="slides__slide" data-slide="2">
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide2-num">02 / 06</span></div>
+              <div class="slides__slide-body" data-copy-id="presentation-slide2-body">Slide 2 &mdash; Throughput modelling for high-volume operations</div>
+            </div>
+            <div class="slides__slide" data-slide="3">
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide3-num">03 / 06</span></div>
+              <div class="slides__slide-body" data-copy-id="presentation-slide3-body">Slide 3 &mdash; Calibration workflows and performance monitoring</div>
+            </div>
+            <div class="slides__slide" data-slide="4">
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide4-num">04 / 06</span></div>
+              <div class="slides__slide-body" data-copy-id="presentation-slide4-body">Slide 4 &mdash; QAQC procedures: CRMs, duplicates, round-robin testing</div>
+            </div>
+            <div class="slides__slide" data-slide="5">
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide5-num">05 / 06</span></div>
+              <div class="slides__slide-body" data-copy-id="presentation-slide5-body">Slide 5 &mdash; Operator training and shift-handover protocols</div>
+            </div>
+            <div class="slides__slide" data-slide="6">
+              <div class="slides__slide-number"><span data-copy-id="presentation-slide6-num">06 / 06</span></div>
+              <div class="slides__slide-body" data-copy-id="presentation-slide6-body">Slide 6 &mdash; Lessons from three years of commercial deployments</div>
+            </div>
           </div>
-          <h3 style="margin-bottom: var(--space-2);" data-copy-id="presentation-download-heading">Download the slide deck</h3>
-          <p style="font-size: 15px; color: var(--grey-500); margin-bottom: var(--space-4);" data-copy-id="presentation-download-meta">PDF &middot; 22 slides &middot; 6.8 MB</p>
-          <button class="btn btn--gold" id="openDownloadModal">Download slides <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H3M11 1v8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <p style="font-size: 13px; color: var(--grey-500); margin-top: var(--space-3);" data-copy-id="presentation-download-note">Fill in a quick form to access the full deck.</p>
+          <div class="slides__controls">
+            <button type="button" class="slides__btn" id="slidesPrev" aria-label="Previous slide">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 1L3 7L9 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <span class="slides__counter" id="slidesCounter">01 / 06</span>
+            <button type="button" class="slides__btn" id="slidesNext" aria-label="Next slide">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 1L11 7L5 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
         </div>
 
         <!-- What was covered -->
@@ -1552,6 +1629,15 @@
             <li style="padding: var(--space-2) 0; border-bottom: 1px solid var(--grey-100); color: var(--grey-700);" data-copy-id="presentation-covers-item4">Operator training and shift-handover protocols</li>
             <li style="padding: var(--space-2) 0; color: var(--grey-700);" data-copy-id="presentation-covers-item5">Lessons from three years of commercial laboratory deployments</li>
           </ul>
+        </div>
+
+        <!-- Secondary download action -->
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding-top: var(--space-6); margin-top: var(--space-8); border-top: 1px solid var(--grey-100);">
+          <a href="#" class="arrow-link" data-copy-id="presentation-download-action">Download the full presentation
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <span style="color: var(--grey-300);">&middot;</span>
+          <span style="font-size: 13px; color: var(--grey-500);" data-copy-id="presentation-download-meta">22 slides &middot; PDF or PowerPoint</span>
         </div>
       </div>
     </div>
@@ -1808,5 +1894,37 @@
     })();
   </script>
 
+
+  <script>
+    // Presentation slides controller
+    (function() {
+      const slides = document.querySelectorAll('.slides__slide');
+      const prevBtn = document.getElementById('slidesPrev');
+      const nextBtn = document.getElementById('slidesNext');
+      const counter = document.getElementById('slidesCounter');
+      if (!slides.length || !prevBtn || !nextBtn) return;
+
+      let current = 0;
+      const total = slides.length;
+
+      function show(idx) {
+        slides.forEach((s, i) => {
+          s.classList.toggle('slides__slide--active', i === idx);
+        });
+        if (counter) counter.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+        prevBtn.disabled = idx === 0;
+        nextBtn.disabled = idx === total - 1;
+      }
+
+      prevBtn.addEventListener('click', () => { if (current > 0) { current--; show(current); } });
+      nextBtn.addEventListener('click', () => { if (current < total - 1) { current++; show(current); } });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft' && current > 0) { current--; show(current); }
+        if (e.key === 'ArrowRight' && current < total - 1) { current++; show(current); }
+      });
+
+      show(0);
+    })();
+  </script>
 </body>
 </html>
