@@ -1633,7 +1633,7 @@
 
         <!-- Secondary download action -->
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; padding-top: var(--space-6); margin-top: var(--space-8); border-top: 1px solid var(--grey-100);">
-          <a href="#" class="arrow-link" data-copy-id="presentation-download-action">Download the full presentation
+          <a href="#" class="arrow-link" id="openDownloadModal" data-copy-id="presentation-download-action">Download the full presentation
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
           <span style="color: var(--grey-300);">&middot;</span>
@@ -1735,9 +1735,9 @@
       <button class="dl-modal__close" id="closeDownloadModal" aria-label="Close">
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 2l12 12M14 2L2 14"/></svg>
       </button>
-      <div class="dl-modal__eyebrow" data-copy-id="resource-modal-eyebrow">Download Resource</div>
-      <div class="dl-modal__title" data-copy-id="resource-modal-title">Get the full technical note</div>
-      <p class="dl-modal__doc" data-copy-id="resource-modal-doc"><strong>TN-101: PhotonAssay™ Measurement Performance</strong><br>PDF · 12 pages · 2.4 MB</p>
+      <div class="dl-modal__eyebrow" data-copy-id="presentation-modal-eyebrow">Download Presentation</div>
+      <div class="dl-modal__title" data-copy-id="presentation-modal-title">Get the full presentation</div>
+      <p class="dl-modal__doc" data-copy-id="presentation-modal-doc"><strong>Operating PhotonAssay™ in High-Throughput Lab Environments</strong><br>22 slides · PDF or PowerPoint</p>
       <form class="dl-form" id="dlForm">
         <div class="dl-form__field">
           <label for="dl-email">Email <span class="dl-form__required">*</span></label>
@@ -1803,7 +1803,7 @@
       document.body.style.overflow = '';
     }
 
-    openBtn.addEventListener('click', openModal);
+    openBtn.addEventListener('click', function(e) { e.preventDefault(); openModal(); });
     closeBtn.addEventListener('click', closeModal);
     dlOverlay.addEventListener('click', function(e) {
       if (e.target === dlOverlay) closeModal();
