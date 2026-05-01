@@ -1292,19 +1292,23 @@
       .nav__hamburger { display: flex; }
     }
 
-    /* ====== CASE STUDY IMAGE BREAKS (between Challenge/Solution/Pioneers) ====== */
-    .rw-image {
-      padding: var(--space-4) 0 var(--space-6);
+    /* ====== CASE STUDY IMAGE ROWS (3-up grids after Challenge & Solution) ====== */
+    /* Match container width so left/right edges align with the eyebrow line above */
+    .rw-image-row {
+      padding: var(--space-5) 0 var(--space-8);
     }
-    .rw-image__frame {
-      aspect-ratio: 16 / 9;
+    .rw-image-row__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .rw-image-row__cell {
+      aspect-ratio: 4 / 3;
       overflow: hidden;
       border-radius: 2px;
       background: var(--grey-100);
-      max-width: 1080px;
-      margin: 0 auto;
     }
-    .rw-image__frame img {
+    .rw-image-row__cell img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -1312,11 +1316,13 @@
       transform: scale(1.02);
       transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .rw-image.is-visible .rw-image__frame img {
+    .rw-image-row.is-visible .rw-image-row__cell img {
       transform: scale(1);
     }
     @media (max-width: 700px) {
-      .rw-image { padding: var(--space-3) 0 var(--space-4); }
+      .rw-image-row { padding: var(--space-3) 0 var(--space-5); }
+      .rw-image-row__grid { grid-template-columns: 1fr; gap: 10px; }
+      .rw-image-row__cell { aspect-ratio: 16 / 10; }
     }
 
     /* ====== KEY OUTCOMES (compact strip — modelled on homepage Trusted-by) ====== */
@@ -1513,11 +1519,13 @@
     </div>
   </section>
 
-  <!-- IMAGE BREAK — Drilling -->
-  <section class="section-light rw-image reveal">
+  <!-- IMAGE ROW — Challenge (scale of operations) -->
+  <section class="section-light rw-image-row reveal">
     <div class="container">
-      <div class="rw-image__frame">
-        <img src="assets/ravenswood/01-drilling.jpg" alt="Drill rig and worker handling samples at the Ravenswood Gold Mine.">
+      <div class="rw-image-row__grid">
+        <div class="rw-image-row__cell"><img src="assets/ravenswood/challenge-1.jpg" alt="Wide view of the Ravenswood Gold Mine open pit and surrounding landscape, with a haul truck on the bench road."></div>
+        <div class="rw-image-row__cell"><img src="assets/ravenswood/challenge-2.jpg" alt="Drill rig and worker handling samples at Ravenswood Gold Mine."></div>
+        <div class="rw-image-row__cell"><img src="assets/ravenswood/challenge-3.jpg" alt="Aerial view of the Ravenswood Gold Mine processing facility and operational infrastructure."></div>
       </div>
     </div>
   </section>
@@ -1537,11 +1545,13 @@
     </div>
   </section>
 
-  <!-- IMAGE BREAK — Unit installed -->
-  <section class="section-light rw-image reveal">
+  <!-- IMAGE ROW — Solution (the deployed unit) -->
+  <section class="section-light rw-image-row reveal">
     <div class="container">
-      <div class="rw-image__frame">
-        <img src="assets/ravenswood/02-unit.jpg" alt="The PhotonAssay unit installed at Ravenswood Gold Mine, with CHRYSOS PhotonAssay and Ravenswood Gold branding.">
+      <div class="rw-image-row__grid">
+        <div class="rw-image-row__cell"><img src="assets/ravenswood/solution-1.jpg" alt="The PhotonAssay unit installed and operating at Ravenswood Gold Mine, with conveyor system, operator workstation, and the full CHRYSOS PhotonAssay and Ravenswood Gold branded installation visible."></div>
+        <div class="rw-image-row__cell"><img src="assets/ravenswood/solution-2.jpg" alt="Close-up of the CHRYSOS PhotonAssay and Ravenswood Gold dual-branded panel on the unit."></div>
+        <div class="rw-image-row__cell"><img src="assets/ravenswood/solution-3.jpg" alt="The PhotonAssay operator dashboard showing batch and sample data on screen at Ravenswood."></div>
       </div>
     </div>
   </section>
@@ -1556,15 +1566,6 @@
         <div>
           <p style="font-size: 18px; color: var(--grey-700); line-height: 1.7;" data-copy-id="ravenswood-pioneers-body">Ravenswood Gold are the first mine in the world to lease and operate a PhotonAssay&trade; unit entirely independently &mdash; no commercial lab and no third party. Where most operations adopt PhotonAssay&trade; through an external laboratory arrangement, Ravenswood took full ownership of their assay capability. For a mine running 17,000 assays a month with two drill rigs turning 24/7, that independence isn&rsquo;t just operationally convenient &mdash; it&rsquo;s a genuine competitive advantage.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- IMAGE BREAK — Full installation -->
-  <section class="section-light rw-image reveal">
-    <div class="container">
-      <div class="rw-image__frame">
-        <img src="assets/ravenswood/03-installation.jpg" alt="The PhotonAssay unit installed and operating at Ravenswood Gold Mine, with conveyor system, operator workstation, and the full CHRYSOS PhotonAssay and Ravenswood Gold branded installation visible.">
       </div>
     </div>
   </section>
