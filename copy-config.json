@@ -2291,240 +2291,6 @@
       }
     ]
   },
-  "case-study-example.html": {
-    "title": "Case Study Demo (placeholder \u2014 to be merged with Ravenswood Goldmine Case Study)",
-    "url": "/case-study-example",
-    "sections": [
-      {
-        "id": "casestudy-hero-eyebrow",
-        "label": "Hero Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase. e.g. 'CASE STUDY'.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-hero-headline",
-        "label": "Hero Headline",
-        "guidance": "Case study title. 5-12 words. Name the client or project.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-hero-location",
-        "label": "Hero Location",
-        "guidance": "Site or client location. e.g. 'Western Australia'. 1-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-hero-stat-number",
-        "label": "Hero Stat Number",
-        "guidance": "Key result number. e.g. '40%' or '2 min'. Bold headline stat.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-hero-stat-label",
-        "label": "Hero Stat Label",
-        "guidance": "Label for the hero stat. 2-5 words describing what the number means.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-hero-subtitle",
-        "label": "Hero Subtitle",
-        "guidance": "Brief summary beneath the headline. 15-25 words. Summarise the outcome.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-challenge-eyebrow",
-        "label": "Challenge Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase. e.g. 'THE CHALLENGE'.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-challenge-body",
-        "label": "Challenge Body",
-        "guidance": "Describe the problem or challenge. 40-80 words. What was the client facing?",
-        "type": "long"
-      },
-      {
-        "id": "casestudy-solution-eyebrow",
-        "label": "Solution Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase. e.g. 'THE SOLUTION'.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-solution-body",
-        "label": "Solution Body",
-        "guidance": "Describe how PhotonAssay solved the problem. 40-80 words.",
-        "type": "long"
-      },
-      {
-        "id": "casestudy-results-eyebrow",
-        "label": "Results Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase. e.g. 'THE RESULTS'.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-heading",
-        "label": "Results Heading",
-        "guidance": "Results section headline. 5-10 words. Frame the impact.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat1-number",
-        "label": "Results Stat 1 Number",
-        "guidance": "Key result number with unit. Keep concise.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat1-label",
-        "label": "Results Stat 1 Label",
-        "guidance": "Short label for the stat. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat2-number",
-        "label": "Results Stat 2 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat2-label",
-        "label": "Results Stat 2 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat3-number",
-        "label": "Results Stat 3 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat3-label",
-        "label": "Results Stat 3 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat4-number",
-        "label": "Results Stat 4 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat4-label",
-        "label": "Results Stat 4 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat5-number",
-        "label": "Results Stat 5 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat5-label",
-        "label": "Results Stat 5 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat6-number",
-        "label": "Results Stat 6 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-results-stat6-label",
-        "label": "Results Stat 6 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-quote-text",
-        "label": "Quote Text",
-        "guidance": "Client testimonial quote. 20-50 words. Authentic voice, specific results.",
-        "type": "long"
-      },
-      {
-        "id": "casestudy-quote-author",
-        "label": "Quote Author",
-        "guidance": "Person's full name.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-quote-role",
-        "label": "Quote Role",
-        "guidance": "Person's title and company. e.g. 'Operations Manager, SGS'.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-eyebrow",
-        "label": "Related Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-heading",
-        "label": "Related Heading",
-        "guidance": "Section headline. 3-8 words. Introduce related case studies.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card1-type",
-        "label": "Related Card 1 Type",
-        "guidance": "Content type badge. 1-3 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card1-title",
-        "label": "Related Card 1 Title",
-        "guidance": "Case study title. 5-12 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card1-excerpt",
-        "label": "Related Card 1 Excerpt",
-        "guidance": "Brief description. 15-25 words.",
-        "type": "long"
-      },
-      {
-        "id": "casestudy-related-card2-type",
-        "label": "Related Card 2 Type",
-        "guidance": "Content type badge. 1-3 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card2-title",
-        "label": "Related Card 2 Title",
-        "guidance": "Case study title. 5-12 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card2-excerpt",
-        "label": "Related Card 2 Excerpt",
-        "guidance": "Brief description. 15-25 words.",
-        "type": "long"
-      },
-      {
-        "id": "casestudy-related-card3-type",
-        "label": "Related Card 3 Type",
-        "guidance": "Content type badge. 1-3 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card3-title",
-        "label": "Related Card 3 Title",
-        "guidance": "Case study title. 5-12 words.",
-        "type": "short"
-      },
-      {
-        "id": "casestudy-related-card3-excerpt",
-        "label": "Related Card 3 Excerpt",
-        "guidance": "Brief description. 15-25 words.",
-        "type": "long"
-      }
-    ]
-  },
   "ravenswood.html": {
     "title": "Ravenswood Goldmine Case Study",
     "url": "/case-study-ravenswood-gold",
@@ -2572,51 +2338,9 @@
         "type": "short"
       },
       {
-        "id": "ravenswood-challenge-eyebrow",
-        "label": "Challenge Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-challenge-body1",
-        "label": "Challenge Body Paragraph 1",
-        "guidance": "First paragraph describing the challenge. 30-50 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-challenge-body2",
-        "label": "Challenge Body Paragraph 2",
-        "guidance": "Second paragraph expanding on the challenge. 30-50 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-solution-eyebrow",
-        "label": "Solution Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-solution-body1",
-        "label": "Solution Body Paragraph 1",
-        "guidance": "First paragraph describing the solution. 30-50 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-solution-body2",
-        "label": "Solution Body Paragraph 2",
-        "guidance": "Second paragraph. 30-50 words.",
-        "type": "long"
-      },
-      {
         "id": "ravenswood-results-eyebrow",
         "label": "Results Eyebrow",
         "guidance": "Section label. 1-3 words, uppercase.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-results-heading",
-        "label": "Results Heading",
-        "guidance": "Results section headline. 5-10 words.",
         "type": "short"
       },
       {
@@ -2656,90 +2380,6 @@
         "type": "short"
       },
       {
-        "id": "ravenswood-results-stat4-number",
-        "label": "Results Stat 4 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-results-stat4-label",
-        "label": "Results Stat 4 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-results-stat5-number",
-        "label": "Results Stat 5 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-results-stat5-label",
-        "label": "Results Stat 5 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-results-stat6-number",
-        "label": "Results Stat 6 Number",
-        "guidance": "Key result number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-results-stat6-label",
-        "label": "Results Stat 6 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-impact-eyebrow",
-        "label": "Impact Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-impact-heading",
-        "label": "Impact Heading",
-        "guidance": "Impact section headline. 5-10 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-impact-card1-label",
-        "label": "Impact Card 1 Label",
-        "guidance": "Impact area label. 2-5 words. e.g. 'Operational Efficiency'.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-impact-card1-body",
-        "label": "Impact Card 1 Body",
-        "guidance": "Brief explanation of this impact area. 15-25 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-impact-card2-label",
-        "label": "Impact Card 2 Label",
-        "guidance": "Impact area label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-impact-card2-body",
-        "label": "Impact Card 2 Body",
-        "guidance": "Brief explanation. 15-25 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-impact-card3-label",
-        "label": "Impact Card 3 Label",
-        "guidance": "Impact area label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-impact-card3-body",
-        "label": "Impact Card 3 Body",
-        "guidance": "Brief explanation. 15-25 words.",
-        "type": "long"
-      },
-      {
         "id": "ravenswood-quote-text",
         "label": "Quote Text",
         "guidance": "Client testimonial quote. 20-50 words. Authentic voice, specific to Ravenswood.",
@@ -2758,63 +2398,57 @@
         "type": "short"
       },
       {
-        "id": "ravenswood-about-eyebrow",
-        "label": "About Eyebrow",
+        "id": "ravenswood-challenge-eyebrow",
+        "label": "Challenge Eyebrow",
         "guidance": "Section label. 1-3 words, uppercase.",
         "type": "short"
       },
       {
-        "id": "ravenswood-about-heading",
-        "label": "About Heading",
-        "guidance": "Section headline. 5-10 words. Introduce the Ravenswood mine.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-about-body1",
-        "label": "About Body Paragraph 1",
-        "guidance": "First paragraph about the mine or site. 30-50 words.",
+        "id": "ravenswood-challenge-body1",
+        "label": "Challenge Body Paragraph 1",
+        "guidance": "First paragraph describing the challenge. 30-50 words.",
         "type": "long"
       },
       {
-        "id": "ravenswood-about-body2",
-        "label": "About Body Paragraph 2",
+        "id": "ravenswood-challenge-body2",
+        "label": "Challenge Body Paragraph 2",
+        "guidance": "Second paragraph expanding on the challenge. 30-50 words.",
+        "type": "long"
+      },
+      {
+        "id": "ravenswood-solution-eyebrow",
+        "label": "Solution Eyebrow",
+        "guidance": "Section label. 1-3 words, uppercase.",
+        "type": "short"
+      },
+      {
+        "id": "ravenswood-solution-body1",
+        "label": "Solution Body Paragraph 1",
+        "guidance": "First paragraph describing the solution. 30-50 words.",
+        "type": "long"
+      },
+      {
+        "id": "ravenswood-solution-body2",
+        "label": "Solution Body Paragraph 2",
         "guidance": "Second paragraph. 30-50 words.",
         "type": "long"
       },
       {
-        "id": "ravenswood-about-stat1-number",
-        "label": "About Stat 1 Number",
-        "guidance": "Key fact about the site. Number with unit.",
+        "id": "ravenswood-pioneers-eyebrow",
+        "label": "Pioneers Eyebrow",
+        "guidance": "Section label. e.g. 'Pioneers in a New Model'. 2-6 words.",
         "type": "short"
       },
       {
-        "id": "ravenswood-about-stat1-label",
-        "label": "About Stat 1 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
+        "id": "ravenswood-pioneers-body",
+        "label": "Pioneers Body",
+        "guidance": "The 'Pioneers in a New Model' narrative. 60-90 words.",
+        "type": "long"
       },
       {
-        "id": "ravenswood-about-stat2-number",
-        "label": "About Stat 2 Number",
-        "guidance": "Key fact. Number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-about-stat2-label",
-        "label": "About Stat 2 Label",
-        "guidance": "Short label. 2-5 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-about-stat3-number",
-        "label": "About Stat 3 Number",
-        "guidance": "Key fact. Number with unit.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-about-stat3-label",
-        "label": "About Stat 3 Label",
-        "guidance": "Short label. 2-5 words.",
+        "id": "ravenswood-cta-eyebrow",
+        "label": "CTA Eyebrow",
+        "guidance": "Small label above the CTA heading. e.g. 'Conference Paper'. 2-4 words.",
         "type": "short"
       },
       {
@@ -2830,70 +2464,10 @@
         "type": "long"
       },
       {
-        "id": "ravenswood-related-eyebrow",
-        "label": "Related Eyebrow",
-        "guidance": "Section label. 1-3 words, uppercase.",
+        "id": "ravenswood-cta-button",
+        "label": "CTA Button Text",
+        "guidance": "Button text linking to the conference paper. 3-5 words.",
         "type": "short"
-      },
-      {
-        "id": "ravenswood-related-heading",
-        "label": "Related Heading",
-        "guidance": "Section headline. 3-8 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card1-type",
-        "label": "Related Card 1 Type",
-        "guidance": "Content type badge. 1-3 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card1-title",
-        "label": "Related Card 1 Title",
-        "guidance": "Case study or resource title. 5-12 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card1-excerpt",
-        "label": "Related Card 1 Excerpt",
-        "guidance": "Brief description. 15-25 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-related-card2-type",
-        "label": "Related Card 2 Type",
-        "guidance": "Content type badge. 1-3 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card2-title",
-        "label": "Related Card 2 Title",
-        "guidance": "Title. 5-12 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card2-excerpt",
-        "label": "Related Card 2 Excerpt",
-        "guidance": "Brief description. 15-25 words.",
-        "type": "long"
-      },
-      {
-        "id": "ravenswood-related-card3-type",
-        "label": "Related Card 3 Type",
-        "guidance": "Content type badge. 1-3 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card3-title",
-        "label": "Related Card 3 Title",
-        "guidance": "Title. 5-12 words.",
-        "type": "short"
-      },
-      {
-        "id": "ravenswood-related-card3-excerpt",
-        "label": "Related Card 3 Excerpt",
-        "guidance": "Brief description. 15-25 words.",
-        "type": "long"
       }
     ]
   },
