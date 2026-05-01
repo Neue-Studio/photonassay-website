@@ -2722,6 +2722,126 @@
         "type": "long"
       },
       {
+        "id": "latest-events-archive-eyebrow",
+        "label": "Events Archive Eyebrow",
+        "guidance": "Section sub-label for past events. 1-3 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-heading",
+        "label": "Events Archive Heading",
+        "guidance": "Heading for past events. e.g. 'Past events'. 2-5 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row1-title",
+        "label": "Past Event 1 Title",
+        "guidance": "Event name including conference / venue if relevant. 5-15 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row1-badge",
+        "label": "Past Event 1 Type Badge",
+        "guidance": "Conference / Webinar / Meetup. 1-2 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row1-desc",
+        "label": "Past Event 1 Description",
+        "guidance": "Brief recap of what was covered or key takeaways. 15-30 words.",
+        "type": "long"
+      },
+      {
+        "id": "latest-events-archive-row2-title",
+        "label": "Past Event 2 Title",
+        "guidance": "Event name including conference / venue if relevant. 5-15 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row2-badge",
+        "label": "Past Event 2 Type Badge",
+        "guidance": "Conference / Webinar / Meetup. 1-2 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row2-desc",
+        "label": "Past Event 2 Description",
+        "guidance": "Brief recap of what was covered or key takeaways. 15-30 words.",
+        "type": "long"
+      },
+      {
+        "id": "latest-events-archive-row3-title",
+        "label": "Past Event 3 Title",
+        "guidance": "Event name including conference / venue if relevant. 5-15 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row3-badge",
+        "label": "Past Event 3 Type Badge",
+        "guidance": "Conference / Webinar / Meetup. 1-2 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row3-desc",
+        "label": "Past Event 3 Description",
+        "guidance": "Brief recap of what was covered or key takeaways. 15-30 words.",
+        "type": "long"
+      },
+      {
+        "id": "latest-events-archive-row4-title",
+        "label": "Past Event 4 Title",
+        "guidance": "Event name including conference / venue if relevant. 5-15 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row4-badge",
+        "label": "Past Event 4 Type Badge",
+        "guidance": "Conference / Webinar / Meetup. 1-2 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row4-desc",
+        "label": "Past Event 4 Description",
+        "guidance": "Brief recap of what was covered or key takeaways. 15-30 words.",
+        "type": "long"
+      },
+      {
+        "id": "latest-events-archive-row5-title",
+        "label": "Past Event 5 Title",
+        "guidance": "Event name including conference / venue if relevant. 5-15 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row5-badge",
+        "label": "Past Event 5 Type Badge",
+        "guidance": "Conference / Webinar / Meetup. 1-2 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row5-desc",
+        "label": "Past Event 5 Description",
+        "guidance": "Brief recap of what was covered or key takeaways. 15-30 words.",
+        "type": "long"
+      },
+      {
+        "id": "latest-events-archive-row6-title",
+        "label": "Past Event 6 Title",
+        "guidance": "Event name including conference / venue if relevant. 5-15 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row6-badge",
+        "label": "Past Event 6 Type Badge",
+        "guidance": "Conference / Webinar / Meetup. 1-2 words.",
+        "type": "short"
+      },
+      {
+        "id": "latest-events-archive-row6-desc",
+        "label": "Past Event 6 Description",
+        "guidance": "Brief recap of what was covered or key takeaways. 15-30 words.",
+        "type": "long"
+      },
+      {
         "id": "latest-newsletter-eyebrow",
         "label": "Newsletter Eyebrow",
         "guidance": "Section label. 1-3 words, uppercase.",
