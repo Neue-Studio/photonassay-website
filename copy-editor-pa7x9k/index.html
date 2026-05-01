@@ -160,6 +160,34 @@
     const SITE_URL = 'https://photonassay-website.vercel.app';
     const RAW_BASE = 'https://raw.githubusercontent.com/Neue-Studio/photonassay-website/main';
     const API_URL = '/api/save';
+    const GH_CONTENTS_API = 'https://api.github.com/repos/Neue-Studio/photonassay-website/contents';
+
+    // ─── FRESH READ (avoids the raw.githubusercontent.com CDN cache that holds
+    //     stale content for ~5 minutes after a save). Uses GitHub Contents API
+    //     with the raw-content media type — returns fresh content per request,
+    //     no cache. Falls back to raw if the API rate-limits.
+    async function fetchFresh(path) {
+      const apiUrl = `${GH_CONTENTS_API}/${path}?ref=main&_=${Date.now()}`;
+      try {
+        const r = await fetch(apiUrl, {
+          headers: { 'Accept': 'application/vnd.github.v3.raw' },
+          cache: 'no-store',
+        });
+        if (r.ok) return await r.text();
+        if (r.status !== 403) {
+          // 403 = rate limit, fall through. Other errors mean something else is wrong.
+          throw new Error(`GitHub API ${r.status} loading ${path}`);
+        }
+      } catch (e) {
+        // Network or rate-limit — try raw as fallback
+      }
+      // Fallback: raw.githubusercontent.com (may be stale up to ~5 min)
+      const rawUrl = `${RAW_BASE}/${path}?_=${Date.now()}`;
+      const r2 = await fetch(rawUrl, { cache: 'no-store' });
+      if (!r2.ok) throw new Error(`Failed to load ${path} (raw fallback ${r2.status})`);
+      return r2.text();
+    }
+    async function fetchFreshJSON(path) { return JSON.parse(await fetchFresh(path)); }
 
     let config = null;
     let status = {};
@@ -193,17 +221,17 @@
     // ─── INIT ───
     async function init() {
       try {
-        const cb = '?t=' + Date.now();
         const [configRes, statusRes] = await Promise.all([
-          fetch(RAW_BASE + '/copy-config.json' + cb).then(r => r.json()),
-          fetch(RAW_BASE + '/copy-status.json' + cb).then(r => r.json())
+          fetchFreshJSON('copy-config.json'),
+          fetchFreshJSON('copy-status.json'),
         ]);
         config = configRes;
         status = statusRes;
         renderDashboard();
         updateProgress();
       } catch (err) {
-        pageGrid.innerHTML = '<p style="color:#DC3545;">Failed to load config. Check that copy-config.json exists in the repo.</p>';
+        pageGrid.innerHTML = '<p style="color:#DC3545;">Failed to load config: ' + err.message + '</p>';
+        console.error('init failed:', err);
       }
     }
 
@@ -265,11 +293,12 @@
       editorFields.innerHTML = '<div class="loading"><div class="spinner"></div>Loading copy from live site...</div>';
 
       try {
-        const html = await fetch(RAW_BASE + '/' + file + '?t=' + Date.now()).then(r => r.text());
+        const html = await fetchFresh(file);
         const doc = new DOMParser().parseFromString(html, 'text/html');
         renderFields(pageConf.sections, doc);
       } catch (err) {
-        editorFields.innerHTML = '<p style="color:#DC3545;">Failed to load page. Try refreshing.</p>';
+        editorFields.innerHTML = '<p style="color:#DC3545;">Failed to load page: ' + err.message + '</p>';
+        console.error('openEditor failed:', err);
       }
     }
 
@@ -363,10 +392,13 @@
       saveMsg.className = 'save-bar__msg';
 
       try {
-        const html = await fetch(RAW_BASE + '/' + file + '?t=' + Date.now()).then(r => r.text());
+        // Pull a fresh copy of the file (Contents API, no CDN cache) so we
+        // serialise edits onto the latest content, not stale content.
+        const html = await fetchFresh(file);
         const doc = new DOMParser().parseFromString(html, 'text/html');
 
-        document.querySelectorAll('.field__input[data-id]').forEach(input => {
+        const inputs = document.querySelectorAll('.field__input[data-id]');
+        inputs.forEach(input => {
           const id = input.dataset.id;
           const type = input.dataset.type;
           const lookupId = type === 'url' ? id.replace(/-url$/, '') : id;
@@ -386,19 +418,31 @@
         const saveRes = await fetch(API_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ file: file, html: updatedHtml })
+          body: JSON.stringify({ file: file, html: updatedHtml }),
         });
 
         if (!saveRes.ok) {
-          const err = await saveRes.json();
-          throw new Error(err.error || 'Save failed');
+          let detail = saveRes.status + ' ' + saveRes.statusText;
+          try {
+            const errBody = await saveRes.json();
+            detail = errBody.error || JSON.stringify(errBody);
+          } catch (_) {
+            try { detail = await saveRes.text(); } catch (_) {}
+          }
+          throw new Error('Save failed: ' + detail);
         }
 
-        await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status })
-        });
+        // Status update — non-fatal, log if it fails
+        try {
+          const statusRes = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ status }),
+          });
+          if (!statusRes.ok) console.warn('Status update returned', statusRes.status);
+        } catch (e) {
+          console.warn('Status update failed:', e);
+        }
 
         dirty = false;
         document.querySelectorAll('.field__input--dirty').forEach(el => el.classList.remove('field__input--dirty'));
@@ -410,8 +454,9 @@
         saveMsg.textContent = 'Saved! Changes will be live in ~60 seconds.';
         saveMsg.className = 'save-bar__msg save-bar__msg--success';
       } catch (err) {
-        saveMsg.textContent = 'Error: ' + err.message;
+        saveMsg.textContent = err.message;
         saveMsg.className = 'save-bar__msg save-bar__msg--error';
+        console.error('save failed:', err);
       } finally {
         saveBtn.disabled = false;
       }
