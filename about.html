@@ -482,94 +482,6 @@
     }
 
     /* ============================================
-       TECH IMAGE PICKER (prototype review tool)
-       — 3 candidates with 1/2/3 selector, picked option locks in later
-       ============================================ */
-    .tech-image-picker {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      border-radius: 2px;
-      overflow: hidden;
-      background: var(--grey-100);
-      isolation: isolate;
-    }
-    .tech-image-picker__slide {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 1;
-    }
-    .tech-image-picker__slide.is-active {
-      opacity: 1;
-      z-index: 2;
-    }
-    .tech-image-picker__label {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      padding: 6px 12px;
-      background: rgba(0, 0, 0, 0.6);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border-radius: 100px;
-      z-index: 5;
-      pointer-events: none;
-      transition: opacity 0.25s ease;
-    }
-    .tech-image-picker__selector {
-      position: absolute;
-      bottom: 16px;
-      right: 16px;
-      display: flex;
-      gap: 4px;
-      padding: 4px;
-      background: rgba(0, 0, 0, 0.6);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
-      border-radius: 100px;
-      z-index: 5;
-    }
-    .tech-image-picker__btn {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      border: none;
-      background: transparent;
-      color: rgba(255, 255, 255, 0.7);
-      font-family: inherit;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
-    }
-    .tech-image-picker__btn:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--white);
-    }
-    .tech-image-picker__btn.is-active {
-      background: var(--gold, #F2B705);
-      color: #0A0A0A;
-    }
-    .tech-image-picker__btn:focus-visible {
-      outline: 2px solid var(--gold, #F2B705);
-      outline-offset: 2px;
-    }
-    @media (max-width: 768px) {
-      .tech-image-picker__label { font-size: 9px; padding: 5px 10px; }
-      .tech-image-picker__btn { width: 24px; height: 24px; font-size: 11px; }
-    }
-
-    /* ============================================
        TYPE BADGE
        ============================================ */
     .badge {
@@ -1422,19 +1334,7 @@
           <p style="margin-bottom: var(--space-4);" data-copy-id="about-technology-body2">Unlike traditional fire assay, which requires crushing, splitting, fluxing, and smelting a 50-gram sub-sample over many hours, PhotonAssay™ analyses the entire 500-gram sample in approximately two minutes. The sample remains intact and can be remeasured or stored for future reference.</p>
           <p data-copy-id="about-technology-body3">The technology eliminates lead-based fluxes and high-temperature furnaces, removing key occupational health hazards and producing zero scope 1 emissions from the assay process itself. The result is data that Competent and Qualified Persons trust, that regulators accept under JORC and NI 43-101, and that miners can actually act on.</p>
         </div>
-        <!-- Image-picker prototype: 3 candidates for "The Technology" hero. Selector pill bottom-right.
-             Bailey to lock in one option; the picker UI strips out once chosen. -->
-        <div class="tech-image-picker" id="techImagePicker">
-          <img class="tech-image-picker__slide is-active" src="assets/tech-section/option-1-render.webp" alt="3D render of automation arm engaging a labelled sample puck" loading="lazy">
-          <img class="tech-image-picker__slide" src="assets/tech-section/option-2-tonsley.webp" alt="CHRYSOS PhotonAssay unit at the Tonsley HQ" loading="lazy">
-          <img class="tech-image-picker__slide" src="assets/tech-section/option-3-puck.webp" alt="CHRYSOS sample puck on the unit's conveyor" loading="lazy">
-          <div class="tech-image-picker__label" id="techImagePickerLabel">Option 1 · Render</div>
-          <div class="tech-image-picker__selector">
-            <button class="tech-image-picker__btn is-active" data-tech-slide="1" data-label="Option 1 · Render" aria-label="Show option 1">1</button>
-            <button class="tech-image-picker__btn" data-tech-slide="2" data-label="Option 2 · Real product" aria-label="Show option 2">2</button>
-            <button class="tech-image-picker__btn" data-tech-slide="3" data-label="Option 3 · Sample detail" aria-label="Show option 3">3</button>
-          </div>
-        </div>
+        <img src="assets/tech-section/photonassay-render.webp" alt="3D render of the PhotonAssay automation arm engaging a labelled sample puck" loading="lazy" style="width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 2px; display: block;">
       </div>
     </div>
   </section>
@@ -1667,23 +1567,5 @@
     })();
   </script>
 
-  <!-- Tech image picker (prototype) -->
-  <script>
-    (function() {
-      var picker = document.getElementById('techImagePicker');
-      if (!picker) return;
-      var btns = picker.querySelectorAll('.tech-image-picker__btn');
-      var slides = picker.querySelectorAll('.tech-image-picker__slide');
-      var label = document.getElementById('techImagePickerLabel');
-      btns.forEach(function(btn) {
-        btn.addEventListener('click', function() {
-          var n = parseInt(btn.getAttribute('data-tech-slide'), 10);
-          btns.forEach(function(b) { b.classList.toggle('is-active', b === btn); });
-          slides.forEach(function(s, i) { s.classList.toggle('is-active', i === n - 1); });
-          if (label) label.textContent = btn.getAttribute('data-label');
-        });
-      });
-    })();
-  </script>
 
 </body></html>
