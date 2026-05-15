@@ -1199,6 +1199,18 @@
       z-index: 10;
     }
 
+    /* Multi-unit pins — 2× diameter denotes more than one PhotonAssay unit at a single location.
+       Used in conjunction with the base type class (eg. map-dot--mine map-dot--multi).
+       The hover-card should include a .map-card__units line for the count. */
+    .map-dot--multi.map-dot--mine { width: 18px; height: 18px; }
+    .map-dot--multi.map-dot--lab { width: 20px; height: 20px; }
+    .map-dot--multi.map-dot--office { width: 22px; height: 22px; }
+    .map-dot--multi.map-dot--contracted { width: 18px; height: 18px; }
+    /* Gentler hover scale on multi pins — they're already 2× so a normal 1.5 hover would dominate */
+    .map-dot--multi:hover {
+      transform: translate(-50%, -50%) scale(1.25);
+    }
+
     /* Stagger pulse animations */
     .map-dot:nth-child(2n) { animation-delay: 0.5s; }
     .map-dot:nth-child(3n) { animation-delay: 1.0s; }
@@ -1272,7 +1284,25 @@
       color: var(--grey-400);
       line-height: 1.4;
     }
+    /* Number of units — only rendered when location has >1 PhotonAssay unit.
+       Sits between the location detail and the link. Inherits its accent colour
+       from the parent dot type via the modifier class. */
+    .map-card__units {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      background: rgba(255,255,255,0.08);
+      padding: 3px 8px;
+      border-radius: 3px;
+      margin-top: 8px;
+    }
+    .map-card__units--mine { background: rgba(242, 183, 5, 0.15); color: var(--gold); }
+    .map-card__units--lab { background: rgba(13, 115, 119, 0.18); color: #4ABEC2; }
+    .map-card__units--office { background: rgba(232, 116, 42, 0.15); color: #FF9255; }
     .map-card__detail + .map-card__link { margin-top: 8px; }
+    .map-card__units + .map-card__link { margin-top: 8px; }
     .map-card__link {
       display: inline-flex;
       align-items: center;
@@ -3588,11 +3618,12 @@ No chemicals. No fire. No compromise.</p>
         <div class="map-dot map-dot--mine" style="left:29%;top:52%" data-label="Pará, Brazil"></div>
         <div class="map-dot map-dot--mine" style="left:30%;top:55%" data-label="Minas Gerais, Brazil"></div>
         <!-- Mine site deployments (gold) — Africa -->
-        <div class="map-dot map-dot--mine map-dot--has-card" style="left:46%;top:43%" data-label="Fekola Mine, Mali">
+        <div class="map-dot map-dot--mine map-dot--multi map-dot--has-card" style="left:46%;top:43%" data-label="Fekola Mine, Mali">
           <div class="map-card">
             <div class="map-card__type map-card__type--mine">Mine Site Deployment</div>
             <div class="map-card__name">Fekola Gold Mine</div>
             <div class="map-card__detail">B2Gold Corp — Mali, West Africa</div>
+            <div class="map-card__units map-card__units--mine">Number of Units: 2</div>
             <a href="#" class="map-card__link map-card__link--mine">Visit B2Gold <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
@@ -3620,11 +3651,12 @@ No chemicals. No fire. No compromise.</p>
             <a href="#" class="map-card__link map-card__link--lab">Send your sample to MSA Saudi Arabia <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
-        <div class="map-dot map-dot--lab map-dot--has-card" style="left:77%;top:67%" data-label="SGS Geochemistry, Perth">
+        <div class="map-dot map-dot--lab map-dot--multi map-dot--has-card" style="left:77%;top:67%" data-label="SGS Geochemistry, Perth">
           <div class="map-card">
             <div class="map-card__type map-card__type--lab">Commercial Laboratory</div>
             <div class="map-card__name">SGS Geochemistry</div>
             <div class="map-card__detail">Perth, Western Australia</div>
+            <div class="map-card__units map-card__units--lab">Number of Units: 3</div>
             <a href="#" class="map-card__link map-card__link--lab">Send your sample to SGS Perth <svg viewBox="0 0 12 12" fill="none"><path d="M3 9L9 3M9 3H4M9 3V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></a>
           </div>
         </div>
