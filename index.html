@@ -23,7 +23,7 @@
       --grey-100: #E8E8E8;
       --white: #FFFFFF;
       --offwhite: #FAFAFA;
-      --gold: #FEC93B;
+      --gold: #F2B705;
       --gold-hover: #D9A404;
 
       --font: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -1136,8 +1136,8 @@
 
     /* Pulse animation for active pins */
     @keyframes pin-pulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(254, 201, 59, 0.4); }
-      50% { box-shadow: 0 0 0 4px rgba(254, 201, 59, 0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(242, 183, 5, 0.4); }
+      50% { box-shadow: 0 0 0 4px rgba(242, 183, 5, 0); }
     }
     @keyframes pin-pulse-teal {
       0%, 100% { box-shadow: 0 0 0 0 rgba(13, 115, 119, 0.4); }
@@ -1152,7 +1152,7 @@
       animation: pin-pulse 3s ease-in-out infinite;
     }
     .map-dot--mine:hover {
-      box-shadow: 0 0 16px rgba(254, 201, 59, 0.6);
+      box-shadow: 0 0 16px rgba(242, 183, 5, 0.6);
       animation: none;
     }
 
@@ -1298,7 +1298,7 @@
       border-radius: 3px;
       margin-top: 8px;
     }
-    .map-card__units--mine { background: rgba(254, 201, 59, 0.15); color: var(--gold); }
+    .map-card__units--mine { background: rgba(242, 183, 5, 0.15); color: var(--gold); }
     .map-card__units--lab { background: rgba(13, 115, 119, 0.18); color: #4ABEC2; }
     .map-card__units--office { background: rgba(232, 116, 42, 0.15); color: #FF9255; }
     .map-card__detail + .map-card__link { margin-top: 8px; }
@@ -1858,7 +1858,7 @@
     }
     .cases__nav-btn:hover {
       border-color: var(--gold);
-      background: rgba(254, 201, 59,0.1);
+      background: rgba(242, 183, 5,0.1);
     }
 
     .btn--outline:hover {
@@ -2579,7 +2579,7 @@
       transition: background 0.2s ease;
     }
     .compare__table tbody tr:hover {
-      background: rgba(254, 201, 59, 0.04);
+      background: rgba(242, 183, 5, 0.04);
     }
     .compare__table tbody tr:hover td:first-child {
       border-left: 2px solid var(--gold);
@@ -2601,7 +2601,7 @@
     .compare__table tbody td.compare__col-pa {
       color: var(--near-black);
       font-weight: 600;
-      background: rgba(254, 201, 59, 0.04);
+      background: rgba(242, 183, 5, 0.04);
     }
     .compare__table .compare__check {
       color: var(--gold);
@@ -2771,11 +2771,11 @@
       background: rgba(0,0,0,.04);
     }
     .data-table thead th.data-table__col-pa {
-      background: rgba(254, 201, 59,.06);
+      background: rgba(242, 183, 5,.06);
       color: var(--gold);
     }
     .data-table thead th.data-table__col-diff {
-      background: rgba(254, 201, 59,.04);
+      background: rgba(242, 183, 5,.04);
     }
     .data-table thead th.data-table__col-key {
       background: rgba(220,38,38,.04);
@@ -2800,12 +2800,12 @@
       color: var(--near-black);
     }
     .data-table tbody td.data-table__col-pa {
-      background: rgba(254, 201, 59,.04);
+      background: rgba(242, 183, 5,.04);
       font-weight: 700;
       color: var(--near-black);
     }
     .data-table tbody td.data-table__col-diff {
-      background: rgba(254, 201, 59,.02);
+      background: rgba(242, 183, 5,.02);
       font-weight: 500;
     }
     .data-table tbody td.data-table__col-key {
@@ -3480,12 +3480,12 @@ No chemicals. No fire. No compromise.</p>
                 <marker id="arrow1" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto"><path d="M0,0 L6,2.5 L0,5" fill="none" stroke="#d4d4d4" stroke-width="0.8"></path></marker>
               </defs>
               <!-- Three mines (gold, left) with pickaxe icons -->
-              <circle cx="26" cy="16" r="12" fill="#FEC93B" opacity="0.12" stroke="#FEC93B" stroke-width="1.5"></circle>
-              <g transform="translate(26,16) rotate(-45)"><line x1="0" y1="-2" x2="0" y2="7" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></line><path d="M-6,1 Q-4,-3 0,-2" fill="none" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></path><path d="M0,-2 Q4,-3 6,1" fill="none" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></path></g>
-              <circle cx="26" cy="50" r="12" fill="#FEC93B" opacity="0.12" stroke="#FEC93B" stroke-width="1.5"></circle>
-              <g transform="translate(26,50) rotate(-45)"><line x1="0" y1="-2" x2="0" y2="7" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></line><path d="M-6,1 Q-4,-3 0,-2" fill="none" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></path><path d="M0,-2 Q4,-3 6,1" fill="none" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></path></g>
-              <circle cx="26" cy="84" r="12" fill="#FEC93B" opacity="0.12" stroke="#FEC93B" stroke-width="1.5"></circle>
-              <g transform="translate(26,84) rotate(-45)"><line x1="0" y1="-2" x2="0" y2="7" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></line><path d="M-6,1 Q-4,-3 0,-2" fill="none" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></path><path d="M0,-2 Q4,-3 6,1" fill="none" stroke="#FEC93B" stroke-width="1.3" stroke-linecap="round"></path></g>
+              <circle cx="26" cy="16" r="12" fill="#F2B705" opacity="0.12" stroke="#F2B705" stroke-width="1.5"></circle>
+              <g transform="translate(26,16) rotate(-45)"><line x1="0" y1="-2" x2="0" y2="7" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></line><path d="M-6,1 Q-4,-3 0,-2" fill="none" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></path><path d="M0,-2 Q4,-3 6,1" fill="none" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></path></g>
+              <circle cx="26" cy="50" r="12" fill="#F2B705" opacity="0.12" stroke="#F2B705" stroke-width="1.5"></circle>
+              <g transform="translate(26,50) rotate(-45)"><line x1="0" y1="-2" x2="0" y2="7" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></line><path d="M-6,1 Q-4,-3 0,-2" fill="none" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></path><path d="M0,-2 Q4,-3 6,1" fill="none" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></path></g>
+              <circle cx="26" cy="84" r="12" fill="#F2B705" opacity="0.12" stroke="#F2B705" stroke-width="1.5"></circle>
+              <g transform="translate(26,84) rotate(-45)"><line x1="0" y1="-2" x2="0" y2="7" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></line><path d="M-6,1 Q-4,-3 0,-2" fill="none" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></path><path d="M0,-2 Q4,-3 6,1" fill="none" stroke="#F2B705" stroke-width="1.3" stroke-linecap="round"></path></g>
               <!-- Converging lines with arrowheads -->
               <line x1="38" y1="22" x2="70" y2="42" stroke="#d4d4d4" stroke-width="1" marker-end="url(#arrow1)"></line>
               <line x1="38" y1="50" x2="70" y2="50" stroke="#d4d4d4" stroke-width="1" marker-end="url(#arrow1)"></line>
@@ -3517,8 +3517,8 @@ No chemicals. No fire. No compromise.</p>
               <!-- Pulse dot -->
               <circle r="2.5" fill="#d4d4d4" opacity="0"><animateMotion dur="2s" repeatCount="indefinite" path="M58,50 L82,50"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2s" repeatCount="indefinite"></animate></circle>
               <!-- Mine (gold, right) with pickaxe -->
-              <circle cx="104" cy="50" r="22" fill="#FEC93B" opacity="0.12" stroke="#FEC93B" stroke-width="1.5"></circle>
-              <g transform="translate(104,50) rotate(-45)"><line x1="0" y1="-3" x2="0" y2="10" stroke="#FEC93B" stroke-width="1.5" stroke-linecap="round"></line><path d="M-8,1 Q-5,-4 0,-3" fill="none" stroke="#FEC93B" stroke-width="1.5" stroke-linecap="round"></path><path d="M0,-3 Q5,-4 8,1" fill="none" stroke="#FEC93B" stroke-width="1.5" stroke-linecap="round"></path></g>
+              <circle cx="104" cy="50" r="22" fill="#F2B705" opacity="0.12" stroke="#F2B705" stroke-width="1.5"></circle>
+              <g transform="translate(104,50) rotate(-45)"><line x1="0" y1="-3" x2="0" y2="10" stroke="#F2B705" stroke-width="1.5" stroke-linecap="round"></line><path d="M-8,1 Q-5,-4 0,-3" fill="none" stroke="#F2B705" stroke-width="1.5" stroke-linecap="round"></path><path d="M0,-3 Q5,-4 8,1" fill="none" stroke="#F2B705" stroke-width="1.5" stroke-linecap="round"></path></g>
             </svg>
           </div>
           <h3 data-copy-id="home-adopt-card2-title">Lab services specific operation</h3>
@@ -3529,14 +3529,14 @@ No chemicals. No fire. No compromise.</p>
           <div class="adopt__icon">
             <svg width="140" height="100" viewBox="0 0 140 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <marker id="arrow3" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="none" stroke="#FEC93B" stroke-width="0.8"></path></marker>
+                <marker id="arrow3" markerWidth="7" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="none" stroke="#F2B705" stroke-width="0.8"></path></marker>
               </defs>
               <!-- Single mine (gold, centred) -->
-              <circle cx="70" cy="50" r="32" fill="#FEC93B" opacity="0.10" stroke="#FEC93B" stroke-width="1.5"></circle>
+              <circle cx="70" cy="50" r="32" fill="#F2B705" opacity="0.10" stroke="#F2B705" stroke-width="1.5"></circle>
               <!-- Pickaxe icon (gold — miner owns and operates) -->
-              <g transform="translate(70,50) rotate(-45)"><line x1="0" y1="-3" x2="0" y2="12" stroke="#FEC93B" stroke-width="1.6" stroke-linecap="round"></line><path d="M-10,2 Q-6,-5 0,-3" fill="none" stroke="#FEC93B" stroke-width="1.6" stroke-linecap="round"></path><path d="M0,-3 Q6,-5 10,2" fill="none" stroke="#FEC93B" stroke-width="1.6" stroke-linecap="round"></path></g>
+              <g transform="translate(70,50) rotate(-45)"><line x1="0" y1="-3" x2="0" y2="12" stroke="#F2B705" stroke-width="1.6" stroke-linecap="round"></line><path d="M-10,2 Q-6,-5 0,-3" fill="none" stroke="#F2B705" stroke-width="1.6" stroke-linecap="round"></path><path d="M0,-3 Q6,-5 10,2" fill="none" stroke="#F2B705" stroke-width="1.6" stroke-linecap="round"></path></g>
               <!-- Replay / circular arrow around the circle (animated spin) -->
-              <g class="adopt-spin"><path d="M70,13 A37,37 0 1,1 37,67" fill="none" stroke="#FEC93B" stroke-width="1.3" opacity="0.45" marker-end="url(#arrow3)"></path></g>
+              <g class="adopt-spin"><path d="M70,13 A37,37 0 1,1 37,67" fill="none" stroke="#F2B705" stroke-width="1.3" opacity="0.45" marker-end="url(#arrow3)"></path></g>
             </svg>
           </div>
           <h3 data-copy-id="home-adopt-card3-title">Miner self-operates</h3>
@@ -3560,8 +3560,8 @@ No chemicals. No fire. No compromise.</p>
               <circle r="2.5" fill="#d4d4d4" opacity="0"><animateMotion dur="2s" repeatCount="indefinite" path="M60,43 L82,43"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2s" repeatCount="indefinite"></animate></circle>
               <circle r="2.5" fill="#d4d4d4" opacity="0"><animateMotion dur="2s" repeatCount="indefinite" path="M80,57 L58,57" begin="1s"></animateMotion><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="2s" repeatCount="indefinite" begin="1s"></animate></circle>
               <!-- Mine (gold, right) with pickaxe -->
-              <circle cx="104" cy="50" r="22" fill="#FEC93B" opacity="0.12" stroke="#FEC93B" stroke-width="1.5"></circle>
-              <g transform="translate(104,50) rotate(-45)"><line x1="0" y1="-3" x2="0" y2="10" stroke="#FEC93B" stroke-width="1.5" stroke-linecap="round"></line><path d="M-8,1 Q-5,-4 0,-3" fill="none" stroke="#FEC93B" stroke-width="1.5" stroke-linecap="round"></path><path d="M0,-3 Q5,-4 8,1" fill="none" stroke="#FEC93B" stroke-width="1.5" stroke-linecap="round"></path></g>
+              <circle cx="104" cy="50" r="22" fill="#F2B705" opacity="0.12" stroke="#F2B705" stroke-width="1.5"></circle>
+              <g transform="translate(104,50) rotate(-45)"><line x1="0" y1="-3" x2="0" y2="10" stroke="#F2B705" stroke-width="1.5" stroke-linecap="round"></line><path d="M-8,1 Q-5,-4 0,-3" fill="none" stroke="#F2B705" stroke-width="1.5" stroke-linecap="round"></path><path d="M0,-3 Q5,-4 8,1" fill="none" stroke="#F2B705" stroke-width="1.5" stroke-linecap="round"></path></g>
             </svg>
           </div>
           <h3 data-copy-id="home-adopt-card4-title">Miner leases, lab operates</h3>
@@ -3569,7 +3569,7 @@ No chemicals. No fire. No compromise.</p>
         </div>
       </div>
       <div class="adopt__footnote reveal">
-        <svg width="16" height="16" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px;"><circle cx="8" cy="8" r="7" stroke="#FEC93B" stroke-width="1" fill="none"></circle><circle cx="8" cy="8" r="3" fill="#FEC93B" opacity="0.3"></circle></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px;"><circle cx="8" cy="8" r="7" stroke="#F2B705" stroke-width="1" fill="none"></circle><circle cx="8" cy="8" r="3" fill="#F2B705" opacity="0.3"></circle></svg>
         Mining Operation
         <span style="margin:0 12px;color:var(--grey-200);">|</span>
         <svg width="16" height="16" viewBox="0 0 16 16" style="vertical-align:-2px;margin-right:4px;"><circle cx="8" cy="8" r="7" stroke="#0D7377" stroke-width="1" fill="none"></circle><circle cx="8" cy="8" r="3" fill="#0D7377" opacity="0.3"></circle></svg>
@@ -4561,7 +4561,7 @@ Unit performance is benchmarked against the global PhotonAssay™ fleet and moni
 
       const NEAR_BLACK = '#0A0A0A';
       const RED = '#C8102E';
-      const GOLD = '#FEC93B';
+      const GOLD = '#F2B705';
       const GREY = '#888888';
       const FONT = "Roboto, -apple-system, BlinkMacSystemFont, sans-serif";
 
