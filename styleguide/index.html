@@ -23,7 +23,7 @@
       --grey-100: #E8E8E8;
       --white: #FFFFFF;
       --offwhite: #FAFAFA;
-      --gold: #F2B705;
+      --gold: #FEC93B;
       --gold-hover: #D9A404;
 
       --font: 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -104,7 +104,7 @@
       display: inline-block; font-size: 10px; font-weight: 500;
       letter-spacing: 0.12em; text-transform: uppercase;
       padding: 4px 12px; border-radius: 2px;
-      background: rgba(242, 183, 5, 0.1); color: var(--gold);
+      background: rgba(254, 201, 59, 0.1); color: var(--gold);
     }
     .badge--outline { background: transparent; border: 1px solid var(--grey-100); color: var(--grey-500); }
 
@@ -130,7 +130,7 @@
       transition: border-color 0.3s ease, box-shadow 0.3s ease;
       outline: none; -webkit-appearance: none; appearance: none;
     }
-    .form__input:focus, .form__select:focus, .form__textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(242, 183, 5, 0.08); }
+    .form__input:focus, .form__select:focus, .form__textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(254, 201, 59, 0.08); }
     .form__input::placeholder, .form__textarea::placeholder { color: var(--grey-300); font-weight: 300; }
     .form__textarea { resize: vertical; min-height: 120px; line-height: 1.6; }
     .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); margin-bottom: var(--space-3); }
@@ -547,10 +547,10 @@
               </div>
             </div>
             <div class="sg-swatch">
-              <div class="sg-swatch__colour" style="background:#F2B705;"></div>
+              <div class="sg-swatch__colour" style="background:#FEC93B;"></div>
               <div class="sg-swatch__info">
                 <span class="sg-swatch__name">Gold</span>
-                <span class="sg-swatch__hex">#F2B705</span>
+                <span class="sg-swatch__hex">#FEC93B</span>
                 <span class="sg-swatch__var">--gold — accent, CTAs, highlights</span>
               </div>
             </div>
@@ -760,7 +760,7 @@
           <div class="sg-component__preview">
             <a class="btn" href="#">Explore the Technology</a>
           </div>
-          <div class="sg-component__code">padding: 16px 40px · font-size: 12px · weight 500 · tracking 0.16em · uppercase<br>border: 1px solid #000 · bg: transparent · radius: 0<br>hover: bg #000, color #FFF, box-shadow inset 0 -3px 0 #F2B705</div>
+          <div class="sg-component__code">padding: 16px 40px · font-size: 12px · weight 500 · tracking 0.16em · uppercase<br>border: 1px solid #000 · bg: transparent · radius: 0<br>hover: bg #000, color #FFF, box-shadow inset 0 -3px 0 #FEC93B</div>
         </div>
 
         <div class="sg-component">
@@ -768,7 +768,7 @@
           <div class="sg-component__preview sg-component__preview--dark">
             <a class="btn btn--light" href="#">Request a Demo</a>
           </div>
-          <div class="sg-component__code">Same as .btn but border-color: #FFF, color: #FFF<br>hover: bg #FFF, color #000, box-shadow inset 0 -3px 0 #F2B705</div>
+          <div class="sg-component__code">Same as .btn but border-color: #FFF, color: #FFF<br>hover: bg #FFF, color #000, box-shadow inset 0 -3px 0 #FEC93B</div>
         </div>
 
         <div class="sg-component">
@@ -776,7 +776,7 @@
           <div class="sg-component__preview">
             <a class="arrow-link" href="#">Read the case study</a>
           </div>
-          <div class="sg-component__code">font-size: 13px · weight 500 · tracking 0.08em · uppercase · color #888888<br>::after content: '→' · hover: color #F2B705, arrow translateX(4px)</div>
+          <div class="sg-component__code">font-size: 13px · weight 500 · tracking 0.08em · uppercase · color #888888<br>::after content: '→' · hover: color #FEC93B, arrow translateX(4px)</div>
         </div>
 
         <div class="sg-component">
@@ -786,7 +786,7 @@
               <div class="sg-sticky-demo__link">Get in Touch</div>
             </div>
           </div>
-          <div class="sg-component__code">position: fixed · right: 0 · top: 50% · writing-mode: vertical-rl<br>bg: #F2B705 · color: #0A0A0A · font-size: 12px · weight 600 · tracking 0.1em<br>border-radius: 8px 0 0 8px · hover: padding-right 16px</div>
+          <div class="sg-component__code">position: fixed · right: 0 · top: 50% · writing-mode: vertical-rl<br>bg: #FEC93B · color: #0A0A0A · font-size: 12px · weight 600 · tracking 0.1em<br>border-radius: 8px 0 0 8px · hover: padding-right 16px</div>
         </div>
 
       </div>
@@ -807,7 +807,7 @@
               <span class="badge">Case Study</span>&nbsp;
               <span class="badge">Webinar</span>
             </div>
-            <div class="sg-component__code">bg: rgba(242,183,5,0.1) · color: #F2B705<br>10px · weight 500 · tracking 0.12em · uppercase · radius 2px · padding 4px 12px</div>
+            <div class="sg-component__code">bg: rgba(254, 201, 59,0.1) · color: #FEC93B<br>10px · weight 500 · tracking 0.12em · uppercase · radius 2px · padding 4px 12px</div>
           </div>
 
           <div class="sg-component">
@@ -848,7 +848,7 @@
                   <input class="form__input" type="text" placeholder="e.g. Sarah">
                 </div>
               </div>
-              <div class="sg-component__code">border: 1px solid #E8E8E8 · radius 2px · padding 14px 16px<br>font-size 15px · weight 300 · focus: border #F2B705 + gold glow</div>
+              <div class="sg-component__code">border: 1px solid #E8E8E8 · radius 2px · padding 14px 16px<br>font-size 15px · weight 300 · focus: border #FEC93B + gold glow</div>
             </div>
 
             <div class="sg-component">
@@ -927,7 +927,7 @@
                   <div class="stat__label">Scope 1 emissions</div>
                 </div>
               </div>
-              <div class="sg-component__code">.stat__number — 72px · weight 200 · tracking -0.03em · color #F2B705<br>.stat__label — 13px · weight 500 · tracking 0.08em · uppercase · color #888888</div>
+              <div class="sg-component__code">.stat__number — 72px · weight 200 · tracking -0.03em · color #FEC93B<br>.stat__label — 13px · weight 500 · tracking 0.08em · uppercase · color #888888</div>
             </div>
 
             <div class="sg-component">
@@ -957,7 +957,7 @@
                   <div class="quote-block__role">General Manager, Ravenswood Gold Mine</div>
                 </div>
               </div>
-              <div class="sg-component__code">border-left: 3px solid #F2B705 · padding-left: 32px<br>.quote-block__text — 24px · weight 300 · line-height 1.5 · color #FFF<br>.quote-block__author — 14px · weight 500 · color #BBBBBB<br>.quote-block__role — 13px · color #888888</div>
+              <div class="sg-component__code">border-left: 3px solid #FEC93B · padding-left: 32px<br>.quote-block__text — 24px · weight 300 · line-height 1.5 · color #FFF<br>.quote-block__author — 14px · weight 500 · color #BBBBBB<br>.quote-block__role — 13px · color #888888</div>
             </div>
           </div>
         </div>
@@ -1063,7 +1063,7 @@
           </div>
 
           <div class="sg-asset" style="padding:32px; justify-content:center;">
-            <svg style="height:80px;width:80px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419.1 419.1"><circle fill="#F2B705" cx="209.39" cy="209.33" r="26.95"/><rect fill="#F2B705" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/><path fill="#000" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path fill="#000" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/></svg>
+            <svg style="height:80px;width:80px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 419.1 419.1"><circle fill="#FEC93B" cx="209.39" cy="209.33" r="26.95"/><rect fill="#FEC93B" x="197.38" y="139.34" width="364.34" height="9.49" transform="translate(-26.42 146.15) rotate(-21.08)"/><path fill="#000" d="M375.16,179.81c1.73,9.66,2.69,19.59,2.69,29.75,0,92.79-75.5,168.29-168.29,168.29S41.26,302.35,41.26,209.55,116.76,41.26,209.55,41.26c60.13,0,112.96,31.72,142.73,79.28l9.04-3.48c-31.26-51.11-87.59-85.29-151.77-85.29C111.52,31.77,31.77,111.52,31.77,209.55s79.75,177.77,177.78,177.77,177.78-79.75,177.78-177.77c0-11.36-1.11-22.45-3.16-33.22l-9.02,3.47Z"/><path fill="#000" d="M405.29,168.2c2.82,13.35,4.32,27.18,4.32,41.35,0,110.32-89.75,200.06-200.06,200.06S9.49,319.87,9.49,209.55,99.24,9.49,209.55,9.49c73.65,0,138.09,40.04,172.82,99.46l8.96-3.45C355.14,42.53,287.24,0,209.55,0,94,0,0,94.01,0,209.55s94,209.55,209.55,209.55,209.55-94,209.55-209.55c0-15.38-1.71-30.35-4.87-44.8l-8.94,3.44Z"/></svg>
             <div class="sg-asset__label">Symbol only</div>
             <div style="font-size:11px;color:var(--grey-300);font-family:'Courier New',monospace;text-align:center;">Chrysos_Corporation_Symbol.svg</div>
           </div>
