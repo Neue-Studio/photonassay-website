@@ -708,6 +708,28 @@
           <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">15px · weight 300 · color #BBBBBB (--grey-300) · class: .text-secondary</div>
         </div>
 
+        <div class="sg-type-specimen" style="border-top:1px solid var(--grey-100); padding-top:48px; margin-top:24px;">
+          <div class="sg-type-meta">Mobile typography (≤ 768px)</div>
+          <p style="font-size:14px; color:var(--grey-500); line-height:1.6; margin:16px 0 24px; max-width:600px;">At the mobile breakpoint, the main display headings step down. Body, eyebrow, captions, and most stat labels keep their desktop sizes. Weights stay the same across breakpoints.</p>
+          <table class="sg-table" style="margin-bottom:0;">
+            <tr><th>Element</th><th>Desktop</th><th>Mobile (≤ 768px)</th></tr>
+            <tr><td><strong>h1</strong></td><td><code>88px · weight 300</code></td><td><code>38px · weight 300</code></td></tr>
+            <tr><td><strong>h2</strong></td><td><code>56px · weight 200</code></td><td><code>32px · weight 200</code></td></tr>
+            <tr><td><strong>h3</strong></td><td><code>24px · weight 400</code></td><td><code>20px · weight 400</code></td></tr>
+            <tr><td><strong>h4</strong></td><td><code>18px · weight 500</code></td><td><code>18px · weight 500</code></td></tr>
+            <tr><td><strong>Body</strong></td><td><code>17px · weight 300</code></td><td><code>17px · weight 300</code></td></tr>
+            <tr><td><strong>Eyebrow</strong></td><td><code>13px · weight 500</code></td><td><code>13px · weight 500</code></td></tr>
+            <tr><td><strong>Hero subtitle</strong></td><td><code>17px · weight 300</code></td><td><code>17px · weight 300</code></td></tr>
+            <tr><td><strong>Hero stat value</strong></td><td><code>32px · weight 200</code></td><td><code>32px · weight 200</code></td></tr>
+            <tr><td><strong>Hero stat label</strong></td><td><code>12px · weight 500</code></td><td><code>12px · weight 500</code></td></tr>
+            <tr><td><strong>Tech stat value</strong></td><td><code>40px · weight 200</code></td><td><code>40px · weight 200</code></td></tr>
+            <tr><td><strong>Global hero stat</strong></td><td><code>120px · weight 200</code></td><td><code>120px · weight 200</code></td></tr>
+            <tr><td><strong>Cases featured h3</strong></td><td><code>32px · weight 400</code></td><td><code>32px · weight 400</code></td></tr>
+            <tr><td><strong>FAQ question</strong></td><td><code>16px · weight 500</code></td><td><code>16px · weight 500</code></td></tr>
+          </table>
+          <div style="margin-top:16px; font-size:12px; color:var(--grey-300); font-family:'Courier New',monospace;">All overrides scoped inside <code style="background:var(--grey-100); padding:2px 6px; border-radius:3px; color:var(--grey-500);">@media (max-width: 768px)</code></div>
+        </div>
+
       </div>
     </section>
 
@@ -1016,10 +1038,10 @@
             <div class="sg-item__label">Breakpoints</div>
             <table class="sg-table" style="margin-bottom:40px;">
               <tr><th>Name</th><th>Width</th><th>Notes</th></tr>
-              <tr><td><strong>Desktop</strong></td><td><code>&gt; 900px</code></td><td>Full layout — all columns, side-by-side grids</td></tr>
-              <tr><td><strong>Mobile</strong></td><td><code>≤ 900px</code></td><td>Single column, stacked sections, hamburger nav</td></tr>
+              <tr><td><strong>Desktop</strong></td><td><code>&gt; 768px</code></td><td>Full layout — all columns, side-by-side grids</td></tr>
+              <tr><td><strong>Mobile</strong></td><td><code>≤ 768px</code></td><td>Single column, stacked sections, hamburger nav</td></tr>
             </table>
-            <p style="font-size:13px; color:var(--grey-500); line-height:1.7;">One main breakpoint at 900px. No tablet-specific layouts — content flows from desktop to stacked single-column at 900px. Hamburger menu appears at 900px and below.</p>
+            <p style="font-size:13px; color:var(--grey-500); line-height:1.7;">One main breakpoint at 768px. No tablet-specific layouts — content flows from desktop to stacked single-column at 768px. Hamburger menu appears at 768px and below.</p>
           </div>
           <div>
             <div class="sg-item__label">Navigation</div>
